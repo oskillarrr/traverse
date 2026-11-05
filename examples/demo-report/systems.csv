@@ -1,0 +1,6 @@
+﻿system,group,vcs,revision,languages,code,files,modules,components,exposes,calls,tables,runtimes,deployables,risksHigh,risksMedium,risksLow,cycles,layerViolations
+case-management,,svn,,Java SQL,87,18,4,7,3,1,2,java 1.6,EAR case-ear EJB case-ejb WAR case-web,3,8,2,0,1
+common-lib,,none,,Java,5,4,1,2,0,0,0,java 1.8,,0,0,0,0,0
+legacy-portal,,none,,C# COBOL,16,3,1,2,1,1,2,.NET v4.5,,1,3,0,0,0
+notifications,,git,4f2a9c1e7b3d,Java,55,9,1,5,4,1,1,java 11,SERVICE notifications,1,0,1,0,0
+platform-gitops,,none,,,0,2,0,0,0,0,0,,,3,0,2,0,0

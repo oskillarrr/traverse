@@ -1,0 +1,8 @@
+﻿platform,kind,name,namespace,images,baseImages,ports,replicas,schedule,envKeys,hosts,paths,user,module,file,line
+kubernetes,CronJob,nightly-reconciliation,,tramitacion/case-ejb:1.4.2,,,,0 2 * * *,,,,,,apps/notifications/deploy.yaml,17
+kubernetes,Secret,case-db,,,,,,,password,,,,,apps/case-management/deployment.yaml,56
+kubernetes,Deployment,case-management,tramitacion,tramitacion/case-web:1.4.2,,8080,2,,DB_PASSWORD,host-77a3c5ab57d2,,,,apps/case-management/deployment.yaml,1
+kubernetes,Ingress,case-management,tramitacion,,,,,,,host-a42af5868ef5,/cases,,,apps/case-management/deployment.yaml,39
+kubernetes,Service,case-management,tramitacion,,,80→8080,,,,,,,,apps/case-management/deployment.yaml,27
+openshift,DeploymentConfig,notifications,,tramitacion/notifications:3.0.1,,,1,,,host-ef0ef0261b78,,,,apps/notifications/deploy.yaml,1
+openshift,Route,notifications,,,,,,,,host-66ad369591b9,/,,,apps/notifications/deploy.yaml,31

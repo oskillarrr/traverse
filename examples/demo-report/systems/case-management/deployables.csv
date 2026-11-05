@@ -1,0 +1,4 @@
+﻿module,kind,contextRoot,appPaths,includes,descriptor
+maven:org.example.cases:case-ear,ear,,,web:case-web.war@/cases ejb:case-ejb.jar,trunk/case-ear/pom.xml
+maven:org.example.cases:case-ejb,ejb,,,,trunk/case-ejb/pom.xml
+maven:org.example.cases:case-web,war,/cases,/api,,trunk/case-web/pom.xml

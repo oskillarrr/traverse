@@ -1,0 +1,1 @@
+<project><parent><groupId>org.example.cases</groupId><artifactId>case-parent</artifactId><version>1.4.2</version></parent><artifactId>case-ear</artifactId><packaging>ear</packaging></project>

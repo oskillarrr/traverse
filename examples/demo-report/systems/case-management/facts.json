@@ -1,0 +1,1524 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "repo": {
+  "name": "case-management",
+  "vcs": "svn",
+  "layout": "main line trunk (1.4.2), 2 copies left out [trunk]",
+  "scannedAt": "2025-11-05T00:00:00Z",
+  "survey": {
+   "decision": "main line trunk (1.4.2), 2 copies left out [trunk]",
+   "roots": [
+    {
+     "path": "trunk",
+     "coord": "maven:org.example.cases:case-parent",
+     "version": "1.4.2",
+     "files": 18,
+     "main": true,
+     "reason": "trunk"
+    }
+   ],
+   "copies": [
+    {
+     "path": "branches/release-1.0",
+     "of": "trunk",
+     "files": 1,
+     "overlap": 0
+    },
+    {
+     "path": "tags/v1.0",
+     "of": "trunk",
+     "files": 1,
+     "overlap": 0
+    }
+   ],
+   "nonCode": [
+    {
+     "path": "trunk/case-web/src/main/webapp/WEB-INF/lib",
+     "kind": "binaries",
+     "files": 1
+    },
+    {
+     "path": "trunk/db",
+     "kind": "data",
+     "files": 1
+    }
+   ]
+  }
+ },
+ "languages": [
+  {
+   "language": "Java",
+   "category": "code",
+   "files": 7,
+   "code": 83,
+   "comment": 6,
+   "blank": 4
+  },
+  {
+   "language": "XML",
+   "category": "config",
+   "files": 5,
+   "code": 19,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Maven POM",
+   "category": "build",
+   "files": 4,
+   "code": 10,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "SQL",
+   "category": "code",
+   "files": 1,
+   "code": 4,
+   "comment": 1,
+   "blank": 0
+  },
+  {
+   "language": "Binary library",
+   "category": "library",
+   "files": 1,
+   "code": 0,
+   "comment": 0,
+   "blank": 0
+  }
+ ],
+ "files": [
+  {
+   "path": "trunk/case-ear/pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 192,
+   "code": 1,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ear"
+  },
+  {
+   "path": "trunk/case-ear/src/main/application/META-INF/application.xml",
+   "language": "XML",
+   "category": "config",
+   "bytes": 162,
+   "code": 1,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ear"
+  },
+  {
+   "path": "trunk/case-ejb/pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 416,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 668,
+   "code": 14,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 821,
+   "code": 16,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 165,
+   "code": 5,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 718,
+   "code": 18,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/java/org/example/cases/signing/CaseResolutionSigner.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 315,
+   "code": 7,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "language": "XML",
+   "category": "config",
+   "bytes": 311,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb"
+  },
+  {
+   "path": "trunk/case-web/pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 369,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 594,
+   "code": 17,
+   "comment": 3,
+   "blank": 4,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web",
+   "encoding": "windows-1252"
+  },
+  {
+   "path": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 301,
+   "code": 6,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml",
+   "language": "XML",
+   "category": "config",
+   "bytes": 178,
+   "code": 1,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/case-web/src/main/webapp/WEB-INF/jboss-web.xml",
+   "language": "XML",
+   "category": "config",
+   "bytes": 64,
+   "code": 1,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar",
+   "language": "Binary library",
+   "category": "library",
+   "bytes": 488,
+   "code": 0,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "language": "XML",
+   "category": "config",
+   "bytes": 1163,
+   "code": 14,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web"
+  },
+  {
+   "path": "trunk/db/schema.sql",
+   "language": "SQL",
+   "category": "code",
+   "bytes": 241,
+   "code": 4,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-parent"
+  },
+  {
+   "path": "trunk/pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 676,
+   "code": 5,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-parent"
+  }
+ ],
+ "modules": [
+  {
+   "id": "maven:org.example.cases:case-parent",
+   "build": "maven",
+   "name": "case-parent",
+   "version": "1.4.2",
+   "packaging": "pom",
+   "path": "trunk",
+   "descriptor": "trunk/pom.xml",
+   "runtime": "java 1.6",
+   "children": [
+    "maven:org.example.cases:case-ejb",
+    "maven:org.example.cases:case-web",
+    "maven:org.example.cases:case-ear"
+   ],
+   "deps": [
+    {
+     "id": "maven:org.example:common-dto",
+     "version": "2.1.0",
+     "managed": true,
+     "kind": "declared",
+     "resolved": true,
+     "line": 4,
+     "file": "trunk/pom.xml"
+    }
+   ]
+  },
+  {
+   "id": "maven:org.example.cases:case-ear",
+   "build": "maven",
+   "name": "case-ear",
+   "version": "1.4.2",
+   "packaging": "ear",
+   "parent": "maven:org.example.cases:case-parent",
+   "path": "trunk/case-ear",
+   "descriptor": "trunk/case-ear/pom.xml",
+   "runtime": "java 1.6",
+   "artifact": "case-ear-1.4.2.ear",
+   "deps": null
+  },
+  {
+   "id": "maven:org.example.cases:case-ejb",
+   "build": "maven",
+   "name": "case-ejb",
+   "version": "1.4.2",
+   "packaging": "ejb",
+   "parent": "maven:org.example.cases:case-parent",
+   "path": "trunk/case-ejb",
+   "descriptor": "trunk/case-ejb/pom.xml",
+   "runtime": "java 1.6",
+   "deps": [
+    {
+     "id": "maven:log4j:log4j",
+     "version": "1.2.17",
+     "kind": "declared",
+     "resolved": true,
+     "line": 2,
+     "file": "trunk/case-ejb/pom.xml"
+    },
+    {
+     "id": "maven:org.example:common-dto",
+     "version": "2.1.0",
+     "kind": "declared",
+     "resolved": true,
+     "line": 2,
+     "file": "trunk/case-ejb/pom.xml"
+    }
+   ]
+  },
+  {
+   "id": "maven:org.example.cases:case-web",
+   "build": "maven",
+   "name": "case-web",
+   "version": "1.4.2",
+   "packaging": "war",
+   "parent": "maven:org.example.cases:case-parent",
+   "path": "trunk/case-web",
+   "descriptor": "trunk/case-web/pom.xml",
+   "runtime": "java 1.6",
+   "artifact": "case-web-1.4.2.war",
+   "deps": [
+    {
+     "id": "maven:commons-collections:commons-collections",
+     "version": "3.2.1",
+     "kind": "vendored-jar",
+     "resolved": true,
+     "file": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar"
+    },
+    {
+     "id": "maven:org.example.cases:case-ejb",
+     "version": "1.4.2",
+     "kind": "declared",
+     "resolved": true,
+     "line": 2,
+     "file": "trunk/case-web/pom.xml"
+    }
+   ]
+  }
+ ],
+ "deployables": [
+  {
+   "module": "maven:org.example.cases:case-ear",
+   "kind": "ear",
+   "includes": [
+    "web:case-web.war@/cases",
+    "ejb:case-ejb.jar"
+   ],
+   "descriptor": "trunk/case-ear/pom.xml"
+  },
+  {
+   "module": "maven:org.example.cases:case-ejb",
+   "kind": "ejb",
+   "descriptor": "trunk/case-ejb/pom.xml"
+  },
+  {
+   "module": "maven:org.example.cases:case-web",
+   "kind": "war",
+   "contextRoot": "/cases",
+   "contextRootSource": "application.xml",
+   "appPaths": [
+    "/api"
+   ],
+   "descriptor": "trunk/case-web/pom.xml"
+  }
+ ],
+ "components": [
+  {
+   "fqn": "org.example.cases.dao.ExpedienteDao",
+   "name": "ExpedienteDao",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.dao",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Persistence",
+   "layerReason": "package:dao",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 7
+  },
+  {
+   "fqn": "org.example.cases.integracion.NotificacionesClient",
+   "name": "NotificacionesClient",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.integracion",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Integration",
+   "layerReason": "package:integracion",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "line": 7
+  },
+  {
+   "fqn": "org.example.cases.modelo.Expediente",
+   "name": "Expediente",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.modelo",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Model",
+   "layerReason": "stereotype:@Entity",
+   "stereotypes": [
+    "Entity",
+    "Table"
+   ],
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+   "line": 5
+  },
+  {
+   "fqn": "org.example.cases.servicio.GestorExpedientes",
+   "name": "GestorExpedientes",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.servicio",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Business",
+   "layerReason": "stereotype:@Stateless",
+   "stereotypes": [
+    "Stateless"
+   ],
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "line": 10
+  },
+  {
+   "fqn": "org.example.cases.signing.CaseResolutionSigner",
+   "name": "CaseResolutionSigner",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.signing",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Unknown",
+   "layerReason": "none",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/signing/CaseResolutionSigner.java",
+   "line": 5
+  },
+  {
+   "fqn": "org.example.cases.web.ExpedienteResource",
+   "name": "ExpedienteResource",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.web",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web",
+   "layer": "Presentation",
+   "layerReason": "stereotype:@Path",
+   "stereotypes": [
+    "Path",
+    "Produces"
+   ],
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "line": 13
+  },
+  {
+   "fqn": "org.example.cases.web.LegacyExportServlet",
+   "name": "LegacyExportServlet",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.cases.web",
+   "sourceSet": "main",
+   "module": "maven:org.example.cases:case-web",
+   "layer": "Presentation",
+   "layerReason": "extends:HttpServlet",
+   "extends": [
+    "HttpServlet"
+   ],
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "line": 5
+  }
+ ],
+ "dependencies": [
+  {
+   "from": "org.example.cases.dao.ExpedienteDao",
+   "to": "org.example.cases.modelo.Expediente",
+   "kind": "import",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 5
+  },
+  {
+   "from": "org.example.cases.servicio.GestorExpedientes",
+   "to": "org.example.cases.dao.ExpedienteDao",
+   "kind": "import",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "line": 6
+  },
+  {
+   "from": "org.example.cases.servicio.GestorExpedientes",
+   "to": "org.example.cases.integracion.NotificacionesClient",
+   "kind": "import",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "line": 7
+  },
+  {
+   "from": "org.example.cases.web.ExpedienteResource",
+   "to": "org.example.cases.servicio.GestorExpedientes",
+   "kind": "inject",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "line": 15
+  },
+  {
+   "from": "org.example.cases.web.LegacyExportServlet",
+   "to": "org.example.cases.dao.ExpedienteDao",
+   "kind": "import",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "line": 3
+  }
+ ],
+ "contracts": [
+  {
+   "kind": "db-table",
+   "direction": "uses",
+   "key": "CASES.EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "component": "org.example.cases.modelo.Expediente",
+   "detail": "JPA entity mapping",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+   "line": 5
+  },
+  {
+   "kind": "db-table",
+   "direction": "defines",
+   "key": "CASES.EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "detail": "CREATE TABLE",
+   "confidence": "high",
+   "file": "trunk/db/schema.sql",
+   "line": 2
+  },
+  {
+   "kind": "db-table",
+   "direction": "defines",
+   "key": "CASES.TRAMITE",
+   "match": "TRAMITE",
+   "detail": "CREATE TABLE",
+   "confidence": "high",
+   "file": "trunk/db/schema.sql",
+   "line": 3
+  },
+  {
+   "kind": "db-table",
+   "direction": "read",
+   "key": "EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "component": "org.example.cases.dao.ExpedienteDao",
+   "detail": "SQL in string literal",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 8
+  },
+  {
+   "kind": "db-table",
+   "direction": "write",
+   "key": "EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "component": "org.example.cases.dao.ExpedienteDao",
+   "detail": "SQL in string literal",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 13
+  },
+  {
+   "kind": "db-table",
+   "direction": "read",
+   "key": "TRAMITE",
+   "match": "TRAMITE",
+   "component": "org.example.cases.dao.ExpedienteDao",
+   "detail": "SQL in string literal",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 8
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "ANY /cases/export/legacy",
+   "match": "/export/legacy",
+   "component": "org.example.cases.web.LegacyExportServlet",
+   "detail": "servlet-mapping",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "line": 7
+  },
+  {
+   "kind": "http",
+   "direction": "calls",
+   "key": "ANY /notifications/api/messages/send",
+   "match": "/notifications/api/messages/send",
+   "component": "org.example.cases.integracion.NotificacionesClient",
+   "detail": "URL literal",
+   "confidence": "medium",
+   "host": "host-ebdc59bfbcb4",
+   "transport": "mtls",
+   "auth": "client-cert",
+   "counterpart": "notifications",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "line": 8
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "GET /cases/api/expedientes/{id}",
+   "match": "/expedientes/{}",
+   "component": "org.example.cases.web.ExpedienteResource",
+   "detail": "jaxrs",
+   "confidence": "high",
+   "role": "api",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "line": 19
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "POST /cases/api/expedientes/{id}/resolver",
+   "match": "/expedientes/{}/resolver",
+   "component": "org.example.cases.web.ExpedienteResource",
+   "detail": "jaxrs",
+   "confidence": "high",
+   "role": "api",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "line": 23
+  },
+  {
+   "kind": "jms",
+   "direction": "uses",
+   "key": "java:/jms/queue/CaseResolved",
+   "match": "jms/queue/CaseResolved",
+   "component": "org.example.cases.servicio.GestorExpedientes",
+   "detail": "@Resource Queue",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "line": 12
+  },
+  {
+   "kind": "jndi",
+   "direction": "uses",
+   "key": "java:comp/env/jdbc/CasesDS",
+   "match": "jdbc/CasesDS",
+   "component": "org.example.cases.dao.ExpedienteDao",
+   "detail": "string literal",
+   "confidence": "medium",
+   "counterpart": "database",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "line": 10
+  },
+  {
+   "kind": "jndi",
+   "direction": "uses",
+   "key": "java:jboss/datasources/CasesDS",
+   "match": "datasources/CasesDS",
+   "detail": "datasource (cases)",
+   "confidence": "high",
+   "counterpart": "database",
+   "file": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "line": 1
+  },
+  {
+   "kind": "jndi",
+   "direction": "uses",
+   "key": "jdbc/CasesDS",
+   "match": "jdbc/CasesDS",
+   "detail": "javax.sql.DataSource",
+   "confidence": "high",
+   "counterpart": "database",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "line": 8
+  },
+  {
+   "kind": "platform-module",
+   "direction": "uses",
+   "key": "com.oracle.ojdbc",
+   "match": "com.oracle.ojdbc",
+   "detail": "JBoss module",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml",
+   "line": 1
+  },
+  {
+   "kind": "platform-module",
+   "direction": "uses",
+   "key": "org.apache.log4j",
+   "match": "org.apache.log4j",
+   "detail": "JBoss module",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml",
+   "line": 1
+  }
+ ],
+ "findings": [
+  {
+   "id": "70466a32fecf26f3",
+   "ruleId": "JAVA-LOG4J1",
+   "title": "Log4j 1.x (end of life, CVEs)",
+   "category": "Logging",
+   "technology": "Log4j 1.x",
+   "severity": "high",
+   "confidence": "high",
+   "message": "End of life since 2015 with unpatched vulnerabilities (e.g. CVE-2019-17571).",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "lines": [
+    5
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "edefc7a43bf48014",
+   "ruleId": "RUNTIME-LEVEL",
+   "title": "Outdated runtime level: java 1.6",
+   "category": "Migration",
+   "technology": "java 1.6",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Java 6 or older: no supported JDK can target it; upgrade path needed. (count = modules)",
+   "file": "trunk/pom.xml",
+   "count": 4,
+   "sourceSet": "main"
+  },
+  {
+   "id": "f183f0e88dbfdcf0",
+   "ruleId": "SEC-SECRET-CODE",
+   "title": "Possible hard-coded credential in code",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "message": "Value is never copied to the report.",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "lines": [
+    13
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "47ea423586aa7ea3",
+   "ruleId": "JAVA-COMMONS-HTTPCLIENT3",
+   "title": "Commons HttpClient 3.x (end of life)",
+   "category": "Integration",
+   "technology": "HttpClient 3",
+   "severity": "medium",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "lines": [
+    5,
+    6
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "f68e52e55e1ceb55",
+   "ruleId": "JAVA-JAVAX-EE",
+   "title": "javax.* Java EE namespace (pre Jakarta EE 9)",
+   "category": "Migration",
+   "technology": "Java EE (javax)",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes.",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "2df5ea1f7399a4a4",
+   "ruleId": "JAVA-JAVAX-EE",
+   "title": "javax.* Java EE namespace (pre Jakarta EE 9)",
+   "category": "Migration",
+   "technology": "Java EE (javax)",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes.",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "lines": [
+    2,
+    4
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "81fe957de4d841c9",
+   "ruleId": "JAVA-JAVAX-EE",
+   "title": "javax.* Java EE namespace (pre Jakarta EE 9)",
+   "category": "Migration",
+   "technology": "Java EE (javax)",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes.",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "lines": [
+    3,
+    4
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "aacbdfded09c6cfd",
+   "ruleId": "JAVA-JAVAX-EE",
+   "title": "javax.* Java EE namespace (pre Jakarta EE 9)",
+   "category": "Migration",
+   "technology": "Java EE (javax)",
+   "severity": "medium",
+   "confidence": "high",
+   "message": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes.",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "2da9708d74ec3fba",
+   "ruleId": "JAVA-JBOSS-API",
+   "title": "JBoss / WildFly proprietary API",
+   "category": "Platform",
+   "technology": "JBoss/WildFly",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Couples the application to the JBoss/WildFly runtime.",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    4
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "f7d4fcff8b0a0142",
+   "ruleId": "OPS-INSECURE-REPO",
+   "title": "Artifact repository over plain HTTP",
+   "category": "Security",
+   "technology": "Build",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "Dependencies downloaded without TLS can be tampered with.",
+   "file": "trunk/pom.xml",
+   "lines": [
+    5
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "4030830f4e78a230",
+   "ruleId": "SQL-UTL-NETWORK",
+   "title": "Database-initiated network/file access",
+   "category": "Integration",
+   "technology": "DB network",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "The database itself integrates with external systems.",
+   "file": "trunk/db/schema.sql",
+   "lines": [
+    4
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "d66893c5d0d36629",
+   "ruleId": "OPS-VENDORED-LIBS",
+   "title": "Libraries committed to the repository",
+   "category": "Delivery",
+   "technology": "Vendored libraries",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Dependencies without a manager: versions and CVEs are hard to track.",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar",
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "7a9bdd83c034a054",
+   "ruleId": "SQL-ORACLE-DIALECT",
+   "title": "Oracle-specific SQL",
+   "category": "Database",
+   "technology": "Oracle SQL",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Proprietary SQL hinders database portability.",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "lines": [
+    8
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "45a5ca04e6b32d08",
+   "ruleId": "AUTH-CONTAINER",
+   "title": "Container-managed authentication",
+   "category": "Authentication",
+   "technology": "Container (JAAS)",
+   "severity": "info",
+   "confidence": "medium",
+   "message": "Login is configured in the application server (security domain / realm), outside the application code.",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-web.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "user"
+  },
+  {
+   "id": "9e565d24601735fe",
+   "ruleId": "AUTH-X509",
+   "title": "X.509 / client-certificate authentication (mTLS)",
+   "category": "Authentication",
+   "technology": "X.509 client auth",
+   "severity": "info",
+   "confidence": "medium",
+   "message": "Client-certificate authentication implies mutual TLS (mTLS).",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    13
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "transport"
+  },
+  {
+   "id": "f74dfac59e6a354e",
+   "ruleId": "DB-ORACLE",
+   "title": "Oracle Database",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "bd8243baa48d5ccb",
+   "ruleId": "DB-ORACLE",
+   "title": "Oracle Database",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "40795d9a9a324570",
+   "ruleId": "DESC-DB-DIALECT",
+   "title": "Database dialect Oracle10gDialect",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "527a16621779280d",
+   "ruleId": "DESC-JBOSS-DEPSTRUCT",
+   "title": "JBoss deployment structure (module classloading)",
+   "category": "Platform",
+   "technology": "JBoss/WildFly",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "0f405bce2a3aad7c",
+   "ruleId": "DESC-JBOSS-SECDOMAIN",
+   "title": "JBoss security domain",
+   "category": "Security",
+   "technology": "JBoss security domain",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-web.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "afcccae41dad7063",
+   "ruleId": "DESC-JBOSS-WEB",
+   "title": "JBoss web descriptor",
+   "category": "Platform",
+   "technology": "JBoss/WildFly",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/jboss-web.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "e7b313de874fe71f",
+   "ruleId": "DESC-JPA-PROVIDER",
+   "title": "JPA provider org.hibernate.ejb.HibernatePersistence",
+   "category": "Persistence",
+   "technology": "Hibernate",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "9052f8433d8c5551",
+   "ruleId": "DESC-WEB-AUTH",
+   "title": "Container authentication: CLIENT-CERT",
+   "category": "Authentication",
+   "technology": "Container auth (CLIENT-CERT)",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    13
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "user"
+  },
+  {
+   "id": "a543c194fbeb1c11",
+   "ruleId": "DESC-WEB-MTLS",
+   "title": "Client-certificate authentication (mutual TLS)",
+   "category": "Authentication",
+   "technology": "X.509 client auth",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    13
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "transport"
+  },
+  {
+   "id": "fa627247fae49596",
+   "ruleId": "DESC-WEB-SECCONS",
+   "title": "Declarative security constraints",
+   "category": "Security",
+   "technology": "Servlet security",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    9
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "406b7c5fc4a061dd",
+   "ruleId": "DESC-WEB-TLS",
+   "title": "Transport guarantee CONFIDENTIAL (TLS required)",
+   "category": "Transport Security",
+   "technology": "TLS required",
+   "severity": "info",
+   "confidence": "high",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+   "lines": [
+    11
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "transport"
+  },
+  {
+   "id": "5790190ebdb271c9",
+   "ruleId": "JAVA-EJB",
+   "title": "Enterprise JavaBeans",
+   "category": "Business",
+   "technology": "EJB",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "lines": [
+    2,
+    9
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "6ab3d6d3ca1de66c",
+   "ruleId": "JAVA-EJB",
+   "title": "Enterprise JavaBeans",
+   "category": "Business",
+   "technology": "EJB",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "lines": [
+    4
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "0e34bacaf0ed6bda",
+   "ruleId": "JAVA-HTTP-CLIENT",
+   "title": "Outbound HTTP client",
+   "category": "Integration",
+   "technology": "HTTP client",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "lines": [
+    5,
+    15
+   ],
+   "count": 3,
+   "sourceSet": "main"
+  },
+  {
+   "id": "2b79842cab582ed0",
+   "ruleId": "JAVA-JAXRS",
+   "title": "JAX-RS REST API",
+   "category": "Web",
+   "technology": "JAX-RS",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+   "lines": [
+    3
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "711ded4329528b6f",
+   "ruleId": "JAVA-JDBC",
+   "title": "Plain JDBC",
+   "category": "Persistence",
+   "technology": "JDBC",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "lines": [
+    2,
+    3
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "408fec3150aaae6e",
+   "ruleId": "JAVA-JMS",
+   "title": "JMS messaging",
+   "category": "Integration",
+   "technology": "JMS",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+   "lines": [
+    4
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "37d2fde485cc2495",
+   "ruleId": "JAVA-JNDI",
+   "title": "JNDI lookups",
+   "category": "Integration",
+   "technology": "JNDI",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+   "lines": [
+    4,
+    10
+   ],
+   "count": 3,
+   "sourceSet": "main"
+  },
+  {
+   "id": "35582eb7d02dcf4d",
+   "ruleId": "JAVA-JNDI",
+   "title": "JNDI lookups",
+   "category": "Integration",
+   "technology": "JNDI",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/resources/META-INF/persistence.xml",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "acdbc2767c17e077",
+   "ruleId": "JAVA-JPA",
+   "title": "JPA persistence",
+   "category": "Persistence",
+   "technology": "JPA",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "9b9136b361f08fde",
+   "ruleId": "JAVA-SERVLET",
+   "title": "Servlet API",
+   "category": "Web",
+   "technology": "Servlet",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "lines": [
+    2,
+    5
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "3c5764eef2ad7ff0",
+   "ruleId": "SIGN-ADES",
+   "title": "Advanced electronic signature (XAdES / CAdES / PAdES / JAdES)",
+   "category": "Authentication",
+   "technology": "AdES",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/signing/CaseResolutionSigner.java",
+   "lines": [
+    2,
+    6
+   ],
+   "count": 3,
+   "sourceSet": "main",
+   "authKind": "signature"
+  },
+  {
+   "id": "1c1c97e139d7684f",
+   "ruleId": "SIGN-TIMESTAMP",
+   "title": "Trusted timestamping (RFC 3161 / TSA)",
+   "category": "Authentication",
+   "technology": "Timestamping",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/signing/CaseResolutionSigner.java",
+   "lines": [
+    3,
+    7
+   ],
+   "count": 3,
+   "sourceSet": "main",
+   "authKind": "signature"
+  },
+  {
+   "id": "1bf9d3c6b91240d8",
+   "ruleId": "SQL-STORED-PROCEDURES",
+   "title": "Stored procedures / packages",
+   "category": "Database",
+   "technology": "PL/SQL",
+   "severity": "info",
+   "confidence": "medium",
+   "message": "Business logic in the database.",
+   "file": "trunk/db/schema.sql",
+   "lines": [
+    4
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "df3deaa6b32bad7a",
+   "ruleId": "TLS-CLIENT-IDENTITY",
+   "title": "Client TLS identity (keystore) — mutual TLS",
+   "category": "Transport Security",
+   "technology": "mTLS client",
+   "severity": "info",
+   "confidence": "medium",
+   "message": "A client keystore configures mutual TLS (client-certificate) on outbound calls.",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "lines": [
+    3,
+    11
+   ],
+   "count": 3,
+   "sourceSet": "main",
+   "authKind": "transport"
+  },
+  {
+   "id": "e12121c4b7f96ef1",
+   "ruleId": "TLS-CUSTOM-CONTEXT",
+   "title": "Custom TLS/SSL context",
+   "category": "Transport Security",
+   "technology": "Custom TLS",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+   "lines": [
+    4,
+    13
+   ],
+   "count": 3,
+   "sourceSet": "main",
+   "authKind": "transport"
+  }
+ ],
+ "packageStats": [
+  {
+   "package": "org.example.cases.dao",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Persistence",
+   "types": 1,
+   "ca": 2,
+   "ce": 1,
+   "instability": 0.33
+  },
+  {
+   "package": "org.example.cases.integracion",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Integration",
+   "types": 1,
+   "ca": 1,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "org.example.cases.modelo",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Model",
+   "types": 1,
+   "ca": 1,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "org.example.cases.servicio",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Business",
+   "types": 1,
+   "ca": 1,
+   "ce": 2,
+   "instability": 0.67
+  },
+  {
+   "package": "org.example.cases.signing",
+   "module": "maven:org.example.cases:case-ejb",
+   "layer": "Unknown",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "org.example.cases.web",
+   "module": "maven:org.example.cases:case-web",
+   "layer": "Presentation",
+   "types": 2,
+   "ca": 0,
+   "ce": 2,
+   "instability": 1
+  }
+ ],
+ "cycles": null,
+ "layerIssues": [
+  {
+   "fromLayer": "Presentation",
+   "toLayer": "Persistence",
+   "from": "org.example.cases.web.LegacyExportServlet",
+   "to": "org.example.cases.dao.ExpedienteDao",
+   "file": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+   "line": 3
+  }
+ ],
+ "deployment": {
+  "nodes": null,
+  "links": null
+ },
+ "diagnostics": null,
+ "vulnerabilities": [
+  {
+   "id": "TRAVERSEDEMO-2026-0001",
+   "aliases": [
+    "TRAVERSEDEMO-CVE-0001"
+   ],
+   "package": "maven:commons-collections:commons-collections",
+   "ecosystem": "Maven",
+   "version": "3.2.1",
+   "severity": "critical",
+   "score": 9.8,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Remote code execution through a deserialization gadget",
+   "fixed": [
+    "3.2.2"
+   ],
+   "confidence": "high",
+   "kind": "vendored-jar",
+   "modules": [
+    "maven:org.example.cases:case-web"
+   ],
+   "published": "2026-01-15T00:00:00Z",
+   "file": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar"
+  },
+  {
+   "id": "TRAVERSEDEMO-2026-0002",
+   "package": "maven:log4j:log4j",
+   "ecosystem": "Maven",
+   "version": "1.2.17",
+   "severity": "high",
+   "score": 8.1,
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Unsafe network appender in an end-of-life logging library",
+   "confidence": "high",
+   "kind": "declared",
+   "modules": [
+    "maven:org.example.cases:case-ejb"
+   ],
+   "published": "2026-02-01T00:00:00Z",
+   "file": "trunk/case-ejb/pom.xml",
+   "line": 2
+  }
+ ],
+ "vulnScan": {
+  "database": "demo-vulndb",
+  "asOf": "2026-10-28T00:00:00Z",
+  "advisories": {
+   "Maven": 3,
+   "NuGet": 1
+  },
+  "checked": 3,
+  "unevaluated": []
+ }
+}

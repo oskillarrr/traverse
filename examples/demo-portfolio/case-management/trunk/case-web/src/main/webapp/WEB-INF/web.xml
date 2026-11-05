@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <servlet><servlet-name>Resteasy</servlet-name><servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class></servlet>
+  <servlet-mapping><servlet-name>Resteasy</servlet-name><url-pattern>/api/*</url-pattern></servlet-mapping>
+  <servlet><servlet-name>Legacy</servlet-name><servlet-class>org.example.cases.web.LegacyExportServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>Legacy</servlet-name><url-pattern>/export/legacy</url-pattern></servlet-mapping>
+  <resource-ref><res-ref-name>jdbc/CasesDS</res-ref-name><res-type>javax.sql.DataSource</res-type></resource-ref>
+  <security-constraint>
+    <web-resource-collection><web-resource-name>api</web-resource-name><url-pattern>/api/*</url-pattern></web-resource-collection>
+    <user-data-constraint><transport-guarantee>CONFIDENTIAL</transport-guarantee></user-data-constraint>
+  </security-constraint>
+  <login-config><auth-method>CLIENT-CERT</auth-method></login-config>
+</web-app>

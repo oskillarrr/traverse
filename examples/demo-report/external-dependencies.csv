@@ -1,0 +1,2 @@
+﻿kind,key,host,systems
+http,ANY /api/v1/sms,host-fc2d5daa3ef0,notifications

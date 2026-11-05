@@ -1,0 +1,800 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "repo": {
+  "name": "notifications",
+  "vcs": "git",
+  "revision": "4f2a9c1e7b3d",
+  "branch": "main",
+  "layout": "no copies detected: everything is analyzed",
+  "scannedAt": "2025-11-05T00:00:00Z",
+  "survey": {
+   "decision": "no copies detected: everything is analyzed",
+   "roots": [
+    {
+     "path": "",
+     "coord": "maven:org.example:notifications",
+     "version": "3.0.1",
+     "files": 9
+    }
+   ]
+  }
+ },
+ "languages": [
+  {
+   "language": "Java",
+   "category": "code",
+   "files": 5,
+   "code": 55,
+   "comment": 3,
+   "blank": 0
+  },
+  {
+   "language": "YAML",
+   "category": "config",
+   "files": 1,
+   "code": 13,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Dockerfile",
+   "category": "config",
+   "files": 1,
+   "code": 10,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Maven POM",
+   "category": "build",
+   "files": 1,
+   "code": 5,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Properties",
+   "category": "config",
+   "files": 1,
+   "code": 3,
+   "comment": 0,
+   "blank": 0
+  }
+ ],
+ "files": [
+  {
+   "path": "Dockerfile",
+   "language": "Dockerfile",
+   "category": "config",
+   "bytes": 339,
+   "code": 10,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "docker-compose.yml",
+   "language": "YAML",
+   "category": "config",
+   "bytes": 336,
+   "code": 13,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 601,
+   "code": 5,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 816,
+   "code": 15,
+   "comment": 2,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/java/org/example/notify/api/MessageController.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 536,
+   "code": 13,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/java/org/example/notify/repository/CaseReadRepository.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 330,
+   "code": 8,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/java/org/example/notify/service/MessageService.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 428,
+   "code": 11,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/java/org/example/notify/sms/SmsGatewayClient.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 416,
+   "code": 8,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  },
+  {
+   "path": "src/main/resources/application.properties",
+   "language": "Properties",
+   "category": "config",
+   "bytes": 141,
+   "code": 3,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications"
+  }
+ ],
+ "modules": [
+  {
+   "id": "maven:org.example:notifications",
+   "build": "maven",
+   "name": "notifications",
+   "version": "3.0.1",
+   "packaging": "jar",
+   "parent": "maven:org.springframework.boot:spring-boot-starter-parent",
+   "path": "",
+   "descriptor": "pom.xml",
+   "runtime": "java 11",
+   "deps": [
+    {
+     "id": "maven:org.example:common-dto",
+     "version": "2.3.0",
+     "kind": "declared",
+     "resolved": true,
+     "line": 5,
+     "file": "pom.xml"
+    },
+    {
+     "id": "maven:org.springframework.boot:spring-boot-starter-web",
+     "kind": "declared",
+     "resolved": false,
+     "line": 4,
+     "file": "pom.xml"
+    }
+   ]
+  }
+ ],
+ "deployables": [
+  {
+   "module": "maven:org.example:notifications",
+   "kind": "service",
+   "contextRoot": "/notifications",
+   "contextRootSource": "application properties"
+  }
+ ],
+ "components": [
+  {
+   "fqn": "org.example.notify.api.DeliveryReceiptController",
+   "name": "DeliveryReceiptController",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.notify.api",
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications",
+   "layer": "Presentation",
+   "layerReason": "stereotype:@RestController",
+   "stereotypes": [
+    "RestController",
+    "RequestMapping"
+   ],
+   "file": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "line": 11
+  },
+  {
+   "fqn": "org.example.notify.api.MessageController",
+   "name": "MessageController",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.notify.api",
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications",
+   "layer": "Presentation",
+   "layerReason": "stereotype:@RestController",
+   "stereotypes": [
+    "RestController",
+    "RequestMapping"
+   ],
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "line": 6
+  },
+  {
+   "fqn": "org.example.notify.repository.CaseReadRepository",
+   "name": "CaseReadRepository",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.notify.repository",
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications",
+   "layer": "Persistence",
+   "layerReason": "stereotype:@Repository",
+   "stereotypes": [
+    "Repository"
+   ],
+   "file": "src/main/java/org/example/notify/repository/CaseReadRepository.java",
+   "line": 5
+  },
+  {
+   "fqn": "org.example.notify.service.MessageService",
+   "name": "MessageService",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.notify.service",
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications",
+   "layer": "Business",
+   "layerReason": "stereotype:@Service",
+   "stereotypes": [
+    "Service"
+   ],
+   "file": "src/main/java/org/example/notify/service/MessageService.java",
+   "line": 6
+  },
+  {
+   "fqn": "org.example.notify.sms.SmsGatewayClient",
+   "name": "SmsGatewayClient",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.notify.sms",
+   "sourceSet": "main",
+   "module": "maven:org.example:notifications",
+   "layer": "Integration",
+   "layerReason": "name:*Client",
+   "file": "src/main/java/org/example/notify/sms/SmsGatewayClient.java",
+   "line": 4
+  }
+ ],
+ "dependencies": [
+  {
+   "from": "org.example.notify.api.MessageController",
+   "to": "org.example.notify.service.MessageService",
+   "kind": "import",
+   "confidence": "high",
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "line": 3
+  },
+  {
+   "from": "org.example.notify.service.MessageService",
+   "to": "org.example.notify.repository.CaseReadRepository",
+   "kind": "import",
+   "confidence": "high",
+   "file": "src/main/java/org/example/notify/service/MessageService.java",
+   "line": 4
+  }
+ ],
+ "contracts": [
+  {
+   "kind": "database",
+   "direction": "uses",
+   "key": "oracle",
+   "match": "",
+   "detail": "configuration: services.notifications.environment.SPRING_DATASOURCE_URL",
+   "confidence": "medium",
+   "host": "host-bb8f9d8bfaea",
+   "counterpart": "database",
+   "file": "docker-compose.yml",
+   "line": 7
+  },
+  {
+   "kind": "database",
+   "direction": "uses",
+   "key": "oracle",
+   "match": "",
+   "detail": "configuration: spring.datasource.url",
+   "confidence": "medium",
+   "host": "host-240cd640a7e5",
+   "counterpart": "database",
+   "file": "src/main/resources/application.properties",
+   "line": 2
+  },
+  {
+   "kind": "db-table",
+   "direction": "read",
+   "key": "CASES.EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "component": "org.example.notify.repository.CaseReadRepository",
+   "detail": "SQL in string literal",
+   "confidence": "medium",
+   "counterpart": "schema:cases",
+   "file": "src/main/java/org/example/notify/repository/CaseReadRepository.java",
+   "line": 7
+  },
+  {
+   "kind": "http",
+   "direction": "calls",
+   "key": "ANY /api/v1/sms",
+   "match": "/api/v1/sms",
+   "component": "org.example.notify.sms.SmsGatewayClient",
+   "detail": "URL literal",
+   "confidence": "medium",
+   "host": "host-fc2d5daa3ef0",
+   "transport": "plain",
+   "counterpart": "sms",
+   "file": "src/main/java/org/example/notify/sms/SmsGatewayClient.java",
+   "line": 7
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "GET /notifications/api/messages/by-id/{id}",
+   "match": "/api/messages/by-id/{}",
+   "component": "org.example.notify.api.MessageController",
+   "detail": "spring",
+   "confidence": "high",
+   "role": "api",
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "line": 12
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "GET /notifications/api/messages/{id}",
+   "match": "/api/messages/{}",
+   "component": "org.example.notify.api.MessageController",
+   "detail": "spring",
+   "confidence": "high",
+   "role": "api",
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "line": 12
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "POST /notifications/api/messages/send",
+   "match": "/api/messages/send",
+   "component": "org.example.notify.api.MessageController",
+   "detail": "spring",
+   "confidence": "high",
+   "role": "api",
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "line": 10
+  },
+  {
+   "kind": "http",
+   "direction": "exposes",
+   "key": "POST /notifications/api/receipts/delivery",
+   "match": "/api/receipts/delivery",
+   "component": "org.example.notify.api.DeliveryReceiptController",
+   "detail": "spring",
+   "confidence": "high",
+   "transport": "mtls-upstream",
+   "auth": "client-cert (header)",
+   "role": "api",
+   "file": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "line": 13
+  },
+  {
+   "kind": "jms",
+   "direction": "subscribes",
+   "key": "jms/queue/CaseResolved",
+   "match": "jms/queue/CaseResolved",
+   "component": "org.example.notify.service.MessageService",
+   "detail": "@JmsListener",
+   "confidence": "high",
+   "file": "src/main/java/org/example/notify/service/MessageService.java",
+   "line": 9
+  }
+ ],
+ "findings": [
+  {
+   "id": "93ef360b3a29d754",
+   "ruleId": "SEC-SECRET-CONFIG",
+   "title": "Possible hard-coded credential in configuration",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "message": "Value is never copied to the report; check location and rotate if real.",
+   "file": "src/main/resources/application.properties",
+   "lines": [
+    3
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "d2f1ef2eaad9a1d6",
+   "ruleId": "SQL-ORACLE-DIALECT",
+   "title": "Oracle-specific SQL",
+   "category": "Database",
+   "technology": "Oracle SQL",
+   "severity": "low",
+   "confidence": "medium",
+   "message": "Proprietary SQL hinders database portability.",
+   "file": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "lines": [
+    15
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "09633e90e9403bed",
+   "ruleId": "DB-ORACLE",
+   "title": "Oracle Database",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "docker-compose.yml",
+   "lines": [
+    7
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "71d9c856b123e131",
+   "ruleId": "DB-ORACLE",
+   "title": "Oracle Database",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/resources/application.properties",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "dcbf1201722e127c",
+   "ruleId": "JAVA-HTTP-CLIENT",
+   "title": "Outbound HTTP client",
+   "category": "Integration",
+   "technology": "HTTP client",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/sms/SmsGatewayClient.java",
+   "lines": [
+    2,
+    5
+   ],
+   "count": 3,
+   "sourceSet": "main"
+  },
+  {
+   "id": "b4a9ce8710eb70be",
+   "ruleId": "JAVA-JMS",
+   "title": "JMS messaging",
+   "category": "Integration",
+   "technology": "JMS",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/service/MessageService.java",
+   "lines": [
+    9
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "196a3497f093ee0c",
+   "ruleId": "JAVA-SPRING-BOOT",
+   "title": "Spring Boot",
+   "category": "Framework",
+   "technology": "Spring Boot",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "pom.xml",
+   "lines": [
+    1,
+    4
+   ],
+   "count": 4,
+   "sourceSet": "main"
+  },
+  {
+   "id": "7c99290a20c6cd9c",
+   "ruleId": "JAVA-SPRING-CORE",
+   "title": "Spring Framework (DI)",
+   "category": "Framework",
+   "technology": "Spring Framework",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/repository/CaseReadRepository.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "401d4c4ba91a72a3",
+   "ruleId": "JAVA-SPRING-CORE",
+   "title": "Spring Framework (DI)",
+   "category": "Framework",
+   "technology": "Spring Framework",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/service/MessageService.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "ee68126e21a81b86",
+   "ruleId": "JAVA-SPRING-JDBC",
+   "title": "Spring JDBC",
+   "category": "Persistence",
+   "technology": "Spring JDBC",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/repository/CaseReadRepository.java",
+   "lines": [
+    3,
+    6
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  },
+  {
+   "id": "038187797b8443ec",
+   "ruleId": "JAVA-SPRING-MVC",
+   "title": "Spring MVC / REST controllers",
+   "category": "Web",
+   "technology": "Spring MVC",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "lines": [
+    2,
+    9,
+    10,
+    12
+   ],
+   "count": 4,
+   "sourceSet": "main"
+  },
+  {
+   "id": "d94dbcb1db7e086e",
+   "ruleId": "JAVA-SPRING-MVC",
+   "title": "Spring MVC / REST controllers",
+   "category": "Web",
+   "technology": "Spring MVC",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/api/MessageController.java",
+   "lines": [
+    2,
+    4,
+    5,
+    9,
+    11
+   ],
+   "count": 5,
+   "sourceSet": "main"
+  },
+  {
+   "id": "cb5302ab45fab772",
+   "ruleId": "JAVA-SPRING-MVC",
+   "title": "Spring MVC / REST controllers",
+   "category": "Web",
+   "technology": "Spring MVC",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "src/main/java/org/example/notify/sms/SmsGatewayClient.java",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "563bb629592aa34f",
+   "ruleId": "OPS-DOCKER",
+   "title": "Container image definition",
+   "category": "Delivery",
+   "technology": "Docker",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "Dockerfile",
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "6764eab00fd49c8f",
+   "ruleId": "TLS-UPSTREAM-CERT-HEADER",
+   "title": "Client certificate received in an HTTP header (mTLS terminated by an intermediary)",
+   "category": "Transport Security",
+   "technology": "mTLS at intermediary (inferred)",
+   "severity": "info",
+   "confidence": "medium",
+   "message": "The application reads the client certificate from a header: an intermediary (proxy, API gateway, load balancer) terminates mutual TLS in front of it. Who requires it and which consumers use it is not in the code.",
+   "file": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+   "lines": [
+    13
+   ],
+   "count": 1,
+   "sourceSet": "main",
+   "authKind": "transport"
+  }
+ ],
+ "packageStats": [
+  {
+   "package": "org.example.notify.api",
+   "module": "maven:org.example:notifications",
+   "layer": "Presentation",
+   "types": 2,
+   "ca": 0,
+   "ce": 1,
+   "instability": 1
+  },
+  {
+   "package": "org.example.notify.repository",
+   "module": "maven:org.example:notifications",
+   "layer": "Persistence",
+   "types": 1,
+   "ca": 1,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "org.example.notify.service",
+   "module": "maven:org.example:notifications",
+   "layer": "Business",
+   "types": 1,
+   "ca": 1,
+   "ce": 1,
+   "instability": 0.5
+  },
+  {
+   "package": "org.example.notify.sms",
+   "module": "maven:org.example:notifications",
+   "layer": "Integration",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  }
+ ],
+ "cycles": null,
+ "layerIssues": null,
+ "deployment": {
+  "nodes": [
+   {
+    "id": "compose:docker-compose.yml#broker",
+    "platform": "compose",
+    "kind": "service",
+    "name": "broker",
+    "images": [
+     "apache/activemq-artemis:latest"
+    ],
+    "file": "docker-compose.yml",
+    "line": 13
+   },
+   {
+    "id": "compose:docker-compose.yml#notifications",
+    "platform": "compose",
+    "kind": "service",
+    "name": "notifications",
+    "ports": [
+     "8080:8080"
+    ],
+    "envKeys": [
+     "SPRING_ARTEMIS_BROKER_URL",
+     "SPRING_DATASOURCE_URL"
+    ],
+    "module": "maven:org.example:notifications",
+    "file": "docker-compose.yml",
+    "line": 3
+   },
+   {
+    "id": "compose:docker-compose.yml#oracle",
+    "platform": "compose",
+    "kind": "service",
+    "name": "oracle",
+    "images": [
+     "gvenzl/oracle-xe:21-slim"
+    ],
+    "file": "docker-compose.yml",
+    "line": 11
+   },
+   {
+    "id": "docker:Dockerfile",
+    "platform": "docker",
+    "kind": "image",
+    "name": "root",
+    "baseImages": [
+     "maven:3.9-eclipse-temurin-11",
+     "eclipse-temurin:11-jre"
+    ],
+    "ports": [
+     "8080"
+    ],
+    "envKeys": [
+     "SPRING_PROFILES_ACTIVE"
+    ],
+    "user": "1001",
+    "module": "maven:org.example:notifications",
+    "file": "Dockerfile",
+    "line": 1
+   }
+  ],
+  "links": [
+   {
+    "from": "compose:docker-compose.yml#notifications",
+    "to": "compose:docker-compose.yml#broker",
+    "kind": "depends_on"
+   },
+   {
+    "from": "compose:docker-compose.yml#notifications",
+    "to": "compose:docker-compose.yml#broker",
+    "kind": "env-ref"
+   },
+   {
+    "from": "compose:docker-compose.yml#notifications",
+    "to": "compose:docker-compose.yml#oracle",
+    "kind": "depends_on"
+   },
+   {
+    "from": "compose:docker-compose.yml#notifications",
+    "to": "compose:docker-compose.yml#oracle",
+    "kind": "env-ref"
+   }
+  ]
+ },
+ "diagnostics": null,
+ "vulnScan": {
+  "database": "demo-vulndb",
+  "asOf": "2026-10-28T00:00:00Z",
+  "advisories": {
+   "Maven": 3,
+   "NuGet": 1
+  },
+  "checked": 1,
+  "unevaluated": [
+   {
+    "package": "maven:org.springframework.boot:spring-boot-starter-web",
+    "reason": "external-bom",
+    "file": "pom.xml",
+    "line": 4
+   }
+  ]
+ }
+}

@@ -1,0 +1,2 @@
+﻿module,dependency,version,scope,kind,managed,resolved,file,line,locked,lockFile
+nuget:Portal.Web,nuget:log4net,1.2.10.0,,assembly-ref,false,true,Portal/Portal.csproj,2,,

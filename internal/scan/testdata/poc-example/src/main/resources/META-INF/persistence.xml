@@ -1,0 +1,1 @@
+<persistence><persistence-unit name="pedidos"><jta-data-source>java:comp/env/jdbc/pedidos</jta-data-source></persistence-unit></persistence>

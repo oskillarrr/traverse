@@ -1,0 +1,42 @@
+# Traverse – build pipeline. Uses only the official Go image: no third-party modules are downloaded.
+# If your runner has no Internet access, mirror the image in your registry and set GO_IMAGE.
+variables:
+  GO_IMAGE: "golang:1.24"
+  CGO_ENABLED: "0"
+
+stages: [test, build, release]
+
+test:
+  stage: test
+  image: $GO_IMAGE
+  script:
+    - test -z "$(gofmt -l .)" || (gofmt -l . && echo "run gofmt" && exit 1)
+    - go vet ./...
+    - go test ./...
+    - go run ./cmd/traverse rules test
+    - go run ./cmd/traverse scan examples/demo-portfolio/common-lib examples/demo-portfolio/case-management --out /tmp/traverse-smoke
+
+build:
+  stage: build
+  image: $GO_IMAGE
+  script:
+    - VERSION="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}"
+    - sh scripts/build.sh "$VERSION"
+  artifacts:
+    name: "traverse-$CI_COMMIT_REF_SLUG"
+    paths: [dist/]
+    expire_in: 90 days
+
+# On tags, keep the binaries attached to the pipeline permanently.
+# Code signing (Authenticode / internal PKI) can be added here if your organisation requires it.
+release:
+  stage: release
+  image: $GO_IMAGE
+  rules:
+    - if: $CI_COMMIT_TAG
+  needs: [build]
+  script:
+    - ls -l dist && cat dist/SHA256SUMS.txt
+  artifacts:
+    paths: [dist/]
+    expire_in: never

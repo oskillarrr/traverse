@@ -1,0 +1,26 @@
+{
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "version": "2.1.0",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": []
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/common-lib/"
+   },
+   "results": [],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "common-lib",
+    "vcs": "none"
+   }
+  }
+ ]
+}

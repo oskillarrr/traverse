@@ -1,0 +1,2 @@
+﻿id,build,name,version,packaging,runtime,parent,path,descriptor,dependencies
+maven:org.example:common-dto,maven,common-dto,2.3.0,jar,java 1.8,,,pom.xml,0

@@ -1,0 +1,2 @@
+﻿package,declaredVersion,reason,file,line
+maven:org.springframework.boot:spring-boot-starter-web,,external-bom,pom.xml,4

@@ -1,0 +1,5 @@
+﻿kind,direction,key,match,component,detail,host,confidence,file,line,transport,auth,role,counterpart
+db-table,read,CASES.TRAMITE,TRAMITE,mainframe.batch.NIGHTLY,EXEC SQL,,high,batch/NIGHTLY.cbl,5,,,,schema:cases
+db-table,read,EXPEDIENTE,EXPEDIENTE,_Default,SQL in string literal,,medium,Portal/Default.aspx.cs,6,,,,
+http,calls,ANY /cases/api/expedientes/42,/cases/api/expedientes/42,_Default,URL literal,host-1f4a0845ffd7,medium,Portal/Default.aspx.cs,7,tls,,,cases
+program,exposes,NIGHTLY,NIGHTLY,mainframe.batch.NIGHTLY,COBOL program,,medium,batch/NIGHTLY.cbl,2,,,,

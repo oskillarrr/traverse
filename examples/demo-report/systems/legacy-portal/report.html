@@ -1,0 +1,170 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; script-src &#39;unsafe-inline&#39;; img-src data:"><title>legacy-portal · Traverse</title><style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2733;--muted:#5b6675;--line:#e1e5eb;--accent:#1f4e8c;--accent-fg:#fff;
+--hi:#c9372c;--md:#c77c02;--lo:#3d7a4f;--info:#5b6675;--chip:#eef1f5;--banner:#fff4d6;--bannerfg:#6b4e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1a2029;--fg:#e4e8ee;--muted:#9aa5b4;
+--line:#2c3440;--accent:#5b8fd6;--accent-fg:#0d1117;--hi:#ff6b5e;--md:#f0a43a;--lo:#6fc28a;--info:#9aa5b4;--chip:#232b36;--banner:#3a3018;--bannerfg:#f3d68a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--accent);color:var(--accent-fg);padding:22px 24px}header h1{margin:0 0 4px;font-size:22px}
+header p{margin:0;opacity:.85;font-size:13px}header p.note{margin-top:6px;color:var(--accent-fg)}header a{color:var(--accent-fg);text-decoration:underline}.banner{background:var(--banner);color:var(--bannerfg);padding:6px 24px;font-weight:600;font-size:12px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:8px 24px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:600}main{max-width:1500px;margin:0 auto;padding:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 8px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--muted);font-size:12px}.note{color:var(--muted);font-size:12px}
+.summary ul{margin:6px 0;padding-left:20px}.summary li{margin:4px 0;line-height:1.5}
+.scope{border-left:4px solid var(--md);padding:8px 12px;background:var(--chip);border-radius:4px;font-size:13px}
+.tw{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:720px}td:first-child{min-width:150px}th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--chip);cursor:pointer;user-select:none;white-space:nowrap}td{overflow-wrap:break-word}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.f{margin:0 0 8px;padding:6px 9px;width:min(360px,100%);border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.sev{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;color:#fff}
+.sev-high{background:var(--hi)}.sev-medium{background:var(--md)}.sev-low{background:var(--lo)}.sev-info{background:var(--info)}.sev-critical{background:#7a1020}.sev-unknown{background:#6b7280}
+.chip{display:inline-block;background:var(--chip);border-radius:4px;padding:0 6px;margin:1px;font-size:11.5px}
+.diagram{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px}.diagram svg{max-width:none;height:auto}
+.diagram text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--fg)}
+.col{fill:var(--chip)}.colt{font-size:12px;font-weight:600;fill:var(--muted)!important}.nt{font-size:11px}.ns{font-size:10px;fill:var(--muted)!important}
+.node{stroke-width:1}.e{fill:none;stroke:var(--muted);stroke-opacity:.5}.e.bad{stroke:var(--hi);stroke-opacity:.9}
+.L-Presentation{fill:#e3edfb;stroke:#4a78c2}.L-Business{fill:#e5f4ea;stroke:#3b8a55}.L-Integration{fill:#fff1dc;stroke:#c98a1e}
+.L-Persistence{fill:#f6e6f3;stroke:#a24d92}.L-Model{fill:#eef0f3;stroke:#7d8794}.L-Configuration{fill:#efeafb;stroke:#6f56b8}
+.L-Cross-cutting{fill:#f1f1ec;stroke:#8b8a6a}.L-Unknown{fill:#fff;stroke:#a7b0bc}
+.diagram .node+text,.diagram g text.nt,.diagram g text.ns{fill:#1d2733!important}
+.sys{fill:var(--accent);stroke:var(--accent)}.diagram .syst{fill:var(--accent-fg);font-size:13px;font-weight:600}
+.box{fill:var(--card);stroke:var(--line)}.bt{font-size:11px;font-weight:600}.bi{font-size:10px;fill:var(--muted)!important}
+.lk{fill:none;stroke-width:1.6;stroke-opacity:.85}.lk.lo{stroke-opacity:.35;stroke-width:1;stroke-dasharray:2 4}.k-library{stroke:var(--muted);stroke-dasharray:5 4}.k-http{stroke:#2f6fd0}
+.k-soap{stroke:#7d63c9}.k-jms,.k-kafka{stroke:#d98a17}.k-ejb{stroke:#3b8a55}.k-shared-db{stroke:var(--hi);stroke-dasharray:2 3}
+.k-shared-datasource{stroke:var(--hi);stroke-dasharray:1 4}.k-deploys{stroke:#2a9d8f;stroke-dasharray:6 3}.lg{font-size:11px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px}a{color:var(--accent)}
+details summary{cursor:pointer;font-weight:600;color:var(--accent);margin:6px 0}
+@media (max-width:700px){main{padding:8px}section{padding:12px}header{padding:16px}}
+</style></head><body>
+
+<header><h1>legacy-portal</h1><p>VCS: none · no copies detected: everything is analyzed · Traverse dev · rules 2.0.0</p></header>
+<nav><a href="../../index.html">← Architecture portfolio</a><a href="#parties">Relationships with other applications</a><a href="#structure">Repository structure</a><a href="#context">System context</a><a href="#arch">Layered architecture</a><a href="#contracts">Interfaces &amp; integrations</a><a href="#security">Authentication &amp; transport</a><a href="#data">Data access</a><a href="#modules">Modules &amp; build</a><a href="#deploy">Deployment view</a><a href="#tech">Technologies</a><a href="#risks">Risks &amp; attention points</a><a href="#vulns">Known vulnerabilities</a><a href="#components">Components</a><a href="#metrics">Package coupling</a><a href="#languages">Languages</a></nav>
+<main>
+<div class="kpis">
+<div class="kpi"><b>16</b><span>Lines of code</span></div>
+<div class="kpi"><b>1</b><span>Modules &amp; build</span></div>
+<div class="kpi"><b>2</b><span>Components</span></div>
+<div class="kpi"><b>1</b><span>Exposed</span></div>
+<div class="kpi"><b>2</b><span>Tables</span></div>
+<div class="kpi"><b>1</b><span>High risks</span></div>
+<div class="kpi"><b>1</b><span>Known vulnerabilities</span></div>
+<div class="kpi"><b>0</b><span>Dependency cycles</span></div>
+<div class="kpi"><b>0</b><span>Layer violations</span></div>
+</div>
+<p class="scope">Static, heuristic analysis of source code. Relationships are evidence-based candidates, not runtime facts: validate before using them in official architecture documents.</p>
+
+<section id="summary" class="summary"><h2>Executive summary</h2><ul><li><strong>Size and stack.</strong> 18 lines of code across 3 files; main language C# (55%). Build modules: 1 · components: 2.</li><li><strong>Integrations.</strong> Exposes 0 interfaces (—) and consumes 1 external ones (http ×1); 2 data tables; 0 JNDI resources.</li><li><strong>Relationships.</strong> Calls 1 applications (case-management); called by 0 analyzed systems.</li><li><strong>Vulnerabilities.</strong> 0 critical and 0 high of 1 known. Most severe: nuget:log4net 1.2.10.0 (TRAVERSEDEMO-2026-0003, fixed in 2.0.10).</li><li><strong>Risks.</strong> Findings: 1 high · 3 medium · 0 low. Technology at risk: .NET Framework, .NET v4.5, WCF, Web Forms (!).</li><li><strong>Runtime.</strong> Outdated runtime level: .NET v4.5.</li><li><strong>Coupling.</strong> 0 package cycles (largest, 0 packages) and 0 layer violations.</li><li><strong>Third parties.</strong> 2 connected applications (0 outside the portfolio), 4 integrations with them.</li></ul>
+<p class="note">Markdown export: <a href="report.md">report.md</a> · <a href="arc42.md">arc42.md</a></p></section>
+<section id="parties"><h2>Relationships with other applications</h2>
+<h3>What it calls (1)</h3>
+<div class="tw"><table><thead><tr><th>Application</th><th>Scope</th><th>Protocol</th><th class="n">Endpoints</th><th>Transport</th><th>Auth</th><th>Environments</th><th>Location</th></tr></thead><tbody>
+<tr><td><b>case-management</b></td><td>portfolio</td><td>http</td><td class="n">1</td><td><span class="chip ">TLS</span></td><td></td><td></td><td>Portal/Default.aspx.cs:7</td></tr></tbody></table></div>
+<h3>Who calls it (0)</h3>
+<p class="note">No analyzed system calls it.</p>
+<p><b>Shares data with:</b> case-management, notifications</p>
+
+
+
+
+</section>
+<section id="structure"><h2>Repository structure</h2><ul><li>Analyzed: <code>Portal</code> (msbuild:Portal)</li><li>Analyzed: <code>batch</code></li></ul>
+</section>
+
+<section id="context"><h2>System context</h2><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 410" width="1010" role="img" aria-label="System context"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="sys" x="380" y="180" width="250" height="80" rx="10"/><text class="syst" x="505" y="225" text-anchor="middle">legacy-portal</text><g><rect class="box" x="20" y="162" width="250" height="92" rx="8"/><text class="bt" x="30" y="180">PROGRAM (1)</text><text class="bi" x="30" y="196">NIGHTLY</text></g><path class="e" stroke-width="1.4" marker-end="url(#ar)" d="M270 208 L380 220"/><g><rect class="box" x="740" y="162" width="250" height="92" rx="8"/><text class="bt" x="750" y="180">HTTP (1)</text><text class="bi" x="750" y="196">ANY /cases/api/expedientes/42</text></g><path class="e" stroke-width="1.4" marker-end="url(#ar)" d="M630 220 L740 208"/><g><rect class="box" x="20" y="20" width="250" height="92" rx="8"/><text class="bt" x="30" y="38">Platform (2)</text><text class="bi" x="30" y="54">.NET Framework</text><text class="bi" x="30" y="68">CICS</text></g><g><rect class="box" x="290" y="20" width="250" height="92" rx="8"/><text class="bt" x="300" y="38">Runtime (1)</text><text class="bi" x="300" y="54">.NET v4.5</text></g><g><rect class="box" x="245" y="298" width="250" height="92" rx="8"/><text class="bt" x="255" y="316">Tables (2)</text><text class="bi" x="255" y="332">TRAMITE</text><text class="bi" x="255" y="346">EXPEDIENTE</text></g><path class="e" stroke-width="1.4" marker-end="url(#ar)" d="M505 260 L370 298"/><g><rect class="box" x="515" y="298" width="250" height="92" rx="8"/><text class="bt" x="525" y="316">DB (1)</text><text class="bi" x="525" y="332">SQL Server</text></g><path class="e" stroke-width="1.4" marker-end="url(#ar)" d="M505 260 L640 298"/></svg></div>
+<p class="note">Exports: <a href="context.svg">context.svg</a> · <a href="workspace.dsl">workspace.dsl</a> (Structurizr / C4) · <a href="facts.json">facts.json</a></p>
+
+</section>
+
+<section id="arch"><h2>Layered architecture</h2>
+<div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 112" width="496" role="img" aria-label="Layered architecture"><defs><marker id="lar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="col" x="12" y="10" width="216" height="92" rx="8"/><text class="colt" x="20" y="30">Presentation</text><rect class="col" x="268" y="10" width="216" height="92" rx="8"/><text class="colt" x="276" y="30">Business</text><g><title>&#10;1 types · Ca 0 · Ce 0 · I 0.00</title><rect class="node L-Presentation" x="20" y="46" width="200" height="36" rx="6"/><text class="nt" x="28" y="61"></text><text class="ns" x="28" y="75">1 · Ca 0 · Ce 0</text></g><g><title>mainframe.batch&#10;1 types · Ca 0 · Ce 0 · I 0.00</title><rect class="node L-Business" x="276" y="46" width="200" height="36" rx="6"/><text class="nt" x="284" y="61">mainframe.batch</text><text class="ns" x="284" y="75">1 · Ca 0 · Ce 0</text></g></svg></div><p class="note">Packages with the most types (max 60). Solid lines: code dependencies; red: forbidden by layering rules. Common prefix: — · <a href="architecture.svg">architecture.svg</a> · <a href="architecture.mmd">architecture.mmd</a></p>
+<h3>Layers</h3><div class="tw"><table><thead><tr><th>Layer</th><th class="n">Package</th><th class="n">Types</th></tr></thead><tbody>
+<tr><td>Presentation</td><td class="n">1</td><td class="n">1</td></tr><tr><td>Business</td><td class="n">1</td><td class="n">1</td></tr></tbody></table></div>
+<h3>Layer violations (0)</h3>
+<p class="note">Nothing detected.</p>
+<h3>Dependency cycles (0)</h3>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="contracts"><h2>Interfaces &amp; integrations (2)</h2>
+<input class="f" data-t="tc" placeholder="Filter…"><div class="tw"><table id="tc"><thead><tr><th>Kind</th><th>Direction</th><th>Use</th><th>Key</th><th>Counterpart</th><th>Component</th><th>Detail</th><th>Transport</th><th>Auth</th><th>Host</th><th>Confidence</th><th>Location</th></tr></thead><tbody>
+<tr><td>http</td><td>calls</td><td></td><td><b>ANY /cases/api/expedientes/42</b></td><td>cases</td><td>_Default</td><td>URL literal</td><td><span class="chip ">TLS</span></td><td></td><td><span class="chip">host-1f4a0845ffd7</span></td><td>medium</td><td>Portal/Default.aspx.cs:7</td></tr><tr><td>program</td><td>exposes</td><td></td><td><b>NIGHTLY</b></td><td></td><td>mainframe.batch.NIGHTLY</td><td>COBOL program</td><td></td><td></td><td></td><td>medium</td><td>batch/NIGHTLY.cbl:2</td></tr></tbody></table></div>
+<p class="note">Host names are encrypted: the report shows pseudonyms; authorised people decrypt them with `traverse reveal` and the key.</p>
+
+</section>
+
+
+<section id="security"><h2>Authentication &amp; transport</h2>
+
+<p class="note">No authentication or transport-security mechanism detected (verify at the infrastructure layer).</p>
+<h3>Connected applications (third parties) (4)</h3><div class="tw"><table><thead><tr><th>Counterpart</th><th>Scope</th><th>Direction</th><th>Protocol</th><th>Transport</th><th>Auth</th><th>Endpoint</th><th>Environments</th><th class="n">Hosts</th><th>Location</th><th>Confidence</th></tr></thead><tbody>
+<tr><td><b>case-management</b></td><td>portfolio</td><td>outbound</td><td>http</td><td><span class="chip ">TLS</span></td><td></td><td>GET /cases/api/expedientes/{id}</td><td></td><td class="n"></td><td>Portal/Default.aspx.cs:7</td><td>medium</td></tr><tr><td><b>case-management</b></td><td>portfolio</td><td>shared</td><td>shared-db</td><td></td><td></td><td>EXPEDIENTE</td><td></td><td class="n"></td><td>Portal/Default.aspx.cs:6</td><td>medium</td></tr><tr><td><b>case-management</b></td><td>portfolio</td><td>shared</td><td>shared-db</td><td></td><td></td><td>TRAMITE</td><td></td><td class="n"></td><td>batch/NIGHTLY.cbl:5</td><td>medium</td></tr><tr><td><b>notifications</b></td><td>portfolio</td><td>shared</td><td>shared-db</td><td></td><td></td><td>EXPEDIENTE</td><td></td><td class="n"></td><td></td><td>medium</td></tr></tbody></table></div>
+</section>
+
+<section id="data"><h2>Data access (2)</h2>
+<input class="f" data-t="tt" placeholder="Filter…"><div class="tw"><table id="tt"><thead><tr><th>Table</th><th>Access</th><th class="n">Count</th><th>Component</th></tr></thead><tbody>
+<tr><td><b>CASES.TRAMITE</b></td><td>read</td><td class="n">1</td><td><span class="chip">mainframe.batch.NIGHTLY</span></td></tr><tr><td><b>EXPEDIENTE</b></td><td>read</td><td class="n">1</td><td><span class="chip">_Default</span></td></tr></tbody></table></div>
+</section>
+
+<section id="modules"><h2>Modules &amp; build (1)</h2>
+<div class="tw"><table><thead><tr><th>Module</th><th>Build</th><th>Version</th><th>Packaging</th><th>Runtime</th><th>Path</th><th class="n">Dependencies</th></tr></thead><tbody>
+<tr><td><b>Portal.Web</b><br><span class="note">nuget:Portal.Web</span></td><td>msbuild</td><td></td><td>library</td><td>.NET v4.5</td><td>Portal/Portal.csproj</td><td class="n">1</td></tr></tbody></table></div>
+<details><summary>Dependencies (1)</summary><input class="f" data-t="tbd" placeholder="Filter…"><div class="tw"><table id="tbd"><thead><tr><th>Module</th><th>Dependencies</th><th>Version</th><th>Scope</th><th>Kind</th><th>Resolved</th></tr></thead><tbody>
+<tr><td>Portal.Web</td><td>nuget:log4net</td><td>1.2.10.0</td><td></td><td>assembly-ref</td><td>true</td></tr></tbody></table></div></details>
+
+</section>
+
+<section id="deploy"><h2>Deployment view (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="tech"><h2>Technologies (8)</h2>
+<input class="f" data-t="tte" placeholder="Filter…"><div class="tw"><table id="tte"><thead><tr><th>Kind</th><th>Technologies</th><th>Severity</th><th class="n">Files</th><th>Location</th></tr></thead><tbody>
+<tr><td>Database</td><td><b>SQL Server</b></td><td><span class="sev sev-info">Info</span></td><td class="n">1</td><td>Portal/Default.aspx.cs</td></tr><tr><td>Integration</td><td><b>IBM MQ</b></td><td><span class="sev sev-info">Info</span></td><td class="n">1</td><td>batch/NIGHTLY.cbl</td></tr><tr><td>Integration</td><td><b>WCF</b></td><td><span class="sev sev-medium">Medium</span></td><td class="n">1</td><td>Portal/Default.aspx.cs</td></tr><tr><td>Migration</td><td><b>.NET v4.5</b></td><td><span class="sev sev-medium">Medium</span></td><td class="n">1</td><td>Portal/Portal.csproj</td></tr><tr><td>Persistence</td><td><b>Embedded SQL</b></td><td><span class="sev sev-info">Info</span></td><td class="n">1</td><td>batch/NIGHTLY.cbl</td></tr><tr><td>Platform</td><td><b>.NET Framework</b></td><td><span class="sev sev-medium">Medium</span></td><td class="n">1</td><td>Portal/Portal.csproj</td></tr><tr><td>Platform</td><td><b>CICS</b></td><td><span class="sev sev-info">Info</span></td><td class="n">1</td><td>batch/NIGHTLY.cbl</td></tr><tr><td>Web</td><td><b>Web Forms</b></td><td><span class="sev sev-high">High</span></td><td class="n">1</td><td>Portal/Default.aspx.cs</td></tr></tbody></table></div>
+</section>
+
+<section id="risks"><h2>Risks &amp; attention points (4)</h2>
+<input class="f" data-t="tr" placeholder="Filter…"><div class="tw"><table id="tr"><thead><tr><th>Severity</th><th>Rule</th><th>Title</th><th>Location</th><th>Lines</th><th class="n">Count</th><th>Message</th></tr></thead><tbody>
+<tr><td><span class="sev sev-high">High</span></td><td>NET-WEBFORMS</td><td>ASP.NET Web Forms</td><td>Portal/Default.aspx.cs</td><td>1</td><td class="n">1</td><td>Not supported on .NET Core / .NET 5&#43;.</td></tr><tr><td><span class="sev sev-medium">Medium</span></td><td>NET-FRAMEWORK</td><td>.NET Framework (Windows only)</td><td>Portal/Portal.csproj</td><td>1</td><td class="n">1</td><td></td></tr><tr><td><span class="sev sev-medium">Medium</span></td><td>NET-WCF</td><td>WCF services</td><td>Portal/Default.aspx.cs</td><td>3</td><td class="n">1</td><td>WCF server is not available on modern .NET (CoreWCF required).</td></tr><tr><td><span class="sev sev-medium">Medium</span></td><td>RUNTIME-LEVEL</td><td>Outdated runtime level: .NET v4.5</td><td>Portal/Portal.csproj</td><td></td><td class="n">1</td><td>.NET Framework is Windows-only; modern .NET requires migration. (count = modules)</td></tr></tbody></table></div>
+
+<p class="note">findings.csv → «validation» column for confirmed / probable / discarded.</p>
+</section>
+
+<section id="vulns"><h2>Known vulnerabilities (1)</h2>
+<p class="note">Source: OSV.dev (demo-vulndb) · data as of 2026-10-28T00:00:00Z · library versions checked: 1</p>
+<input class="f" data-t="tv" placeholder="Filter…"><div class="tw"><table id="tv"><thead><tr><th>Severity</th><th>ID</th><th>Package</th><th>Version</th><th>Fixed in</th><th>Summary</th><th>Confidence</th><th>Module</th><th>Location</th></tr></thead><tbody>
+<tr><td><span class="sev sev-medium">Medium</span></td><td><a href="https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003" rel="noopener noreferrer">TRAVERSEDEMO-2026-0003</a></td><td><b>nuget:log4net</b> <span class="chip">assembly-ref</span></td><td>1.2.10.0</td><td>2.0.10</td><td>SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader</td><td>low</td><td>nuget:Portal.Web</td><td>Portal/Portal.csproj:2</td></tr></tbody></table></div>
+
+<p class="note">Offline match of declared and committed library versions against the OSV database given with --vulndb. Confidence: high = exact coordinates; medium/low = identified by JAR file name or assembly version. Transitive dependencies are evaluated only when the repository has a lockfile (no build is executed). · <a href="vulnerabilities.csv">vulnerabilities.csv</a> · <a href="sbom.cdx.json">sbom.cdx.json</a> (CycloneDX 1.6)</p>
+</section>
+
+<section id="components"><h2>Components (2)</h2>
+<input class="f" data-t="tco" placeholder="Filter…"><div class="tw"><table id="tco"><thead><tr><th>Component</th><th>Kind</th><th>Layer</th><th>Why</th><th>Module</th><th>Location</th></tr></thead><tbody>
+<tr><td><b>_Default</b><br><span class="note"></span></td><td>class</td><td>Presentation</td><td>extends:Page</td><td>nuget:Portal.Web</td><td>Portal/Default.aspx.cs:4</td></tr><tr><td><b>NIGHTLY</b><br><span class="note">mainframe.batch</span></td><td>program</td><td>Business</td><td>cics:online program</td><td></td><td>batch/NIGHTLY.cbl:2</td></tr></tbody></table></div>
+
+<details><summary>Dependencies (0)</summary><input class="f" data-t="tcd" placeholder="Filter…"><div class="tw"><table id="tcd"><thead><tr><th>From</th><th>To</th><th>Kind</th><th>Confidence</th><th>Location</th></tr></thead><tbody>
+</tbody></table></div></details>
+
+</section>
+
+<section id="metrics"><h2>Package coupling (2)</h2>
+<input class="f" data-t="tm" placeholder="Filter…"><div class="tw"><table id="tm"><thead><tr><th>Package</th><th>Layer</th><th class="n">Types</th><th class="n">Ca</th><th class="n">Ce</th><th class="n">I</th></tr></thead><tbody>
+<tr><td></td><td>Presentation</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0.00</td></tr><tr><td>mainframe.batch</td><td>Business</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0.00</td></tr></tbody></table></div>
+<p class="note">Ca = afferent coupling, Ce = efferent coupling, I = Ce/(Ca+Ce) (R. C. Martin).</p>
+</section>
+
+<section id="languages"><h2>Languages</h2><div class="tw"><table><thead><tr><th>Languages</th><th>Kind</th><th class="n">Files</th><th class="n">Lines of code</th><th class="n">Comment lines</th><th class="n">Blank</th></tr></thead><tbody>
+<tr><td>C#</td><td>code</td><td class="n">1</td><td class="n">10</td><td class="n">0</td><td class="n">0</td></tr><tr><td>COBOL</td><td>code</td><td class="n">1</td><td class="n">6</td><td class="n">1</td><td class="n">0</td></tr><tr><td>MSBuild</td><td>build</td><td class="n">1</td><td class="n">2</td><td class="n">0</td><td class="n">0</td></tr></tbody></table></div>
+
+</section>
+</main><footer>Traverse – Offline Architecture Analyzer · Generated 2025-11-05T00:00:00Z</footer><script>
+document.querySelectorAll('input.f').forEach(function(i){i.addEventListener('input',function(){var t=document.getElementById(i.dataset.t);var v=i.value.toLowerCase();
+t.querySelectorAll('tbody tr').forEach(function(r){r.style.display=r.textContent.toLowerCase().indexOf(v)>=0?'':'none'})})});
+document.querySelectorAll('th').forEach(function(th){th.addEventListener('click',function(){var tb=th.closest('table').tBodies[0];var i=Array.prototype.indexOf.call(th.parentNode.children,th);
+var asc=th.dataset.a!=='1';th.dataset.a=asc?'1':'0';var rows=Array.prototype.slice.call(tb.rows);rows.sort(function(a,b){var x=a.cells[i].textContent.trim(),y=b.cells[i].textContent.trim();
+var nx=parseFloat(x),ny=parseFloat(y);var c=(!isNaN(nx)&&!isNaN(ny))?nx-ny:x.localeCompare(y);return asc?c:-c});rows.forEach(function(r){tb.appendChild(r)})})});
+</script></body></html>

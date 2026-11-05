@@ -1,0 +1,182 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "repo": {
+  "name": "common-lib",
+  "vcs": "none",
+  "layout": "no copies detected: everything is analyzed",
+  "scannedAt": "2025-11-05T00:00:00Z",
+  "survey": {
+   "decision": "no copies detected: everything is analyzed",
+   "roots": [
+    {
+     "path": "",
+     "coord": "maven:org.example:common-dto",
+     "version": "2.3.0",
+     "files": 4
+    }
+   ]
+  }
+ },
+ "languages": [
+  {
+   "language": "Java",
+   "category": "code",
+   "files": 2,
+   "code": 5,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Maven POM",
+   "category": "build",
+   "files": 1,
+   "code": 2,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "Other",
+   "category": "other",
+   "files": 1,
+   "code": 0,
+   "comment": 0,
+   "blank": 0
+  }
+ ],
+ "files": [
+  {
+   "path": ".gitkeep",
+   "language": "Other",
+   "category": "other",
+   "bytes": 0,
+   "code": 0,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto"
+  },
+  {
+   "path": "pom.xml",
+   "language": "Maven POM",
+   "category": "build",
+   "bytes": 245,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto"
+  },
+  {
+   "path": "src/main/java/org/example/common/dto/CaseDTO.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 150,
+   "code": 3,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto"
+  },
+  {
+   "path": "src/main/java/org/example/common/util/DateUtils.java",
+   "language": "Java",
+   "category": "code",
+   "bytes": 89,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto"
+  }
+ ],
+ "modules": [
+  {
+   "id": "maven:org.example:common-dto",
+   "build": "maven",
+   "name": "common-dto",
+   "version": "2.3.0",
+   "packaging": "jar",
+   "path": "",
+   "descriptor": "pom.xml",
+   "runtime": "java 1.8",
+   "deps": null
+  }
+ ],
+ "deployables": null,
+ "components": [
+  {
+   "fqn": "org.example.common.dto.CaseDTO",
+   "name": "CaseDTO",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.common.dto",
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto",
+   "layer": "Model",
+   "layerReason": "package:dto",
+   "extends": [
+    "Serializable"
+   ],
+   "file": "src/main/java/org/example/common/dto/CaseDTO.java",
+   "line": 3
+  },
+  {
+   "fqn": "org.example.common.util.DateUtils",
+   "name": "DateUtils",
+   "kind": "class",
+   "language": "Java",
+   "package": "org.example.common.util",
+   "sourceSet": "main",
+   "module": "maven:org.example:common-dto",
+   "layer": "Cross-cutting",
+   "layerReason": "package:util",
+   "file": "src/main/java/org/example/common/util/DateUtils.java",
+   "line": 2
+  }
+ ],
+ "dependencies": null,
+ "contracts": null,
+ "findings": null,
+ "packageStats": [
+  {
+   "package": "org.example.common.dto",
+   "module": "maven:org.example:common-dto",
+   "layer": "Model",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "org.example.common.util",
+   "module": "maven:org.example:common-dto",
+   "layer": "Cross-cutting",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  }
+ ],
+ "cycles": null,
+ "layerIssues": null,
+ "deployment": {
+  "nodes": null,
+  "links": null
+ },
+ "diagnostics": null,
+ "vulnScan": {
+  "database": "demo-vulndb",
+  "asOf": "2026-10-28T00:00:00Z",
+  "advisories": {
+   "Maven": 3,
+   "NuGet": 1
+  },
+  "checked": 0,
+  "unevaluated": []
+ }
+}

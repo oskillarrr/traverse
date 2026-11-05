@@ -1,0 +1,70 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:d70ca20f-8c54-594e-8eb9-41c4e9ec261a",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2025-11-05T00:00:00Z",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "name": "Traverse",
+     "version": "dev"
+    }
+   ]
+  },
+  "component": {
+   "type": "application",
+   "bom-ref": "system:common-lib",
+   "name": "common-lib"
+  },
+  "properties": [
+   {
+    "name": "traverse:vulnDatabase",
+    "value": "OSV.dev (demo-vulndb)"
+   },
+   {
+    "name": "traverse:vulnDataAsOf",
+    "value": "2026-10-28T00:00:00Z"
+   }
+  ],
+  "lifecycles": [
+   {
+    "phase": "pre-build"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "bom-ref": "module:maven:org.example:common-dto",
+   "group": "org.example",
+   "name": "common-dto",
+   "version": "2.3.0",
+   "purl": "pkg:maven/org.example/common-dto@2.3.0",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 1.8"
+    }
+   ]
+  }
+ ],
+ "dependencies": [
+  {
+   "ref": "system:common-lib",
+   "dependsOn": [
+    "module:maven:org.example:common-dto"
+   ]
+  }
+ ]
+}

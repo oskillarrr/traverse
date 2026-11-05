@@ -1,0 +1,276 @@
+{
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "version": "2.1.0",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "NET-WEBFORMS",
+       "name": "NetWebforms",
+       "shortDescription": {
+        "text": "ASP.NET Web Forms"
+       },
+       "fullDescription": {
+        "text": "Not supported on .NET Core / .NET 5+."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Web",
+        "confidence": "medium",
+        "tags": [
+         "Web"
+        ],
+        "technology": "Web Forms"
+       }
+      },
+      {
+       "id": "NET-FRAMEWORK",
+       "name": "NetFramework",
+       "shortDescription": {
+        "text": ".NET Framework (Windows only)"
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Platform",
+        "confidence": "high",
+        "tags": [
+         "Platform"
+        ],
+        "technology": ".NET Framework"
+       }
+      },
+      {
+       "id": "NET-WCF",
+       "name": "NetWcf",
+       "shortDescription": {
+        "text": "WCF services"
+       },
+       "fullDescription": {
+        "text": "WCF server is not available on modern .NET (CoreWCF required)."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Integration",
+        "confidence": "medium",
+        "tags": [
+         "Integration"
+        ],
+        "technology": "WCF"
+       }
+      },
+      {
+       "id": "RUNTIME-LEVEL",
+       "name": "RuntimeLevel",
+       "shortDescription": {
+        "text": "Outdated runtime level: .NET v4.5"
+       },
+       "fullDescription": {
+        "text": ".NET Framework is Windows-only; modern .NET requires migration. (count = modules)"
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Migration",
+        "confidence": "high",
+        "tags": [
+         "Migration"
+        ],
+        "technology": ".NET v4.5"
+       }
+      },
+      {
+       "id": "VULN/TRAVERSEDEMO-2026-0003",
+       "name": "KnownVulnerability",
+       "shortDescription": {
+        "text": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader"
+       },
+       "helpUri": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003",
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "aliases": null,
+        "category": "vulnerability",
+        "confidence": "low",
+        "source": "OSV.dev",
+        "tags": [
+         "security",
+         "vulnerability"
+        ]
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/legacy-portal/"
+   },
+   "results": [
+    {
+     "ruleId": "NET-WEBFORMS",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "ASP.NET Web Forms. Not supported on .NET Core / .NET 5+."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Default.aspx.cs",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "c7c779b5bdeb8425"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "NET-FRAMEWORK",
+     "ruleIndex": 1,
+     "level": "warning",
+     "message": {
+      "text": ".NET Framework (Windows only)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "7dbc6291c3385586"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "NET-WCF",
+     "ruleIndex": 2,
+     "level": "warning",
+     "message": {
+      "text": "WCF services. WCF server is not available on modern .NET (CoreWCF required)."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Default.aspx.cs",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "d1115db9b4ede5a2"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "RUNTIME-LEVEL",
+     "ruleIndex": 3,
+     "level": "warning",
+     "message": {
+      "text": "Outdated runtime level: .NET v4.5. .NET Framework is Windows-only; modern .NET requires migration. (count = modules)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "274c03cc899c2758"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "VULN/TRAVERSEDEMO-2026-0003",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "nuget:log4net 1.2.10.0 is affected by TRAVERSEDEMO-2026-0003 [medium]. Fixed in 2.0.10"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "60cecd42-69cf-54cb-8369-8f56632b6a4e"
+     },
+     "properties": {
+      "confidence": "low",
+      "kind": "assembly-ref",
+      "modules": [
+       "nuget:Portal.Web"
+      ],
+      "package": "nuget:log4net",
+      "version": "1.2.10.0"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "legacy-portal",
+    "vcs": "none"
+   }
+  }
+ ]
+}

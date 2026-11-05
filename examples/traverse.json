@@ -1,0 +1,14 @@
+{
+  "classification": "Internal use only",
+  "exclude": ["**/generated/**", "legacy/old-copy/**", "*.min.js"],
+  "layers": {
+    "overrides": {
+      "org.example.cases.facade": "Business",
+      "org.example.cases.ws": "Presentation"
+    },
+    "tokens": {
+      "Business": ["tramite", "expediente"],
+      "Integration": ["sap", "signer"]
+    }
+  }
+}

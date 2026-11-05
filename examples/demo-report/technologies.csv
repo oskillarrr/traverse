@@ -1,0 +1,47 @@
+﻿category,technology,severity,system,files
+Authentication,AdES,info,case-management,1
+Authentication,Container (JAAS),info,case-management,1
+Authentication,Container auth (CLIENT-CERT),info,case-management,1
+Authentication,Timestamping,info,case-management,1
+Authentication,X.509 client auth,info,case-management,2
+Business,EJB,info,case-management,2
+Database,Oracle Database,info,case-management,3
+Database,Oracle Database,info,notifications,2
+Database,Oracle SQL,low,case-management,1
+Database,Oracle SQL,low,notifications,1
+Database,PL/SQL,info,case-management,1
+Database,SQL Server,info,legacy-portal,1
+Delivery,Docker,info,notifications,1
+Delivery,Kubernetes,low,platform-gitops,4
+Delivery,Vendored libraries,low,case-management,1
+Framework,Spring Boot,info,notifications,1
+Framework,Spring Framework,info,notifications,2
+Integration,DB network,medium,case-management,1
+Integration,HTTP client,info,case-management,1
+Integration,HTTP client,info,notifications,1
+Integration,HttpClient 3,medium,case-management,1
+Integration,IBM MQ,info,legacy-portal,1
+Integration,JMS,info,case-management,1
+Integration,JMS,info,notifications,1
+Integration,JNDI,info,case-management,2
+Integration,WCF,medium,legacy-portal,1
+Logging,Log4j 1.x,high,case-management,1
+Migration,.NET v4.5,medium,legacy-portal,1
+Migration,Java EE (javax),medium,case-management,4
+Migration,java 1.6,high,case-management,1
+Persistence,Embedded SQL,info,legacy-portal,1
+Persistence,Hibernate,info,case-management,1
+Persistence,JDBC,info,case-management,1
+Persistence,JPA,info,case-management,1
+Persistence,Spring JDBC,info,notifications,1
+Platform,.NET Framework,medium,legacy-portal,1
+Platform,CICS,info,legacy-portal,1
+Platform,JBoss/WildFly,medium,case-management,3
+Transport Security,Custom TLS,info,case-management,1
+Transport Security,TLS required,info,case-management,1
+Transport Security,mTLS at intermediary (inferred),info,notifications,1
+Transport Security,mTLS client,info,case-management,1
+Web,JAX-RS,info,case-management,1
+Web,Servlet,info,case-management,1
+Web,Spring MVC,info,notifications,3
+Web,Web Forms,high,legacy-portal,1

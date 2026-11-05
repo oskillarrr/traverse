@@ -1,0 +1,5 @@
+<project><modelVersion>4.0.0</modelVersion><groupId>org.example.cases</groupId><artifactId>case-parent</artifactId><version>1.4.2</version><packaging>pom</packaging>
+<properties><common.version>2.1.0</common.version><java.version>1.6</java.version></properties>
+<modules><module>case-ejb</module><module>case-web</module><module>case-ear</module></modules>
+<dependencyManagement><dependencies><dependency><groupId>org.example</groupId><artifactId>common-dto</artifactId><version>${common.version}</version></dependency></dependencies></dependencyManagement>
+<repositories><repository><id>old</id><url>http://repo.example.org/maven2</url></repository></repositories></project>

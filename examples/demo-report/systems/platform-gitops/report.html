@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; script-src &#39;unsafe-inline&#39;; img-src data:"><title>platform-gitops · Traverse</title><style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2733;--muted:#5b6675;--line:#e1e5eb;--accent:#1f4e8c;--accent-fg:#fff;
+--hi:#c9372c;--md:#c77c02;--lo:#3d7a4f;--info:#5b6675;--chip:#eef1f5;--banner:#fff4d6;--bannerfg:#6b4e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1a2029;--fg:#e4e8ee;--muted:#9aa5b4;
+--line:#2c3440;--accent:#5b8fd6;--accent-fg:#0d1117;--hi:#ff6b5e;--md:#f0a43a;--lo:#6fc28a;--info:#9aa5b4;--chip:#232b36;--banner:#3a3018;--bannerfg:#f3d68a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--accent);color:var(--accent-fg);padding:22px 24px}header h1{margin:0 0 4px;font-size:22px}
+header p{margin:0;opacity:.85;font-size:13px}header p.note{margin-top:6px;color:var(--accent-fg)}header a{color:var(--accent-fg);text-decoration:underline}.banner{background:var(--banner);color:var(--bannerfg);padding:6px 24px;font-weight:600;font-size:12px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:8px 24px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:600}main{max-width:1500px;margin:0 auto;padding:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 8px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--muted);font-size:12px}.note{color:var(--muted);font-size:12px}
+.summary ul{margin:6px 0;padding-left:20px}.summary li{margin:4px 0;line-height:1.5}
+.scope{border-left:4px solid var(--md);padding:8px 12px;background:var(--chip);border-radius:4px;font-size:13px}
+.tw{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:720px}td:first-child{min-width:150px}th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--chip);cursor:pointer;user-select:none;white-space:nowrap}td{overflow-wrap:break-word}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.f{margin:0 0 8px;padding:6px 9px;width:min(360px,100%);border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.sev{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;color:#fff}
+.sev-high{background:var(--hi)}.sev-medium{background:var(--md)}.sev-low{background:var(--lo)}.sev-info{background:var(--info)}.sev-critical{background:#7a1020}.sev-unknown{background:#6b7280}
+.chip{display:inline-block;background:var(--chip);border-radius:4px;padding:0 6px;margin:1px;font-size:11.5px}
+.diagram{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px}.diagram svg{max-width:none;height:auto}
+.diagram text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--fg)}
+.col{fill:var(--chip)}.colt{font-size:12px;font-weight:600;fill:var(--muted)!important}.nt{font-size:11px}.ns{font-size:10px;fill:var(--muted)!important}
+.node{stroke-width:1}.e{fill:none;stroke:var(--muted);stroke-opacity:.5}.e.bad{stroke:var(--hi);stroke-opacity:.9}
+.L-Presentation{fill:#e3edfb;stroke:#4a78c2}.L-Business{fill:#e5f4ea;stroke:#3b8a55}.L-Integration{fill:#fff1dc;stroke:#c98a1e}
+.L-Persistence{fill:#f6e6f3;stroke:#a24d92}.L-Model{fill:#eef0f3;stroke:#7d8794}.L-Configuration{fill:#efeafb;stroke:#6f56b8}
+.L-Cross-cutting{fill:#f1f1ec;stroke:#8b8a6a}.L-Unknown{fill:#fff;stroke:#a7b0bc}
+.diagram .node+text,.diagram g text.nt,.diagram g text.ns{fill:#1d2733!important}
+.sys{fill:var(--accent);stroke:var(--accent)}.diagram .syst{fill:var(--accent-fg);font-size:13px;font-weight:600}
+.box{fill:var(--card);stroke:var(--line)}.bt{font-size:11px;font-weight:600}.bi{font-size:10px;fill:var(--muted)!important}
+.lk{fill:none;stroke-width:1.6;stroke-opacity:.85}.lk.lo{stroke-opacity:.35;stroke-width:1;stroke-dasharray:2 4}.k-library{stroke:var(--muted);stroke-dasharray:5 4}.k-http{stroke:#2f6fd0}
+.k-soap{stroke:#7d63c9}.k-jms,.k-kafka{stroke:#d98a17}.k-ejb{stroke:#3b8a55}.k-shared-db{stroke:var(--hi);stroke-dasharray:2 3}
+.k-shared-datasource{stroke:var(--hi);stroke-dasharray:1 4}.k-deploys{stroke:#2a9d8f;stroke-dasharray:6 3}.lg{font-size:11px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px}a{color:var(--accent)}
+details summary{cursor:pointer;font-weight:600;color:var(--accent);margin:6px 0}
+@media (max-width:700px){main{padding:8px}section{padding:12px}header{padding:16px}}
+</style></head><body>
+
+<header><h1>platform-gitops</h1><p>VCS: none · no copies detected: everything is analyzed · Traverse dev · rules 2.0.0</p></header>
+<nav><a href="../../index.html">← Architecture portfolio</a><a href="#parties">Relationships with other applications</a><a href="#structure">Repository structure</a><a href="#context">System context</a><a href="#arch">Layered architecture</a><a href="#contracts">Interfaces &amp; integrations</a><a href="#security">Authentication &amp; transport</a><a href="#data">Data access</a><a href="#modules">Modules &amp; build</a><a href="#deploy">Deployment view</a><a href="#tech">Technologies</a><a href="#risks">Risks &amp; attention points</a><a href="#vulns">Known vulnerabilities</a><a href="#components">Components</a><a href="#metrics">Package coupling</a><a href="#languages">Languages</a></nav>
+<main>
+<div class="kpis">
+<div class="kpi"><b>0</b><span>Lines of code</span></div>
+<div class="kpi"><b>0</b><span>Modules &amp; build</span></div>
+<div class="kpi"><b>0</b><span>Components</span></div>
+<div class="kpi"><b>0</b><span>Exposed</span></div>
+<div class="kpi"><b>0</b><span>Tables</span></div>
+<div class="kpi"><b>3</b><span>High risks</span></div>
+<div class="kpi"><b>0</b><span>Known vulnerabilities</span></div>
+<div class="kpi"><b>0</b><span>Dependency cycles</span></div>
+<div class="kpi"><b>0</b><span>Layer violations</span></div>
+</div>
+<p class="scope">Static, heuristic analysis of source code. Relationships are evidence-based candidates, not runtime facts: validate before using them in official architecture documents.</p>
+
+<section id="summary" class="summary"><h2>Executive summary</h2><ul><li><strong>Size and stack.</strong> 101 lines of code across 2 files; main language YAML (100%). Build modules: 0 · components: 0.</li><li><strong>Integrations.</strong> Exposes 0 interfaces (—) and consumes 0 external ones (—); 0 data tables; 0 JNDI resources.</li><li><strong>Risks.</strong> Findings: 3 high · 0 medium · 2 low.</li><li><strong>Coupling.</strong> 0 package cycles (largest, 0 packages) and 0 layer violations.</li><li><strong>Third parties.</strong> 2 connected applications (0 outside the portfolio), 3 integrations with them.</li></ul>
+<p class="note">Markdown export: <a href="report.md">report.md</a> · <a href="arc42.md">arc42.md</a></p></section>
+<section id="parties"><h2>Relationships with other applications</h2>
+<h3>What it calls (0)</h3>
+<p class="note">No outbound call found in the code or the repository configuration.</p>
+<h3>Who calls it (0)</h3>
+<p class="note">No analyzed system calls it.</p>
+
+
+
+
+
+</section>
+<section id="structure"><h2>Repository structure</h2><ul><li>Analyzed: <code>apps</code></li></ul>
+</section>
+
+<section id="context"><h2>System context</h2><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 146" width="1010" role="img" aria-label="System context"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="sys" x="380" y="48" width="250" height="80" rx="10"/><text class="syst" x="505" y="93" text-anchor="middle">platform-gitops</text></svg></div>
+<p class="note">Exports: <a href="context.svg">context.svg</a> · <a href="workspace.dsl">workspace.dsl</a> (Structurizr / C4) · <a href="facts.json">facts.json</a></p>
+
+</section>
+
+<section id="arch"><h2>Layered architecture</h2>
+<p class="note">Nothing detected.</p>
+
+<h3>Layer violations (0)</h3>
+<p class="note">Nothing detected.</p>
+<h3>Dependency cycles (0)</h3>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="contracts"><h2>Interfaces &amp; integrations (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+
+<section id="security"><h2>Authentication &amp; transport</h2>
+
+<p class="note">No authentication or transport-security mechanism detected (verify at the infrastructure layer).</p>
+<h3>Connected applications (third parties) (3)</h3><div class="tw"><table><thead><tr><th>Counterpart</th><th>Scope</th><th>Direction</th><th>Protocol</th><th>Transport</th><th>Auth</th><th>Endpoint</th><th>Environments</th><th class="n">Hosts</th><th>Location</th><th>Confidence</th></tr></thead><tbody>
+<tr><td><b>case-management</b></td><td>portfolio</td><td>outbound</td><td>deploys</td><td></td><td></td><td>kubernetes CronJob nightly-reconciliation ← tramitacion/case-ejb:1.4.2</td><td></td><td class="n"></td><td></td><td>medium</td></tr><tr><td><b>case-management</b></td><td>portfolio</td><td>outbound</td><td>deploys</td><td></td><td></td><td>kubernetes Deployment case-management ← tramitacion/case-web:1.4.2</td><td></td><td class="n"></td><td></td><td>medium</td></tr><tr><td><b>notifications</b></td><td>portfolio</td><td>outbound</td><td>deploys</td><td></td><td></td><td>openshift DeploymentConfig notifications ← tramitacion/notifications:3.0.1</td><td></td><td class="n"></td><td></td><td>medium</td></tr></tbody></table></div>
+</section>
+
+<section id="data"><h2>Data access (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="modules"><h2>Modules &amp; build (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="deploy"><h2>Deployment view (7)</h2>
+<div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 228" width="1060" role="img" aria-label="Deployment view"><defs><marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="col" x="12" y="10" width="226" height="208" rx="8"/><text class="colt" x="20" y="30">Ingress / routes</text><rect class="col" x="282" y="10" width="226" height="208" rx="8"/><text class="colt" x="290" y="30">Network services</text><rect class="col" x="552" y="10" width="226" height="208" rx="8"/><text class="colt" x="560" y="30">Workloads</text><rect class="col" x="822" y="10" width="226" height="208" rx="8"/><text class="colt" x="830" y="30">Configuration</text><path class="e" stroke-width="1.3" marker-end="url(#da)" d="M770 68 C800 68 800 68 830 68"><title>config</title></path><path class="e" stroke-width="1.3" marker-end="url(#da)" d="M230 68 C260 68 260 68 290 68"><title>routes</title></path><path class="e" stroke-width="1.3" marker-end="url(#da)" d="M500 68 C530 68 530 68 560 68"><title>selects</title></path><path class="e" stroke-width="1.3" marker-end="url(#da)" d="M230 122 C395 122 395 176 560 176"><title>routes</title></path><g><title>kubernetes · CronJob · apps/notifications/deploy.yaml</title><rect class="node L-Business" x="560" y="100" width="210" height="44" rx="6"/><text class="nt" x="568" y="117">nightly-reconciliation · CronJob</text><text class="ns" x="568" y="133">0 2 * * *</text></g><g><title>kubernetes · Secret · apps/case-management/deployment.yaml</title><rect class="node L-Configuration" x="830" y="46" width="210" height="44" rx="6"/><text class="nt" x="838" y="63">case-db · Secret</text><text class="ns" x="838" y="79"></text></g><g><title>kubernetes · Deployment · apps/case-management/deployment.yaml</title><rect class="node L-Business" x="560" y="46" width="210" height="44" rx="6"/><text class="nt" x="568" y="63">case-management · Deployment</text><text class="ns" x="568" y="79">×2 tramitacion/case-web:1.4.2</text></g><g><title>kubernetes · Ingress · apps/case-management/deployment.yaml</title><rect class="node L-Presentation" x="20" y="46" width="210" height="44" rx="6"/><text class="nt" x="28" y="63">case-management · Ingress</text><text class="ns" x="28" y="79"></text></g><g><title>kubernetes · Service · apps/case-management/deployment.yaml</title><rect class="node L-Presentation" x="290" y="46" width="210" height="44" rx="6"/><text class="nt" x="298" y="63">case-management · Service</text><text class="ns" x="298" y="79"></text></g><g><title>openshift · DeploymentConfig · apps/notifications/deploy.yaml</title><rect class="node L-Business" x="560" y="154" width="210" height="44" rx="6"/><text class="nt" x="568" y="171">notifications · DeploymentConfig</text><text class="ns" x="568" y="187">×1 tramitacion/notifications:3.0.1</text></g><g><title>openshift · Route · apps/notifications/deploy.yaml</title><rect class="node L-Presentation" x="20" y="100" width="210" height="44" rx="6"/><text class="nt" x="28" y="117">notifications · Route</text><text class="ns" x="28" y="133"></text></g></svg></div><p class="note"><a href="deployment.svg">deployment.svg</a> · workspace.dsl (C4 deployment)</p>
+<input class="f" data-t="tdp" placeholder="Filter…"><div class="tw"><table id="tdp"><thead><tr><th>Platform</th><th>Kind</th><th>Name</th><th>Images</th><th>Ports</th><th>Replicas / schedule</th><th>Environment variables</th><th>Hosts</th><th>Module</th><th>Location</th></tr></thead><tbody>
+<tr><td>kubernetes</td><td>CronJob</td><td><b>nightly-reconciliation</b></td><td>tramitacion/case-ejb:1.4.2</td><td></td><td>0 2 * * *</td><td></td><td></td><td></td><td>apps/notifications/deploy.yaml:17</td></tr><tr><td>kubernetes</td><td>Secret</td><td><b>case-db</b></td><td></td><td></td><td></td><td><span class="chip">password</span></td><td></td><td></td><td>apps/case-management/deployment.yaml:56</td></tr><tr><td>kubernetes</td><td>Deployment</td><td><b>case-management</b><br><span class="note">tramitacion</span></td><td>tramitacion/case-web:1.4.2</td><td>8080</td><td>2</td><td><span class="chip">DB_PASSWORD</span></td><td><span class="chip">host-77a3c5ab57d2</span></td><td></td><td>apps/case-management/deployment.yaml:1</td></tr><tr><td>kubernetes</td><td>Ingress</td><td><b>case-management</b><br><span class="note">tramitacion</span></td><td></td><td></td><td></td><td></td><td><span class="chip">host-a42af5868ef5</span> <span class="note">/cases</span></td><td></td><td>apps/case-management/deployment.yaml:39</td></tr><tr><td>kubernetes</td><td>Service</td><td><b>case-management</b><br><span class="note">tramitacion</span></td><td></td><td>80→8080</td><td></td><td></td><td></td><td></td><td>apps/case-management/deployment.yaml:27</td></tr><tr><td>openshift</td><td>DeploymentConfig</td><td><b>notifications</b></td><td>tramitacion/notifications:3.0.1</td><td></td><td>1</td><td></td><td><span class="chip">host-ef0ef0261b78</span></td><td></td><td>apps/notifications/deploy.yaml:1</td></tr><tr><td>openshift</td><td>Route</td><td><b>notifications</b></td><td></td><td></td><td></td><td></td><td><span class="chip">host-66ad369591b9</span> <span class="note">/</span></td><td></td><td>apps/notifications/deploy.yaml:31</td></tr></tbody></table></div>
+<details><summary>Relationships (4)</summary><div class="tw"><table><thead><tr><th>From</th><th>Kind</th><th>To</th></tr></thead><tbody>
+<tr><td>case-management (Deployment)</td><td>config</td><td>case-db (Secret)</td></tr><tr><td>case-management (Ingress)</td><td>routes</td><td>case-management (Service)</td></tr><tr><td>case-management (Service)</td><td>selects</td><td>case-management (Deployment)</td></tr><tr><td>notifications (Route)</td><td>routes</td><td>notifications (DeploymentConfig)</td></tr></tbody></table></div></details>
+<p class="note">Only variable names are recorded: values are never copied. Registry and ingress host names appear as pseudonyms when a key is configured.</p>
+</section>
+
+<section id="tech"><h2>Technologies (1)</h2>
+<input class="f" data-t="tte" placeholder="Filter…"><div class="tw"><table id="tte"><thead><tr><th>Kind</th><th>Technologies</th><th>Severity</th><th class="n">Files</th><th>Location</th></tr></thead><tbody>
+<tr><td>Delivery</td><td><b>Kubernetes</b></td><td><span class="sev sev-low">Low</span></td><td class="n">4</td><td>apps/case-management/deployment.yaml, apps/notifications/deploy.yaml, apps/case-management/deployment.yaml</td></tr></tbody></table></div>
+</section>
+
+<section id="risks"><h2>Risks &amp; attention points (5)</h2>
+<input class="f" data-t="tr" placeholder="Filter…"><div class="tw"><table id="tr"><thead><tr><th>Severity</th><th>Rule</th><th>Title</th><th>Location</th><th>Lines</th><th class="n">Count</th><th>Message</th></tr></thead><tbody>
+<tr><td><span class="sev sev-high">High</span></td><td>OPS-K8S-PRIVILEGED</td><td>Privileged container</td><td>apps/case-management/deployment.yaml</td><td>16</td><td class="n">1</td><td>Privileged containers have full access to the node.</td></tr><tr><td><span class="sev sev-high">High</span></td><td>OPS-K8S-SECRET-IN-REPO</td><td>Kubernetes Secret with data in the repository</td><td>apps/case-management/deployment.yaml</td><td>56</td><td class="n">1</td><td>Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report.</td></tr><tr><td><span class="sev sev-high">High</span></td><td>SEC-SECRET-CONFIG</td><td>Possible hard-coded credential in configuration</td><td>apps/case-management/deployment.yaml</td><td>62</td><td class="n">1</td><td>Value is never copied to the report; check location and rotate if real.</td></tr><tr><td><span class="sev sev-low">Low</span></td><td>OPS-K8S-NO-RESOURCES</td><td>Container without resource requests/limits</td><td>apps/case-management/deployment.yaml</td><td>16</td><td class="n">1</td><td>Without limits a container can starve the node.</td></tr><tr><td><span class="sev sev-low">Low</span></td><td>OPS-K8S-NO-RESOURCES</td><td>Container without resource requests/limits</td><td>apps/notifications/deploy.yaml</td><td>28</td><td class="n">1</td><td>Without limits a container can starve the node.</td></tr></tbody></table></div>
+
+<p class="note">findings.csv → «validation» column for confirmed / probable / discarded.</p>
+</section>
+
+<section id="vulns"><h2>Known vulnerabilities (0)</h2>
+<p class="note">Source: OSV.dev (demo-vulndb) · data as of 2026-10-28T00:00:00Z · library versions checked: 0</p>
+<p class="note">No known vulnerability in the evaluated versions (this does not mean the libraries are safe: see the unevaluated list and the data date).</p>
+
+<p class="note">Offline match of declared and committed library versions against the OSV database given with --vulndb. Confidence: high = exact coordinates; medium/low = identified by JAR file name or assembly version. Transitive dependencies are evaluated only when the repository has a lockfile (no build is executed). · <a href="vulnerabilities.csv">vulnerabilities.csv</a> · <a href="sbom.cdx.json">sbom.cdx.json</a> (CycloneDX 1.6)</p>
+</section>
+
+<section id="components"><h2>Components (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="metrics"><h2>Package coupling (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="languages"><h2>Languages</h2><div class="tw"><table><thead><tr><th>Languages</th><th>Kind</th><th class="n">Files</th><th class="n">Lines of code</th><th class="n">Comment lines</th><th class="n">Blank</th></tr></thead><tbody>
+<tr><td>YAML</td><td>config</td><td class="n">2</td><td class="n">101</td><td class="n">0</td><td class="n">0</td></tr></tbody></table></div>
+
+</section>
+</main><footer>Traverse – Offline Architecture Analyzer · Generated 2025-11-05T00:00:00Z</footer><script>
+document.querySelectorAll('input.f').forEach(function(i){i.addEventListener('input',function(){var t=document.getElementById(i.dataset.t);var v=i.value.toLowerCase();
+t.querySelectorAll('tbody tr').forEach(function(r){r.style.display=r.textContent.toLowerCase().indexOf(v)>=0?'':'none'})})});
+document.querySelectorAll('th').forEach(function(th){th.addEventListener('click',function(){var tb=th.closest('table').tBodies[0];var i=Array.prototype.indexOf.call(th.parentNode.children,th);
+var asc=th.dataset.a!=='1';th.dataset.a=asc?'1':'0';var rows=Array.prototype.slice.call(tb.rows);rows.sort(function(a,b){var x=a.cells[i].textContent.trim(),y=b.cells[i].textContent.trim();
+var nx=parseFloat(x),ny=parseFloat(y);var c=(!isNaN(nx)&&!isNaN(ny))?nx-ny:x.localeCompare(y);return asc?c:-c});rows.forEach(function(r){tb.appendChild(r)})})});
+</script></body></html>

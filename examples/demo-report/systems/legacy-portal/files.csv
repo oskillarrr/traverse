@@ -1,0 +1,4 @@
+﻿path,language,category,sourceSet,module,bytes,code,comment,blank,encoding
+Portal/Default.aspx.cs,C#,code,main,nuget:Portal.Web,392,10,0,0,
+Portal/Portal.csproj,MSBuild,build,main,nuget:Portal.Web,378,2,0,0,
+batch/NIGHTLY.cbl,COBOL,code,main,,282,6,1,0,

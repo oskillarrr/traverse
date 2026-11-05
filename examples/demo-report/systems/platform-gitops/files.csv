@@ -1,0 +1,3 @@
+﻿path,language,category,sourceSet,module,bytes,code,comment,blank,encoding
+apps/case-management/deployment.yaml,YAML,config,main,,1242,62,0,0,
+apps/notifications/deploy.yaml,YAML,config,main,,808,39,0,0,

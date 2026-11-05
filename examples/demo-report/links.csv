@@ -1,0 +1,11 @@
+﻿from,to,kind,evidences,confidence,keys,candidateProviders
+case-management,common-lib,library,1,high,maven:org.example:common-dto,
+case-management,legacy-portal,shared-db,2,medium,EXPEDIENTE | TRAMITE,
+case-management,notifications,http,1,medium,POST /notifications/api/messages/send,
+case-management,notifications,jms,1,high,java:/jms/queue/CaseResolved,
+case-management,notifications,shared-db,1,medium,EXPEDIENTE,
+legacy-portal,case-management,http,1,medium,GET /cases/api/expedientes/{id},
+legacy-portal,notifications,shared-db,1,medium,EXPEDIENTE,
+notifications,common-lib,library,1,high,maven:org.example:common-dto,
+platform-gitops,case-management,deploys,2,medium,kubernetes CronJob nightly-reconciliation ← tramitacion/case-ejb:1.4.2 | kubernetes Deployment case-management ← tramitacion/case-web:1.4.2,
+platform-gitops,notifications,deploys,1,medium,openshift DeploymentConfig notifications ← tramitacion/notifications:3.0.1,

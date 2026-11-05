@@ -1,0 +1,11 @@
+Traverse – Offline Architecture Analyzer
+Copyright 2026 The Traverse contributors
+
+This product includes no third-party code: it is built only with the Go standard library.
+
+Vulnerability data is NOT bundled. When the user supplies OSV dumps with
+--vulndb, reports quote advisory identifiers and summaries from OSV.dev
+(https://osv.dev) and link to each advisory. OSV data is published by its
+upstream sources under their own licenses (for example CC-BY 4.0); users are
+responsible for complying with them. The files in examples/demo-vulndb are
+synthetic and contain no real advisory.

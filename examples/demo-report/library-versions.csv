@@ -1,0 +1,3 @@
+﻿library,internal,version,systems
+maven:org.example:common-dto,true,2.1.0,case-management
+maven:org.example:common-dto,true,2.3.0,notifications

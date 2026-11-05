@@ -1,0 +1,6 @@
+name,path,group
+common-lib,common-lib,Shared
+case-management,case-management,Case processing
+notifications,notifications,Case processing
+legacy-portal,legacy-portal,Citizen services
+platform-gitops,platform-gitops,Platform

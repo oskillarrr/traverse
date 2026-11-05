@@ -1,0 +1,9 @@
+/dist/
+/out/
+*.test
+*.prof
+*.key
+!examples/demo.key
+hosts-en-claro.csv
+/traverse
+/traverse.exe

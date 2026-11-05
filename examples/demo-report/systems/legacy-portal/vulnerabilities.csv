@@ -1,0 +1,2 @@
+﻿severity,cvss,id,aliases,package,version,fixedIn,malicious,confidence,kind,scope,modules,file,line,summary,url,validation
+medium,,TRAVERSEDEMO-2026-0003,,nuget:log4net,1.2.10.0,2.0.10,false,low,assembly-ref,,nuget:Portal.Web,Portal/Portal.csproj,2,SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader,https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003,

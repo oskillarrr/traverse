@@ -1,0 +1,5 @@
+﻿package,module,layer,types,ca,ce,instability
+org.example.notify.api,maven:org.example:notifications,Presentation,2,0,1,1.00
+org.example.notify.repository,maven:org.example:notifications,Persistence,1,1,0,0.00
+org.example.notify.service,maven:org.example:notifications,Business,1,1,1,0.50
+org.example.notify.sms,maven:org.example:notifications,Integration,1,0,0,0.00

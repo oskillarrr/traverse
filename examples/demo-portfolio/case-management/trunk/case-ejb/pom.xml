@@ -1,0 +1,2 @@
+<project><parent><groupId>org.example.cases</groupId><artifactId>case-parent</artifactId><version>1.4.2</version></parent><artifactId>case-ejb</artifactId><packaging>ejb</packaging>
+<dependencies><dependency><groupId>org.example</groupId><artifactId>common-dto</artifactId></dependency><dependency><groupId>log4j</groupId><artifactId>log4j</artifactId><version>1.2.17</version></dependency></dependencies></project>

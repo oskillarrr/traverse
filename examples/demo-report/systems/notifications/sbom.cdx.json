@@ -1,0 +1,130 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:477a4c5a-199c-5818-af12-2c7baa91eec8",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2025-11-05T00:00:00Z",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "name": "Traverse",
+     "version": "dev"
+    }
+   ]
+  },
+  "component": {
+   "type": "application",
+   "bom-ref": "system:notifications",
+   "name": "notifications"
+  },
+  "properties": [
+   {
+    "name": "traverse:revision",
+    "value": "4f2a9c1e7b3d"
+   },
+   {
+    "name": "traverse:vulnDatabase",
+    "value": "OSV.dev (demo-vulndb)"
+   },
+   {
+    "name": "traverse:vulnDataAsOf",
+    "value": "2026-10-28T00:00:00Z"
+   }
+  ],
+  "lifecycles": [
+   {
+    "phase": "pre-build"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "bom-ref": "module:maven:org.example:notifications",
+   "group": "org.example",
+   "name": "notifications",
+   "version": "3.0.1",
+   "purl": "pkg:maven/org.example/notifications@3.0.1",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 11"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:maven/org.example/common-dto@2.3.0",
+   "group": "org.example",
+   "name": "common-dto",
+   "version": "2.3.0",
+   "scope": "required",
+   "purl": "pkg:maven/org.example/common-dto@2.3.0",
+   "properties": [
+    {
+     "name": "traverse:kind",
+     "value": "declared"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "pom.xml",
+      "line": 5
+     }
+    ]
+   }
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+   "group": "org.springframework.boot",
+   "name": "spring-boot-starter-web",
+   "scope": "required",
+   "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+   "properties": [
+    {
+     "name": "traverse:versionResolved",
+     "value": "false"
+    },
+    {
+     "name": "traverse:kind",
+     "value": "declared"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "pom.xml",
+      "line": 4
+     }
+    ]
+   }
+  }
+ ],
+ "dependencies": [
+  {
+   "ref": "module:maven:org.example:notifications",
+   "dependsOn": [
+    "pkg:maven/org.example/common-dto@2.3.0",
+    "pkg:maven/org.springframework.boot/spring-boot-starter-web"
+   ]
+  },
+  {
+   "ref": "system:notifications",
+   "dependsOn": [
+    "module:maven:org.example:notifications"
+   ]
+  }
+ ]
+}

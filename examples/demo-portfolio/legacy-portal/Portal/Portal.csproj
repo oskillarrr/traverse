@@ -1,0 +1,2 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><AssemblyName>Portal.Web</AssemblyName><TargetFrameworkVersion>v4.5</TargetFrameworkVersion><OutputType>Library</OutputType></PropertyGroup>
+<ItemGroup><Reference Include="log4net, Version=1.2.10.0, Culture=neutral" /><Reference Include="System.Web" /></ItemGroup></Project>

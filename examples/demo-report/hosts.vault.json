@@ -1,0 +1,53 @@
+{
+ "format": "traverse-host-vault",
+ "version": 1,
+ "cipher": "AES-256-GCM (HKDF-SHA256 keys, HMAC-SHA256 pseudonyms)",
+ "keyCheck": "05dd1349f669c442",
+ "entries": [
+  {
+   "token": "host-1f4a0845ffd7",
+   "nonce": "uspP6nfWr22mGrDM",
+   "ciphertext": "YG5ZYmQ1u8R3D7l4WUpTlZVzzvOu1HmcAt9Cprs="
+  },
+  {
+   "token": "host-240cd640a7e5",
+   "nonce": "nnxa8PJMCehwAusr",
+   "ciphertext": "5j9saxs0yP0R57NuKMFQ5T6p5ZUxkURMfKGZzC4="
+  },
+  {
+   "token": "host-66ad369591b9",
+   "nonce": "+ZCQS6bbunrth4M0",
+   "ciphertext": "S4bMNqTcq/csIBPnVxDCHAbrTx6eYKmEzZYNPGBO7dXgx0ZT9CQ="
+  },
+  {
+   "token": "host-77a3c5ab57d2",
+   "nonce": "fXUKgOng1r5akzeZ",
+   "ciphertext": "cMiod+LhB70LlrecJU0G1GtUin56VDJfAV8FR1TZNMDgzli8tX1JlA=="
+  },
+  {
+   "token": "host-a42af5868ef5",
+   "nonce": "ZEnlcEVJfMoh7kRn",
+   "ciphertext": "U6f0sv9A7qly0kjNSmn0XK1Rb77AZzM2YTmu8HOVoefshW8Aze6Ar7EhhQ=="
+  },
+  {
+   "token": "host-bb8f9d8bfaea",
+   "nonce": "Z/XhhQ3wjNWsNCTY",
+   "ciphertext": "KdPMhOodkN7fBFfaHeFOJIhi7yAvytH5YxEejQ=="
+  },
+  {
+   "token": "host-ebdc59bfbcb4",
+   "nonce": "TLSjqhv5DA5FS5Rm",
+   "ciphertext": "JhTTf7dmlxmZ0HId46Im+ameLpdxVTVnXWaQjIuDj15I6+wJgxhg"
+  },
+  {
+   "token": "host-ef0ef0261b78",
+   "nonce": "zVHM2bkU4s1vbVpk",
+   "ciphertext": "1z+385N5QujlOz5FRBFQvGaAyTYRnnPMFkxyEZNqIukgTEws2R42HZ0lIotFxBLtl1zWO1gEbMdEFdE="
+  },
+  {
+   "token": "host-fc2d5daa3ef0",
+   "nonce": "45eZdsoPBX+kTJje",
+   "ciphertext": "WHWlnIDy+w2PXAg3eyHgI/wbgfCBqrCm2pRxf62y9H3DR9sO5Mfa9Z8y5Eoll+doQw=="
+  }
+ ]
+}

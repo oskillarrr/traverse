@@ -1,0 +1,10 @@
+﻿path,language,category,sourceSet,module,bytes,code,comment,blank,encoding
+Dockerfile,Dockerfile,config,main,maven:org.example:notifications,339,10,0,0,
+docker-compose.yml,YAML,config,main,maven:org.example:notifications,336,13,0,0,
+pom.xml,Maven POM,build,main,maven:org.example:notifications,601,5,0,0,
+src/main/java/org/example/notify/api/DeliveryReceiptController.java,Java,code,main,maven:org.example:notifications,816,15,2,0,
+src/main/java/org/example/notify/api/MessageController.java,Java,code,main,maven:org.example:notifications,536,13,0,0,
+src/main/java/org/example/notify/repository/CaseReadRepository.java,Java,code,main,maven:org.example:notifications,330,8,0,0,
+src/main/java/org/example/notify/service/MessageService.java,Java,code,main,maven:org.example:notifications,428,11,0,0,
+src/main/java/org/example/notify/sms/SmsGatewayClient.java,Java,code,main,maven:org.example:notifications,416,8,1,0,
+src/main/resources/application.properties,Properties,config,main,maven:org.example:notifications,141,3,0,0,

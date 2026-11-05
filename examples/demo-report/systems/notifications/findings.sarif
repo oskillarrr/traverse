@@ -1,0 +1,128 @@
+{
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "version": "2.1.0",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "SEC-SECRET-CONFIG",
+       "name": "SecSecretConfig",
+       "shortDescription": {
+        "text": "Possible hard-coded credential in configuration"
+       },
+       "fullDescription": {
+        "text": "Value is never copied to the report; check location and rotate if real."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "low",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Secrets"
+       }
+      },
+      {
+       "id": "SQL-ORACLE-DIALECT",
+       "name": "SqlOracleDialect",
+       "shortDescription": {
+        "text": "Oracle-specific SQL"
+       },
+       "fullDescription": {
+        "text": "Proprietary SQL hinders database portability."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Database",
+        "confidence": "medium",
+        "tags": [
+         "Database"
+        ],
+        "technology": "Oracle SQL"
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/notifications/"
+   },
+   "results": [
+    {
+     "ruleId": "SEC-SECRET-CONFIG",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "Possible hard-coded credential in configuration. Value is never copied to the report; check location and rotate if real."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "src/main/resources/application.properties",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "93ef360b3a29d754"
+     },
+     "properties": {
+      "confidence": "low",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SQL-ORACLE-DIALECT",
+     "ruleIndex": 1,
+     "level": "note",
+     "message": {
+      "text": "Oracle-specific SQL. Proprietary SQL hinders database portability."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 15
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "d2f1ef2eaad9a1d6"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "4f2a9c1e7b3d",
+    "rulesVersion": "2.0.0",
+    "system": "notifications",
+    "vcs": "git"
+   }
+  }
+ ]
+}

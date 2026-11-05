@@ -1,0 +1,6 @@
+﻿module,dependency,version,scope,kind,managed,resolved,file,line,locked,lockFile
+maven:org.example.cases:case-parent,maven:org.example:common-dto,2.1.0,,declared,true,true,trunk/pom.xml,4,,
+maven:org.example.cases:case-ejb,maven:log4j:log4j,1.2.17,,declared,false,true,trunk/case-ejb/pom.xml,2,,
+maven:org.example.cases:case-ejb,maven:org.example:common-dto,2.1.0,,declared,false,true,trunk/case-ejb/pom.xml,2,,
+maven:org.example.cases:case-web,maven:commons-collections:commons-collections,3.2.1,,vendored-jar,false,true,trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar,0,,
+maven:org.example.cases:case-web,maven:org.example.cases:case-ejb,1.4.2,,declared,false,true,trunk/case-web/pom.xml,2,,

@@ -1,0 +1,2 @@
+﻿fromLayer,toLayer,from,to,file,line
+Presentation,Persistence,org.example.cases.web.LegacyExportServlet,org.example.cases.dao.ExpedienteDao,trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java,3

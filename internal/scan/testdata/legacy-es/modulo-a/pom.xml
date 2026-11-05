@@ -1,0 +1,4 @@
+<project><parent><groupId>org.example.legacy</groupId><artifactId>padre</artifactId><version>1.0</version></parent>
+<artifactId>modulo-a</artifactId><packaging>war</packaging>
+<dependencyManagement><dependencies><dependency><groupId>x</groupId><artifactId>gestionado</artifactId><version>${v}</version></dependency></dependencies></dependencyManagement>
+<dependencies><dependency><groupId>org.example.legacy</groupId><artifactId>comun-dto</artifactId></dependency></dependencies></project>

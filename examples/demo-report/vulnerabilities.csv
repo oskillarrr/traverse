@@ -1,0 +1,4 @@
+﻿severity,cvss,id,aliases,package,fixedIn,malicious,systems,affected,summary,url
+critical,9.8,TRAVERSEDEMO-2026-0001,TRAVERSEDEMO-CVE-0001,maven:commons-collections:commons-collections,3.2.2,false,1,case-management@3.2.1,SYNTHETIC DEMO ADVISORY - not real vulnerability data. Remote code execution through a deserialization gadget,https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0001
+high,8.1,TRAVERSEDEMO-2026-0002,,maven:log4j:log4j,,false,1,case-management@1.2.17,SYNTHETIC DEMO ADVISORY - not real vulnerability data. Unsafe network appender in an end-of-life logging library,https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0002
+medium,,TRAVERSEDEMO-2026-0003,,nuget:log4net,2.0.10,false,1,legacy-portal@1.2.10.0,SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader,https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003

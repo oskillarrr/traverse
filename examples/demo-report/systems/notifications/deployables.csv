@@ -1,0 +1,2 @@
+﻿module,kind,contextRoot,appPaths,includes,descriptor
+maven:org.example:notifications,service,/notifications,,,

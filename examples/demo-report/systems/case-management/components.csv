@@ -1,0 +1,8 @@
+﻿fqn,kind,language,package,module,sourceSet,layer,layerReason,stereotypes,extends,file,line
+org.example.cases.dao.ExpedienteDao,class,Java,org.example.cases.dao,maven:org.example.cases:case-ejb,main,Persistence,package:dao,,,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,7
+org.example.cases.integracion.NotificacionesClient,class,Java,org.example.cases.integracion,maven:org.example.cases:case-ejb,main,Integration,package:integracion,,,trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java,7
+org.example.cases.modelo.Expediente,class,Java,org.example.cases.modelo,maven:org.example.cases:case-ejb,main,Model,stereotype:@Entity,Entity Table,,trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java,5
+org.example.cases.servicio.GestorExpedientes,class,Java,org.example.cases.servicio,maven:org.example.cases:case-ejb,main,Business,stereotype:@Stateless,Stateless,,trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java,10
+org.example.cases.signing.CaseResolutionSigner,class,Java,org.example.cases.signing,maven:org.example.cases:case-ejb,main,Unknown,none,,,trunk/case-ejb/src/main/java/org/example/cases/signing/CaseResolutionSigner.java,5
+org.example.cases.web.ExpedienteResource,class,Java,org.example.cases.web,maven:org.example.cases:case-web,main,Presentation,stereotype:@Path,Path Produces,,trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java,13
+org.example.cases.web.LegacyExportServlet,class,Java,org.example.cases.web,maven:org.example.cases:case-web,main,Presentation,extends:HttpServlet,,HttpServlet,trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java,5

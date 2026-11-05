@@ -1,0 +1,257 @@
+{
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "version": "2.1.0",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "OPS-K8S-PRIVILEGED",
+       "name": "OpsK8sPrivileged",
+       "shortDescription": {
+        "text": "Privileged container"
+       },
+       "fullDescription": {
+        "text": "Privileged containers have full access to the node."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "high",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Kubernetes"
+       }
+      },
+      {
+       "id": "OPS-K8S-SECRET-IN-REPO",
+       "name": "OpsK8sSecretInRepo",
+       "shortDescription": {
+        "text": "Kubernetes Secret with data in the repository"
+       },
+       "fullDescription": {
+        "text": "Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "high",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Kubernetes"
+       }
+      },
+      {
+       "id": "SEC-SECRET-CONFIG",
+       "name": "SecSecretConfig",
+       "shortDescription": {
+        "text": "Possible hard-coded credential in configuration"
+       },
+       "fullDescription": {
+        "text": "Value is never copied to the report; check location and rotate if real."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "low",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Secrets"
+       }
+      },
+      {
+       "id": "OPS-K8S-NO-RESOURCES",
+       "name": "OpsK8sNoResources",
+       "shortDescription": {
+        "text": "Container without resource requests/limits"
+       },
+       "fullDescription": {
+        "text": "Without limits a container can starve the node."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Delivery",
+        "confidence": "high",
+        "tags": [
+         "Delivery"
+        ],
+        "technology": "Kubernetes"
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/platform-gitops/"
+   },
+   "results": [
+    {
+     "ruleId": "OPS-K8S-PRIVILEGED",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "Privileged container. Privileged containers have full access to the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "b57439f976f98d8d"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-SECRET-IN-REPO",
+     "ruleIndex": 1,
+     "level": "error",
+     "message": {
+      "text": "Kubernetes Secret with data in the repository. Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 56
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "2074c3e75ab60d3b"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SEC-SECRET-CONFIG",
+     "ruleIndex": 2,
+     "level": "error",
+     "message": {
+      "text": "Possible hard-coded credential in configuration. Value is never copied to the report; check location and rotate if real."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 62
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "f97c52ae12af63ba"
+     },
+     "properties": {
+      "confidence": "low",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-NO-RESOURCES",
+     "ruleIndex": 3,
+     "level": "note",
+     "message": {
+      "text": "Container without resource requests/limits. Without limits a container can starve the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "60d82c7db5cae7cc"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-NO-RESOURCES",
+     "ruleIndex": 3,
+     "level": "note",
+     "message": {
+      "text": "Container without resource requests/limits. Without limits a container can starve the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/notifications/deploy.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 28
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "8debaa936f84a4fe"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "platform-gitops",
+    "vcs": "none"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+﻿platform,kind,name,namespace,images,baseImages,ports,replicas,schedule,envKeys,hosts,paths,user,module,file,line
+compose,service,broker,,apache/activemq-artemis:latest,,,,,,,,,,docker-compose.yml,13
+compose,service,notifications,,,,8080:8080,,,SPRING_ARTEMIS_BROKER_URL SPRING_DATASOURCE_URL,,,,maven:org.example:notifications,docker-compose.yml,3
+compose,service,oracle,,gvenzl/oracle-xe:21-slim,,,,,,,,,,docker-compose.yml,11
+docker,image,root,,,maven:3.9-eclipse-temurin-11 eclipse-temurin:11-jre,8080,,,SPRING_PROFILES_ACTIVE,,,1001,maven:org.example:notifications,Dockerfile,1

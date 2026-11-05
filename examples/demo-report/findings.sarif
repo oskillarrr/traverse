@@ -1,0 +1,1420 @@
+{
+ "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+ "version": "2.1.0",
+ "runs": [
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "JAVA-LOG4J1",
+       "name": "JavaLog4j1",
+       "shortDescription": {
+        "text": "Log4j 1.x (end of life, CVEs)"
+       },
+       "fullDescription": {
+        "text": "End of life since 2015 with unpatched vulnerabilities (e.g. CVE-2019-17571)."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Logging",
+        "confidence": "high",
+        "tags": [
+         "Logging"
+        ],
+        "technology": "Log4j 1.x"
+       }
+      },
+      {
+       "id": "RUNTIME-LEVEL",
+       "name": "RuntimeLevel",
+       "shortDescription": {
+        "text": "Outdated runtime level: java 1.6"
+       },
+       "fullDescription": {
+        "text": "Java 6 or older: no supported JDK can target it; upgrade path needed. (count = modules)"
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Migration",
+        "confidence": "high",
+        "tags": [
+         "Migration"
+        ],
+        "technology": "java 1.6"
+       }
+      },
+      {
+       "id": "SEC-SECRET-CODE",
+       "name": "SecSecretCode",
+       "shortDescription": {
+        "text": "Possible hard-coded credential in code"
+       },
+       "fullDescription": {
+        "text": "Value is never copied to the report."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "low",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Secrets"
+       }
+      },
+      {
+       "id": "JAVA-COMMONS-HTTPCLIENT3",
+       "name": "JavaCommonsHttpclient3",
+       "shortDescription": {
+        "text": "Commons HttpClient 3.x (end of life)"
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Integration",
+        "confidence": "medium",
+        "tags": [
+         "Integration"
+        ],
+        "technology": "HttpClient 3"
+       }
+      },
+      {
+       "id": "JAVA-JAVAX-EE",
+       "name": "JavaJavaxEe",
+       "shortDescription": {
+        "text": "javax.* Java EE namespace (pre Jakarta EE 9)"
+       },
+       "fullDescription": {
+        "text": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Migration",
+        "confidence": "high",
+        "tags": [
+         "Migration"
+        ],
+        "technology": "Java EE (javax)"
+       }
+      },
+      {
+       "id": "JAVA-JBOSS-API",
+       "name": "JavaJbossApi",
+       "shortDescription": {
+        "text": "JBoss / WildFly proprietary API"
+       },
+       "fullDescription": {
+        "text": "Couples the application to the JBoss/WildFly runtime."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Platform",
+        "confidence": "medium",
+        "tags": [
+         "Platform"
+        ],
+        "technology": "JBoss/WildFly"
+       }
+      },
+      {
+       "id": "OPS-INSECURE-REPO",
+       "name": "OpsInsecureRepo",
+       "shortDescription": {
+        "text": "Artifact repository over plain HTTP"
+       },
+       "fullDescription": {
+        "text": "Dependencies downloaded without TLS can be tampered with."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "medium",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Build"
+       }
+      },
+      {
+       "id": "SQL-UTL-NETWORK",
+       "name": "SqlUtlNetwork",
+       "shortDescription": {
+        "text": "Database-initiated network/file access"
+       },
+       "fullDescription": {
+        "text": "The database itself integrates with external systems."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Integration",
+        "confidence": "medium",
+        "tags": [
+         "Integration"
+        ],
+        "technology": "DB network"
+       }
+      },
+      {
+       "id": "OPS-VENDORED-LIBS",
+       "name": "OpsVendoredLibs",
+       "shortDescription": {
+        "text": "Libraries committed to the repository"
+       },
+       "fullDescription": {
+        "text": "Dependencies without a manager: versions and CVEs are hard to track."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Delivery",
+        "confidence": "medium",
+        "tags": [
+         "Delivery"
+        ],
+        "technology": "Vendored libraries"
+       }
+      },
+      {
+       "id": "SQL-ORACLE-DIALECT",
+       "name": "SqlOracleDialect",
+       "shortDescription": {
+        "text": "Oracle-specific SQL"
+       },
+       "fullDescription": {
+        "text": "Proprietary SQL hinders database portability."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Database",
+        "confidence": "medium",
+        "tags": [
+         "Database"
+        ],
+        "technology": "Oracle SQL"
+       }
+      },
+      {
+       "id": "VULN/TRAVERSEDEMO-2026-0001",
+       "name": "KnownVulnerability",
+       "shortDescription": {
+        "text": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Remote code execution through a deserialization gadget"
+       },
+       "helpUri": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0001",
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "aliases": [
+         "TRAVERSEDEMO-CVE-0001"
+        ],
+        "category": "vulnerability",
+        "confidence": "high",
+        "security-severity": "9.8",
+        "source": "OSV.dev",
+        "tags": [
+         "security",
+         "vulnerability"
+        ]
+       }
+      },
+      {
+       "id": "VULN/TRAVERSEDEMO-2026-0002",
+       "name": "KnownVulnerability",
+       "shortDescription": {
+        "text": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Unsafe network appender in an end-of-life logging library"
+       },
+       "helpUri": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0002",
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "aliases": null,
+        "category": "vulnerability",
+        "confidence": "high",
+        "security-severity": "8.1",
+        "source": "OSV.dev",
+        "tags": [
+         "security",
+         "vulnerability"
+        ]
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/case-management/"
+   },
+   "results": [
+    {
+     "ruleId": "JAVA-LOG4J1",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "Log4j 1.x (end of life, CVEs). End of life since 2015 with unpatched vulnerabilities (e.g. CVE-2019-17571)."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 5
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "70466a32fecf26f3"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "RUNTIME-LEVEL",
+     "ruleIndex": 1,
+     "level": "error",
+     "message": {
+      "text": "Outdated runtime level: java 1.6. Java 6 or older: no supported JDK can target it; upgrade path needed. (count = modules) (4 occurrences)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/pom.xml",
+         "uriBaseId": "SRCROOT"
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "edefc7a43bf48014"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 4,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SEC-SECRET-CODE",
+     "ruleIndex": 2,
+     "level": "error",
+     "message": {
+      "text": "Possible hard-coded credential in code. Value is never copied to the report."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 13
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "f183f0e88dbfdcf0"
+     },
+     "properties": {
+      "confidence": "low",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-COMMONS-HTTPCLIENT3",
+     "ruleIndex": 3,
+     "level": "warning",
+     "message": {
+      "text": "Commons HttpClient 3.x (end of life) (2 occurrences)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 5
+        }
+       }
+      }
+     ],
+     "relatedLocations": [
+      {
+       "id": 1,
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 6
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "47ea423586aa7ea3"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 2,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-JAVAX-EE",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "javax.* Java EE namespace (pre Jakarta EE 9). Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "f68e52e55e1ceb55"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-JAVAX-EE",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "javax.* Java EE namespace (pre Jakarta EE 9). Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes. (2 occurrences)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "relatedLocations": [
+      {
+       "id": 1,
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 4
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "2df5ea1f7399a4a4"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 2,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-JAVAX-EE",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "javax.* Java EE namespace (pre Jakarta EE 9). Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes. (2 occurrences)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ],
+     "relatedLocations": [
+      {
+       "id": 1,
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 4
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "81fe957de4d841c9"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 2,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-JAVAX-EE",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "javax.* Java EE namespace (pre Jakarta EE 9). Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "aacbdfded09c6cfd"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "JAVA-JBOSS-API",
+     "ruleIndex": 5,
+     "level": "warning",
+     "message": {
+      "text": "JBoss / WildFly proprietary API. Couples the application to the JBoss/WildFly runtime."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/webapp/WEB-INF/web.xml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 4
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "2da9708d74ec3fba"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-INSECURE-REPO",
+     "ruleIndex": 6,
+     "level": "warning",
+     "message": {
+      "text": "Artifact repository over plain HTTP. Dependencies downloaded without TLS can be tampered with."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/pom.xml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 5
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "f7d4fcff8b0a0142"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SQL-UTL-NETWORK",
+     "ruleIndex": 7,
+     "level": "warning",
+     "message": {
+      "text": "Database-initiated network/file access. The database itself integrates with external systems."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/db/schema.sql",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 4
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "4030830f4e78a230"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-VENDORED-LIBS",
+     "ruleIndex": 8,
+     "level": "note",
+     "message": {
+      "text": "Libraries committed to the repository. Dependencies without a manager: versions and CVEs are hard to track."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar",
+         "uriBaseId": "SRCROOT"
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "d66893c5d0d36629"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SQL-ORACLE-DIALECT",
+     "ruleIndex": 9,
+     "level": "note",
+     "message": {
+      "text": "Oracle-specific SQL. Proprietary SQL hinders database portability."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 8
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "7a9bdd83c034a054"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "VULN/TRAVERSEDEMO-2026-0001",
+     "ruleIndex": 10,
+     "level": "error",
+     "message": {
+      "text": "maven:commons-collections:commons-collections 3.2.1 is affected by TRAVERSEDEMO-2026-0001 (TRAVERSEDEMO-CVE-0001) [critical]. Fixed in 3.2.2"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar",
+         "uriBaseId": "SRCROOT"
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "7e633908-34a3-5477-b978-a00a5851df11"
+     },
+     "properties": {
+      "confidence": "high",
+      "kind": "vendored-jar",
+      "modules": [
+       "maven:org.example.cases:case-web"
+      ],
+      "package": "maven:commons-collections:commons-collections",
+      "version": "3.2.1"
+     }
+    },
+    {
+     "ruleId": "VULN/TRAVERSEDEMO-2026-0002",
+     "ruleIndex": 11,
+     "level": "error",
+     "message": {
+      "text": "maven:log4j:log4j 1.2.17 is affected by TRAVERSEDEMO-2026-0002 [high]"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "trunk/case-ejb/pom.xml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "8f7c4c4d-585c-5a70-9222-108bbd79f3c3"
+     },
+     "properties": {
+      "confidence": "high",
+      "kind": "declared",
+      "modules": [
+       "maven:org.example.cases:case-ejb"
+      ],
+      "package": "maven:log4j:log4j",
+      "version": "1.2.17"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "case-management",
+    "vcs": "svn"
+   }
+  },
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": []
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/common-lib/"
+   },
+   "results": [],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "common-lib",
+    "vcs": "none"
+   }
+  },
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "NET-WEBFORMS",
+       "name": "NetWebforms",
+       "shortDescription": {
+        "text": "ASP.NET Web Forms"
+       },
+       "fullDescription": {
+        "text": "Not supported on .NET Core / .NET 5+."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Web",
+        "confidence": "medium",
+        "tags": [
+         "Web"
+        ],
+        "technology": "Web Forms"
+       }
+      },
+      {
+       "id": "NET-FRAMEWORK",
+       "name": "NetFramework",
+       "shortDescription": {
+        "text": ".NET Framework (Windows only)"
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Platform",
+        "confidence": "high",
+        "tags": [
+         "Platform"
+        ],
+        "technology": ".NET Framework"
+       }
+      },
+      {
+       "id": "NET-WCF",
+       "name": "NetWcf",
+       "shortDescription": {
+        "text": "WCF services"
+       },
+       "fullDescription": {
+        "text": "WCF server is not available on modern .NET (CoreWCF required)."
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Integration",
+        "confidence": "medium",
+        "tags": [
+         "Integration"
+        ],
+        "technology": "WCF"
+       }
+      },
+      {
+       "id": "RUNTIME-LEVEL",
+       "name": "RuntimeLevel",
+       "shortDescription": {
+        "text": "Outdated runtime level: .NET v4.5"
+       },
+       "fullDescription": {
+        "text": ".NET Framework is Windows-only; modern .NET requires migration. (count = modules)"
+       },
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "category": "Migration",
+        "confidence": "high",
+        "tags": [
+         "Migration"
+        ],
+        "technology": ".NET v4.5"
+       }
+      },
+      {
+       "id": "VULN/TRAVERSEDEMO-2026-0003",
+       "name": "KnownVulnerability",
+       "shortDescription": {
+        "text": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader"
+       },
+       "helpUri": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003",
+       "defaultConfiguration": {
+        "level": "warning"
+       },
+       "properties": {
+        "aliases": null,
+        "category": "vulnerability",
+        "confidence": "low",
+        "source": "OSV.dev",
+        "tags": [
+         "security",
+         "vulnerability"
+        ]
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/legacy-portal/"
+   },
+   "results": [
+    {
+     "ruleId": "NET-WEBFORMS",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "ASP.NET Web Forms. Not supported on .NET Core / .NET 5+."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Default.aspx.cs",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "c7c779b5bdeb8425"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "NET-FRAMEWORK",
+     "ruleIndex": 1,
+     "level": "warning",
+     "message": {
+      "text": ".NET Framework (Windows only)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 1
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "7dbc6291c3385586"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "NET-WCF",
+     "ruleIndex": 2,
+     "level": "warning",
+     "message": {
+      "text": "WCF services. WCF server is not available on modern .NET (CoreWCF required)."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Default.aspx.cs",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "d1115db9b4ede5a2"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "RUNTIME-LEVEL",
+     "ruleIndex": 3,
+     "level": "warning",
+     "message": {
+      "text": "Outdated runtime level: .NET v4.5. .NET Framework is Windows-only; modern .NET requires migration. (count = modules)"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "274c03cc899c2758"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "VULN/TRAVERSEDEMO-2026-0003",
+     "ruleIndex": 4,
+     "level": "warning",
+     "message": {
+      "text": "nuget:log4net 1.2.10.0 is affected by TRAVERSEDEMO-2026-0003 [medium]. Fixed in 2.0.10"
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "Portal/Portal.csproj",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 2
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "60cecd42-69cf-54cb-8369-8f56632b6a4e"
+     },
+     "properties": {
+      "confidence": "low",
+      "kind": "assembly-ref",
+      "modules": [
+       "nuget:Portal.Web"
+      ],
+      "package": "nuget:log4net",
+      "version": "1.2.10.0"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "legacy-portal",
+    "vcs": "none"
+   }
+  },
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "SEC-SECRET-CONFIG",
+       "name": "SecSecretConfig",
+       "shortDescription": {
+        "text": "Possible hard-coded credential in configuration"
+       },
+       "fullDescription": {
+        "text": "Value is never copied to the report; check location and rotate if real."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "low",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Secrets"
+       }
+      },
+      {
+       "id": "SQL-ORACLE-DIALECT",
+       "name": "SqlOracleDialect",
+       "shortDescription": {
+        "text": "Oracle-specific SQL"
+       },
+       "fullDescription": {
+        "text": "Proprietary SQL hinders database portability."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Database",
+        "confidence": "medium",
+        "tags": [
+         "Database"
+        ],
+        "technology": "Oracle SQL"
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/notifications/"
+   },
+   "results": [
+    {
+     "ruleId": "SEC-SECRET-CONFIG",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "Possible hard-coded credential in configuration. Value is never copied to the report; check location and rotate if real."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "src/main/resources/application.properties",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 3
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "93ef360b3a29d754"
+     },
+     "properties": {
+      "confidence": "low",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SQL-ORACLE-DIALECT",
+     "ruleIndex": 1,
+     "level": "note",
+     "message": {
+      "text": "Oracle-specific SQL. Proprietary SQL hinders database portability."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "src/main/java/org/example/notify/api/DeliveryReceiptController.java",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 15
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "d2f1ef2eaad9a1d6"
+     },
+     "properties": {
+      "confidence": "medium",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "4f2a9c1e7b3d",
+    "rulesVersion": "2.0.0",
+    "system": "notifications",
+    "vcs": "git"
+   }
+  },
+  {
+   "tool": {
+    "driver": {
+     "name": "Traverse",
+     "version": "dev",
+     "informationUri": "https://github.com/oskillarrr/traverse",
+     "rules": [
+      {
+       "id": "OPS-K8S-PRIVILEGED",
+       "name": "OpsK8sPrivileged",
+       "shortDescription": {
+        "text": "Privileged container"
+       },
+       "fullDescription": {
+        "text": "Privileged containers have full access to the node."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "high",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Kubernetes"
+       }
+      },
+      {
+       "id": "OPS-K8S-SECRET-IN-REPO",
+       "name": "OpsK8sSecretInRepo",
+       "shortDescription": {
+        "text": "Kubernetes Secret with data in the repository"
+       },
+       "fullDescription": {
+        "text": "Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "high",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Kubernetes"
+       }
+      },
+      {
+       "id": "SEC-SECRET-CONFIG",
+       "name": "SecSecretConfig",
+       "shortDescription": {
+        "text": "Possible hard-coded credential in configuration"
+       },
+       "fullDescription": {
+        "text": "Value is never copied to the report; check location and rotate if real."
+       },
+       "defaultConfiguration": {
+        "level": "error"
+       },
+       "properties": {
+        "category": "Security",
+        "confidence": "low",
+        "tags": [
+         "Security"
+        ],
+        "technology": "Secrets"
+       }
+      },
+      {
+       "id": "OPS-K8S-NO-RESOURCES",
+       "name": "OpsK8sNoResources",
+       "shortDescription": {
+        "text": "Container without resource requests/limits"
+       },
+       "fullDescription": {
+        "text": "Without limits a container can starve the node."
+       },
+       "defaultConfiguration": {
+        "level": "note"
+       },
+       "properties": {
+        "category": "Delivery",
+        "confidence": "high",
+        "tags": [
+         "Delivery"
+        ],
+        "technology": "Kubernetes"
+       }
+      }
+     ]
+    }
+   },
+   "automationDetails": {
+    "id": "traverse/platform-gitops/"
+   },
+   "results": [
+    {
+     "ruleId": "OPS-K8S-PRIVILEGED",
+     "ruleIndex": 0,
+     "level": "error",
+     "message": {
+      "text": "Privileged container. Privileged containers have full access to the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "b57439f976f98d8d"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-SECRET-IN-REPO",
+     "ruleIndex": 1,
+     "level": "error",
+     "message": {
+      "text": "Kubernetes Secret with data in the repository. Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 56
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "2074c3e75ab60d3b"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "SEC-SECRET-CONFIG",
+     "ruleIndex": 2,
+     "level": "error",
+     "message": {
+      "text": "Possible hard-coded credential in configuration. Value is never copied to the report; check location and rotate if real."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 62
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "f97c52ae12af63ba"
+     },
+     "properties": {
+      "confidence": "low",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-NO-RESOURCES",
+     "ruleIndex": 3,
+     "level": "note",
+     "message": {
+      "text": "Container without resource requests/limits. Without limits a container can starve the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/case-management/deployment.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 16
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "60d82c7db5cae7cc"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    },
+    {
+     "ruleId": "OPS-K8S-NO-RESOURCES",
+     "ruleIndex": 3,
+     "level": "note",
+     "message": {
+      "text": "Container without resource requests/limits. Without limits a container can starve the node."
+     },
+     "locations": [
+      {
+       "physicalLocation": {
+        "artifactLocation": {
+         "uri": "apps/notifications/deploy.yaml",
+         "uriBaseId": "SRCROOT"
+        },
+        "region": {
+         "startLine": 28
+        }
+       }
+      }
+     ],
+     "partialFingerprints": {
+      "traverseFindingId/v1": "8debaa936f84a4fe"
+     },
+     "properties": {
+      "confidence": "high",
+      "count": 1,
+      "sourceSet": "main"
+     }
+    }
+   ],
+   "properties": {
+    "revision": "",
+    "rulesVersion": "2.0.0",
+    "system": "platform-gitops",
+    "vcs": "none"
+   }
+  }
+ ]
+}

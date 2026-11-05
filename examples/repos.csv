@@ -1,0 +1,7 @@
+# name,path,group   (path relative to this file or absolute; group is optional)
+name,path,group
+common-lib,demo-portfolio/common-lib,Shared
+case-management,demo-portfolio/case-management,Case processing
+notifications,demo-portfolio/notifications,Case processing
+legacy-portal,demo-portfolio/legacy-portal,Citizen services
+platform-gitops,demo-portfolio/platform-gitops,Platform

@@ -1,0 +1,5 @@
+﻿id,build,name,version,packaging,runtime,parent,path,descriptor,dependencies
+maven:org.example.cases:case-parent,maven,case-parent,1.4.2,pom,java 1.6,,trunk,trunk/pom.xml,1
+maven:org.example.cases:case-ear,maven,case-ear,1.4.2,ear,java 1.6,maven:org.example.cases:case-parent,trunk/case-ear,trunk/case-ear/pom.xml,0
+maven:org.example.cases:case-ejb,maven,case-ejb,1.4.2,ejb,java 1.6,maven:org.example.cases:case-parent,trunk/case-ejb,trunk/case-ejb/pom.xml,2
+maven:org.example.cases:case-web,maven,case-web,1.4.2,war,java 1.6,maven:org.example.cases:case-parent,trunk/case-web,trunk/case-web/pom.xml,2

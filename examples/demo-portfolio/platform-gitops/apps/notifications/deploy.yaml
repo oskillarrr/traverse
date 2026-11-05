@@ -1,0 +1,39 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: notifications
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: {app: notifications}
+    spec:
+      containers:
+        - name: notifications
+          image: image-registry.openshift-image-registry.svc:5000/tramitacion/notifications:3.0.1
+          resources:
+            limits: {memory: 512Mi}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nightly-reconciliation
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: job
+              image: tramitacion/case-ejb:1.4.2
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: notifications
+spec:
+  host: avisos.interno.example
+  to:
+    kind: Service
+    name: notifications

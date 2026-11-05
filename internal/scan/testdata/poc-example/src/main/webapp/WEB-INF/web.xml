@@ -1,0 +1,1 @@
+<web-app><servlet-mapping><servlet-name>Pedidos</servlet-name><url-pattern>/api/*</url-pattern></servlet-mapping><resource-ref><res-ref-name>jdbc/pedidos</res-ref-name></resource-ref></web-app>

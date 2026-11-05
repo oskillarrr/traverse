@@ -1,0 +1,17 @@
+﻿kind,direction,key,match,component,detail,host,confidence,file,line,transport,auth,role,counterpart
+db-table,uses,CASES.EXPEDIENTE,EXPEDIENTE,org.example.cases.modelo.Expediente,JPA entity mapping,,high,trunk/case-ejb/src/main/java/org/example/cases/modelo/Expediente.java,5,,,,
+db-table,defines,CASES.EXPEDIENTE,EXPEDIENTE,,CREATE TABLE,,high,trunk/db/schema.sql,2,,,,
+db-table,defines,CASES.TRAMITE,TRAMITE,,CREATE TABLE,,high,trunk/db/schema.sql,3,,,,
+db-table,read,EXPEDIENTE,EXPEDIENTE,org.example.cases.dao.ExpedienteDao,SQL in string literal,,medium,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,8,,,,
+db-table,write,EXPEDIENTE,EXPEDIENTE,org.example.cases.dao.ExpedienteDao,SQL in string literal,,medium,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,13,,,,
+db-table,read,TRAMITE,TRAMITE,org.example.cases.dao.ExpedienteDao,SQL in string literal,,medium,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,8,,,,
+http,exposes,ANY /cases/export/legacy,/export/legacy,org.example.cases.web.LegacyExportServlet,servlet-mapping,,high,trunk/case-web/src/main/webapp/WEB-INF/web.xml,7,,,,
+http,calls,ANY /notifications/api/messages/send,/notifications/api/messages/send,org.example.cases.integracion.NotificacionesClient,URL literal,host-ebdc59bfbcb4,medium,trunk/case-ejb/src/main/java/org/example/cases/integracion/NotificacionesClient.java,8,mtls,client-cert,,notifications
+http,exposes,GET /cases/api/expedientes/{id},/expedientes/{},org.example.cases.web.ExpedienteResource,jaxrs,,high,trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java,19,,,api,
+http,exposes,POST /cases/api/expedientes/{id}/resolver,/expedientes/{}/resolver,org.example.cases.web.ExpedienteResource,jaxrs,,high,trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java,23,,,api,
+jms,uses,java:/jms/queue/CaseResolved,jms/queue/CaseResolved,org.example.cases.servicio.GestorExpedientes,'@Resource Queue,,high,trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java,12,,,,
+jndi,uses,java:comp/env/jdbc/CasesDS,jdbc/CasesDS,org.example.cases.dao.ExpedienteDao,string literal,,medium,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,10,,,,database
+jndi,uses,java:jboss/datasources/CasesDS,datasources/CasesDS,,datasource (cases),,high,trunk/case-ejb/src/main/resources/META-INF/persistence.xml,1,,,,database
+jndi,uses,jdbc/CasesDS,jdbc/CasesDS,,javax.sql.DataSource,,high,trunk/case-web/src/main/webapp/WEB-INF/web.xml,8,,,,database
+platform-module,uses,com.oracle.ojdbc,com.oracle.ojdbc,,JBoss module,,high,trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml,1,,,,
+platform-module,uses,org.apache.log4j,org.apache.log4j,,JBoss module,,high,trunk/case-web/src/main/webapp/WEB-INF/jboss-deployment-structure.xml,1,,,,

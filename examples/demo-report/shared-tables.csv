@@ -1,0 +1,3 @@
+﻿table,systems,access
+EXPEDIENTE,3,case-management:defines/read/uses/write legacy-portal:read notifications:read
+TRAMITE,2,case-management:defines/read legacy-portal:read

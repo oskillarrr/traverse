@@ -1,0 +1,3 @@
+﻿module,dependency,version,scope,kind,managed,resolved,file,line,locked,lockFile
+maven:org.example:notifications,maven:org.example:common-dto,2.3.0,,declared,false,true,pom.xml,5,,
+maven:org.example:notifications,maven:org.springframework.boot:spring-boot-starter-web,,,declared,false,false,pom.xml,4,,

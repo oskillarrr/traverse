@@ -1,0 +1,2 @@
+<persistence><persistence-unit name="cases"><provider>org.hibernate.ejb.HibernatePersistence</provider><jta-data-source>java:jboss/datasources/CasesDS</jta-data-source>
+<properties><property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/></properties></persistence-unit></persistence>

@@ -1,0 +1,2 @@
+﻿id,build,name,version,packaging,runtime,parent,path,descriptor,dependencies
+nuget:Portal.Web,msbuild,Portal.Web,,library,.NET v4.5,,Portal,Portal/Portal.csproj,1

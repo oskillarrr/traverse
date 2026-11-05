@@ -1,0 +1,21 @@
+{
+  "version": "local-1",
+  "rules": [
+    {
+      "id": "LOCAL-INTERNAL-FRAMEWORK",
+      "title": "In-house framework (legacy)",
+      "category": "Framework",
+      "technology": "In-house framework",
+      "severity": "medium",
+      "confidence": "high",
+      "languages": ["Java"],
+      "pattern": "\\borg\\.example\\.fwk\\.",
+      "message": "Discontinued corporate framework: plan replacement.",
+      "tags": ["legacy"],
+      "examples": {
+        "match": ["import org.example.fwk.base.BaseAction;"],
+        "noMatch": ["// import org.example.fwk.base.BaseAction;"]
+      }
+    }
+  ]
+}

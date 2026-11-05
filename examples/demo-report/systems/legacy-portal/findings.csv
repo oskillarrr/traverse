@@ -1,0 +1,9 @@
+﻿id,severity,ruleId,title,category,technology,confidence,file,lines,count,sourceSet,message,validation
+c7c779b5bdeb8425,high,NET-WEBFORMS,ASP.NET Web Forms,Web,Web Forms,medium,Portal/Default.aspx.cs,1,1,main,Not supported on .NET Core / .NET 5+.,
+7dbc6291c3385586,medium,NET-FRAMEWORK,.NET Framework (Windows only),Platform,.NET Framework,high,Portal/Portal.csproj,1,1,main,,
+d1115db9b4ede5a2,medium,NET-WCF,WCF services,Integration,WCF,medium,Portal/Default.aspx.cs,3,1,main,WCF server is not available on modern .NET (CoreWCF required).,
+274c03cc899c2758,medium,RUNTIME-LEVEL,Outdated runtime level: .NET v4.5,Migration,.NET v4.5,high,Portal/Portal.csproj,,1,main,.NET Framework is Windows-only; modern .NET requires migration. (count = modules),
+5baaaae6336fa102,info,COBOL-CICS,CICS transactions,Platform,CICS,medium,batch/NIGHTLY.cbl,6,1,main,,
+c5b757277d693edf,info,COBOL-MQ,IBM MQ calls from COBOL,Integration,IBM MQ,medium,batch/NIGHTLY.cbl,7,1,main,,
+e03465cc45d1baae,info,COBOL-SQL,Embedded SQL (DB2),Persistence,Embedded SQL,medium,batch/NIGHTLY.cbl,5,1,main,,
+cad087596f94ef36,info,DB-SQLSERVER,SQL Server,Database,SQL Server,medium,Portal/Default.aspx.cs,2,1,main,,

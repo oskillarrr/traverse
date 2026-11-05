@@ -1,0 +1,6 @@
+﻿from,to,kind,confidence,file,line
+org.example.cases.dao.ExpedienteDao,org.example.cases.modelo.Expediente,import,high,trunk/case-ejb/src/main/java/org/example/cases/dao/ExpedienteDao.java,5
+org.example.cases.servicio.GestorExpedientes,org.example.cases.dao.ExpedienteDao,import,high,trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java,6
+org.example.cases.servicio.GestorExpedientes,org.example.cases.integracion.NotificacionesClient,import,high,trunk/case-ejb/src/main/java/org/example/cases/servicio/GestorExpedientes.java,7
+org.example.cases.web.ExpedienteResource,org.example.cases.servicio.GestorExpedientes,inject,high,trunk/case-web/src/main/java/org/example/cases/web/ExpedienteResource.java,15
+org.example.cases.web.LegacyExportServlet,org.example.cases.dao.ExpedienteDao,import,high,trunk/case-web/src/main/java/org/example/cases/web/LegacyExportServlet.java,3

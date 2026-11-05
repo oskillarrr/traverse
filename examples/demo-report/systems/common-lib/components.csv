@@ -1,0 +1,3 @@
+﻿fqn,kind,language,package,module,sourceSet,layer,layerReason,stereotypes,extends,file,line
+org.example.common.dto.CaseDTO,class,Java,org.example.common.dto,maven:org.example:common-dto,main,Model,package:dto,,Serializable,src/main/java/org/example/common/dto/CaseDTO.java,3
+org.example.common.util.DateUtils,class,Java,org.example.common.util,maven:org.example:common-dto,main,Cross-cutting,package:util,,,src/main/java/org/example/common/util/DateUtils.java,2

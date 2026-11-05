@@ -1,0 +1,3 @@
+﻿fqn,kind,language,package,module,sourceSet,layer,layerReason,stereotypes,extends,file,line
+_Default,class,C#,,nuget:Portal.Web,main,Presentation,extends:Page,,Page,Portal/Default.aspx.cs,4
+mainframe.batch.NIGHTLY,program,COBOL,mainframe.batch,,main,Business,cics:online program,,,batch/NIGHTLY.cbl,2

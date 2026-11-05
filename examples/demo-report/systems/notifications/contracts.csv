@@ -1,0 +1,10 @@
+﻿kind,direction,key,match,component,detail,host,confidence,file,line,transport,auth,role,counterpart
+database,uses,oracle,,,configuration: services.notifications.environment.SPRING_DATASOURCE_URL,host-bb8f9d8bfaea,medium,docker-compose.yml,7,,,,database
+database,uses,oracle,,,configuration: spring.datasource.url,host-240cd640a7e5,medium,src/main/resources/application.properties,2,,,,database
+db-table,read,CASES.EXPEDIENTE,EXPEDIENTE,org.example.notify.repository.CaseReadRepository,SQL in string literal,,medium,src/main/java/org/example/notify/repository/CaseReadRepository.java,7,,,,schema:cases
+http,calls,ANY /api/v1/sms,/api/v1/sms,org.example.notify.sms.SmsGatewayClient,URL literal,host-fc2d5daa3ef0,medium,src/main/java/org/example/notify/sms/SmsGatewayClient.java,7,plain,,,sms
+http,exposes,GET /notifications/api/messages/by-id/{id},/api/messages/by-id/{},org.example.notify.api.MessageController,spring,,high,src/main/java/org/example/notify/api/MessageController.java,12,,,api,
+http,exposes,GET /notifications/api/messages/{id},/api/messages/{},org.example.notify.api.MessageController,spring,,high,src/main/java/org/example/notify/api/MessageController.java,12,,,api,
+http,exposes,POST /notifications/api/messages/send,/api/messages/send,org.example.notify.api.MessageController,spring,,high,src/main/java/org/example/notify/api/MessageController.java,10,,,api,
+http,exposes,POST /notifications/api/receipts/delivery,/api/receipts/delivery,org.example.notify.api.DeliveryReceiptController,spring,,high,src/main/java/org/example/notify/api/DeliveryReceiptController.java,13,mtls-upstream,client-cert (header),api,
+jms,subscribes,jms/queue/CaseResolved,jms/queue/CaseResolved,org.example.notify.service.MessageService,'@JmsListener,,high,src/main/java/org/example/notify/service/MessageService.java,9,,,,

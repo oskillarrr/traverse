@@ -1,0 +1,677 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "generatedAt": "2025-11-05T00:00:00Z",
+ "systems": [
+  {
+   "name": "case-management",
+   "vcs": "svn",
+   "languages": [
+    "Java",
+    "SQL"
+   ],
+   "code": 87,
+   "files": 18,
+   "modules": 4,
+   "components": 7,
+   "exposes": 3,
+   "calls": 1,
+   "tables": 2,
+   "runtimes": [
+    "java 1.6"
+   ],
+   "deployables": [
+    "EAR case-ear",
+    "EJB case-ejb",
+    "WAR case-web"
+   ],
+   "risks": {
+    "high": 3,
+    "low": 2,
+    "medium": 8
+   },
+   "cycles": 0,
+   "layerIssues": 1,
+   "vulnerabilities": {
+    "critical": 1,
+    "high": 1
+   }
+  },
+  {
+   "name": "common-lib",
+   "vcs": "none",
+   "languages": [
+    "Java"
+   ],
+   "code": 5,
+   "files": 4,
+   "modules": 1,
+   "components": 2,
+   "exposes": 0,
+   "calls": 0,
+   "tables": 0,
+   "runtimes": [
+    "java 1.8"
+   ],
+   "risks": {},
+   "cycles": 0,
+   "layerIssues": 0
+  },
+  {
+   "name": "legacy-portal",
+   "vcs": "none",
+   "languages": [
+    "C#",
+    "COBOL"
+   ],
+   "code": 16,
+   "files": 3,
+   "modules": 1,
+   "components": 2,
+   "exposes": 1,
+   "calls": 1,
+   "tables": 2,
+   "runtimes": [
+    ".NET v4.5"
+   ],
+   "risks": {
+    "high": 1,
+    "medium": 3
+   },
+   "cycles": 0,
+   "layerIssues": 0,
+   "vulnerabilities": {
+    "medium": 1
+   }
+  },
+  {
+   "name": "notifications",
+   "vcs": "git",
+   "revision": "4f2a9c1e7b3d",
+   "languages": [
+    "Java"
+   ],
+   "code": 55,
+   "files": 9,
+   "modules": 1,
+   "components": 5,
+   "exposes": 4,
+   "calls": 1,
+   "tables": 1,
+   "runtimes": [
+    "java 11"
+   ],
+   "deployables": [
+    "SERVICE notifications"
+   ],
+   "risks": {
+    "high": 1,
+    "low": 1
+   },
+   "cycles": 0,
+   "layerIssues": 0
+  },
+  {
+   "name": "platform-gitops",
+   "vcs": "none",
+   "languages": null,
+   "code": 0,
+   "files": 2,
+   "modules": 0,
+   "components": 0,
+   "exposes": 0,
+   "calls": 0,
+   "tables": 0,
+   "risks": {
+    "high": 3,
+    "low": 2
+   },
+   "cycles": 0,
+   "layerIssues": 0
+  }
+ ],
+ "links": [
+  {
+   "from": "case-management",
+   "to": "common-lib",
+   "kind": "library",
+   "keys": [
+    "maven:org.example:common-dto"
+   ],
+   "count": 1,
+   "confidence": "high"
+  },
+  {
+   "from": "case-management",
+   "to": "legacy-portal",
+   "kind": "shared-db",
+   "keys": [
+    "EXPEDIENTE",
+    "TRAMITE"
+   ],
+   "count": 2,
+   "confidence": "medium"
+  },
+  {
+   "from": "case-management",
+   "to": "notifications",
+   "kind": "http",
+   "keys": [
+    "POST /notifications/api/messages/send"
+   ],
+   "count": 1,
+   "confidence": "medium"
+  },
+  {
+   "from": "case-management",
+   "to": "notifications",
+   "kind": "jms",
+   "keys": [
+    "java:/jms/queue/CaseResolved"
+   ],
+   "count": 1,
+   "confidence": "high"
+  },
+  {
+   "from": "case-management",
+   "to": "notifications",
+   "kind": "shared-db",
+   "keys": [
+    "EXPEDIENTE"
+   ],
+   "count": 1,
+   "confidence": "medium"
+  },
+  {
+   "from": "legacy-portal",
+   "to": "case-management",
+   "kind": "http",
+   "keys": [
+    "GET /cases/api/expedientes/{id}"
+   ],
+   "count": 1,
+   "confidence": "medium"
+  },
+  {
+   "from": "legacy-portal",
+   "to": "notifications",
+   "kind": "shared-db",
+   "keys": [
+    "EXPEDIENTE"
+   ],
+   "count": 1,
+   "confidence": "medium"
+  },
+  {
+   "from": "notifications",
+   "to": "common-lib",
+   "kind": "library",
+   "keys": [
+    "maven:org.example:common-dto"
+   ],
+   "count": 1,
+   "confidence": "high"
+  },
+  {
+   "from": "platform-gitops",
+   "to": "case-management",
+   "kind": "deploys",
+   "keys": [
+    "kubernetes CronJob nightly-reconciliation ← tramitacion/case-ejb:1.4.2",
+    "kubernetes Deployment case-management ← tramitacion/case-web:1.4.2"
+   ],
+   "count": 2,
+   "confidence": "medium"
+  },
+  {
+   "from": "platform-gitops",
+   "to": "notifications",
+   "kind": "deploys",
+   "keys": [
+    "openshift DeploymentConfig notifications ← tramitacion/notifications:3.0.1"
+   ],
+   "count": 1,
+   "confidence": "medium"
+  }
+ ],
+ "sharedTables": [
+  {
+   "table": "EXPEDIENTE",
+   "basis": "schema",
+   "systems": [
+    "case-management",
+    "legacy-portal",
+    "notifications"
+   ],
+   "access": [
+    "case-management:defines/read/uses/write",
+    "legacy-portal:read",
+    "notifications:read"
+   ]
+  },
+  {
+   "table": "TRAMITE",
+   "basis": "schema",
+   "systems": [
+    "case-management",
+    "legacy-portal"
+   ],
+   "access": [
+    "case-management:defines/read",
+    "legacy-portal:read"
+   ]
+  }
+ ],
+ "libraryVersions": [
+  {
+   "library": "maven:org.example:common-dto",
+   "internal": true,
+   "versions": {
+    "2.1.0": [
+     "case-management"
+    ],
+    "2.3.0": [
+     "notifications"
+    ]
+   }
+  }
+ ],
+ "external": [
+  {
+   "kind": "http",
+   "key": "ANY /api/v1/sms",
+   "host": "host-fc2d5daa3ef0",
+   "systems": [
+    "notifications"
+   ]
+  }
+ ],
+ "technologies": [
+  {
+   "technology": "AdES",
+   "category": "Authentication",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Container (JAAS)",
+   "category": "Authentication",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Container auth (CLIENT-CERT)",
+   "category": "Authentication",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Timestamping",
+   "category": "Authentication",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "X.509 client auth",
+   "category": "Authentication",
+   "severity": "info",
+   "systems": {
+    "case-management": 2
+   }
+  },
+  {
+   "technology": "EJB",
+   "category": "Business",
+   "severity": "info",
+   "systems": {
+    "case-management": 2
+   }
+  },
+  {
+   "technology": "Oracle Database",
+   "category": "Database",
+   "severity": "info",
+   "systems": {
+    "case-management": 3,
+    "notifications": 2
+   }
+  },
+  {
+   "technology": "Oracle SQL",
+   "category": "Database",
+   "severity": "low",
+   "systems": {
+    "case-management": 1,
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "PL/SQL",
+   "category": "Database",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "SQL Server",
+   "category": "Database",
+   "severity": "info",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "Docker",
+   "category": "Delivery",
+   "severity": "info",
+   "systems": {
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "Kubernetes",
+   "category": "Delivery",
+   "severity": "low",
+   "systems": {
+    "platform-gitops": 4
+   }
+  },
+  {
+   "technology": "Vendored libraries",
+   "category": "Delivery",
+   "severity": "low",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Spring Boot",
+   "category": "Framework",
+   "severity": "info",
+   "systems": {
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "Spring Framework",
+   "category": "Framework",
+   "severity": "info",
+   "systems": {
+    "notifications": 2
+   }
+  },
+  {
+   "technology": "DB network",
+   "category": "Integration",
+   "severity": "medium",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "HTTP client",
+   "category": "Integration",
+   "severity": "info",
+   "systems": {
+    "case-management": 1,
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "HttpClient 3",
+   "category": "Integration",
+   "severity": "medium",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "IBM MQ",
+   "category": "Integration",
+   "severity": "info",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "JMS",
+   "category": "Integration",
+   "severity": "info",
+   "systems": {
+    "case-management": 1,
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "JNDI",
+   "category": "Integration",
+   "severity": "info",
+   "systems": {
+    "case-management": 2
+   }
+  },
+  {
+   "technology": "WCF",
+   "category": "Integration",
+   "severity": "medium",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "Log4j 1.x",
+   "category": "Logging",
+   "severity": "high",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": ".NET v4.5",
+   "category": "Migration",
+   "severity": "medium",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "Java EE (javax)",
+   "category": "Migration",
+   "severity": "medium",
+   "systems": {
+    "case-management": 4
+   }
+  },
+  {
+   "technology": "java 1.6",
+   "category": "Migration",
+   "severity": "high",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Embedded SQL",
+   "category": "Persistence",
+   "severity": "info",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "Hibernate",
+   "category": "Persistence",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "JDBC",
+   "category": "Persistence",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "JPA",
+   "category": "Persistence",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Spring JDBC",
+   "category": "Persistence",
+   "severity": "info",
+   "systems": {
+    "notifications": 1
+   }
+  },
+  {
+   "technology": ".NET Framework",
+   "category": "Platform",
+   "severity": "medium",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "CICS",
+   "category": "Platform",
+   "severity": "info",
+   "systems": {
+    "legacy-portal": 1
+   }
+  },
+  {
+   "technology": "JBoss/WildFly",
+   "category": "Platform",
+   "severity": "medium",
+   "systems": {
+    "case-management": 3
+   }
+  },
+  {
+   "technology": "Custom TLS",
+   "category": "Transport Security",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "TLS required",
+   "category": "Transport Security",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "mTLS at intermediary (inferred)",
+   "category": "Transport Security",
+   "severity": "info",
+   "systems": {
+    "notifications": 1
+   }
+  },
+  {
+   "technology": "mTLS client",
+   "category": "Transport Security",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "JAX-RS",
+   "category": "Web",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Servlet",
+   "category": "Web",
+   "severity": "info",
+   "systems": {
+    "case-management": 1
+   }
+  },
+  {
+   "technology": "Spring MVC",
+   "category": "Web",
+   "severity": "info",
+   "systems": {
+    "notifications": 3
+   }
+  },
+  {
+   "technology": "Web Forms",
+   "category": "Web",
+   "severity": "high",
+   "systems": {
+    "legacy-portal": 1
+   }
+  }
+ ],
+ "vulnerabilities": [
+  {
+   "id": "TRAVERSEDEMO-2026-0001",
+   "aliases": [
+    "TRAVERSEDEMO-CVE-0001"
+   ],
+   "package": "maven:commons-collections:commons-collections",
+   "severity": "critical",
+   "score": 9.8,
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Remote code execution through a deserialization gadget",
+   "fixed": [
+    "3.2.2"
+   ],
+   "affected": [
+    "case-management@3.2.1"
+   ]
+  },
+  {
+   "id": "TRAVERSEDEMO-2026-0002",
+   "package": "maven:log4j:log4j",
+   "severity": "high",
+   "score": 8.1,
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Unsafe network appender in an end-of-life logging library",
+   "affected": [
+    "case-management@1.2.17"
+   ]
+  },
+  {
+   "id": "TRAVERSEDEMO-2026-0003",
+   "package": "nuget:log4net",
+   "severity": "medium",
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader",
+   "fixed": [
+    "2.0.10"
+   ],
+   "affected": [
+    "legacy-portal@1.2.10.0"
+   ]
+  }
+ ],
+ "vulnDatabase": "demo-vulndb",
+ "vulnAsOf": "2026-10-28T00:00:00Z"
+}

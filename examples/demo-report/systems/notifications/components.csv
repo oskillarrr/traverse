@@ -1,0 +1,6 @@
+﻿fqn,kind,language,package,module,sourceSet,layer,layerReason,stereotypes,extends,file,line
+org.example.notify.api.DeliveryReceiptController,class,Java,org.example.notify.api,maven:org.example:notifications,main,Presentation,stereotype:@RestController,RestController RequestMapping,,src/main/java/org/example/notify/api/DeliveryReceiptController.java,11
+org.example.notify.api.MessageController,class,Java,org.example.notify.api,maven:org.example:notifications,main,Presentation,stereotype:@RestController,RestController RequestMapping,,src/main/java/org/example/notify/api/MessageController.java,6
+org.example.notify.repository.CaseReadRepository,class,Java,org.example.notify.repository,maven:org.example:notifications,main,Persistence,stereotype:@Repository,Repository,,src/main/java/org/example/notify/repository/CaseReadRepository.java,5
+org.example.notify.service.MessageService,class,Java,org.example.notify.service,maven:org.example:notifications,main,Business,stereotype:@Service,Service,,src/main/java/org/example/notify/service/MessageService.java,6
+org.example.notify.sms.SmsGatewayClient,class,Java,org.example.notify.sms,maven:org.example:notifications,main,Integration,name:*Client,,,src/main/java/org/example/notify/sms/SmsGatewayClient.java,4

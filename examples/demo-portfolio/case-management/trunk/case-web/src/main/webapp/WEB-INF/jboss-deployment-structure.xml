@@ -1,0 +1,1 @@
+<jboss-deployment-structure><deployment><dependencies><module name="org.apache.log4j"/><module name="com.oracle.ojdbc"/></dependencies></deployment></jboss-deployment-structure>

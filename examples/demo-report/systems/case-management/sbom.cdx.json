@@ -1,0 +1,309 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:4cba0f12-a167-5c1b-b9c4-4b960759c562",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2025-11-05T00:00:00Z",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "name": "Traverse",
+     "version": "dev"
+    }
+   ]
+  },
+  "component": {
+   "type": "application",
+   "bom-ref": "system:case-management",
+   "name": "case-management"
+  },
+  "properties": [
+   {
+    "name": "traverse:vulnDatabase",
+    "value": "OSV.dev (demo-vulndb)"
+   },
+   {
+    "name": "traverse:vulnDataAsOf",
+    "value": "2026-10-28T00:00:00Z"
+   }
+  ],
+  "lifecycles": [
+   {
+    "phase": "pre-build"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "application",
+   "bom-ref": "module:maven:org.example.cases:case-parent",
+   "group": "org.example.cases",
+   "name": "case-parent",
+   "version": "1.4.2",
+   "purl": "pkg:maven/org.example.cases/case-parent@1.4.2",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "trunk/pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 1.6"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "module:maven:org.example.cases:case-ear",
+   "group": "org.example.cases",
+   "name": "case-ear",
+   "version": "1.4.2",
+   "purl": "pkg:maven/org.example.cases/case-ear@1.4.2",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "trunk/case-ear/pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 1.6"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "module:maven:org.example.cases:case-ejb",
+   "group": "org.example.cases",
+   "name": "case-ejb",
+   "version": "1.4.2",
+   "purl": "pkg:maven/org.example.cases/case-ejb@1.4.2",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "trunk/case-ejb/pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 1.6"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "bom-ref": "module:maven:org.example.cases:case-web",
+   "group": "org.example.cases",
+   "name": "case-web",
+   "version": "1.4.2",
+   "purl": "pkg:maven/org.example.cases/case-web@1.4.2",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "maven"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "trunk/case-web/pom.xml"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": "java 1.6"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:maven/log4j/log4j@1.2.17",
+   "group": "log4j",
+   "name": "log4j",
+   "version": "1.2.17",
+   "scope": "required",
+   "purl": "pkg:maven/log4j/log4j@1.2.17",
+   "properties": [
+    {
+     "name": "traverse:kind",
+     "value": "declared"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "trunk/case-ejb/pom.xml",
+      "line": 2
+     }
+    ]
+   }
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:maven/org.example/common-dto@2.1.0",
+   "group": "org.example",
+   "name": "common-dto",
+   "version": "2.1.0",
+   "scope": "required",
+   "purl": "pkg:maven/org.example/common-dto@2.1.0",
+   "properties": [
+    {
+     "name": "traverse:kind",
+     "value": "declared"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "trunk/case-ejb/pom.xml",
+      "line": 2
+     }
+    ]
+   }
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:maven/commons-collections/commons-collections@3.2.1",
+   "group": "commons-collections",
+   "name": "commons-collections",
+   "version": "3.2.1",
+   "scope": "required",
+   "purl": "pkg:maven/commons-collections/commons-collections@3.2.1",
+   "properties": [
+    {
+     "name": "traverse:kind",
+     "value": "vendored-jar"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "trunk/case-web/src/main/webapp/WEB-INF/lib/commons-collections.jar"
+     }
+    ]
+   }
+  }
+ ],
+ "dependencies": [
+  {
+   "ref": "module:maven:org.example.cases:case-ejb",
+   "dependsOn": [
+    "pkg:maven/log4j/log4j@1.2.17",
+    "pkg:maven/org.example/common-dto@2.1.0"
+   ]
+  },
+  {
+   "ref": "module:maven:org.example.cases:case-web",
+   "dependsOn": [
+    "module:maven:org.example.cases:case-ejb",
+    "pkg:maven/commons-collections/commons-collections@3.2.1"
+   ]
+  },
+  {
+   "ref": "system:case-management",
+   "dependsOn": [
+    "module:maven:org.example.cases:case-ear",
+    "module:maven:org.example.cases:case-ejb",
+    "module:maven:org.example.cases:case-parent",
+    "module:maven:org.example.cases:case-web"
+   ]
+  }
+ ],
+ "vulnerabilities": [
+  {
+   "bom-ref": "vuln:TRAVERSEDEMO-2026-0001:pkg:maven/commons-collections/commons-collections@3.2.1",
+   "id": "TRAVERSEDEMO-2026-0001",
+   "source": {
+    "name": "OSV",
+    "url": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0001"
+   },
+   "references": [
+    {
+     "id": "TRAVERSEDEMO-CVE-0001",
+     "source": {
+      "name": "OSV",
+      "url": "https://osv.dev/vulnerability/TRAVERSEDEMO-CVE-0001"
+     }
+    }
+   ],
+   "ratings": [
+    {
+     "source": {
+      "name": "OSV"
+     },
+     "score": 9.8,
+     "severity": "critical",
+     "method": "CVSSv31",
+     "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+   ],
+   "description": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Remote code execution through a deserialization gadget",
+   "recommendation": "Upgrade to 3.2.2",
+   "published": "2026-01-15T00:00:00Z",
+   "affects": [
+    {
+     "ref": "pkg:maven/commons-collections/commons-collections@3.2.1",
+     "versions": [
+      {
+       "version": "3.2.1",
+       "status": "affected"
+      }
+     ]
+    }
+   ],
+   "properties": [
+    {
+     "name": "traverse:confidence",
+     "value": "high"
+    }
+   ]
+  },
+  {
+   "bom-ref": "vuln:TRAVERSEDEMO-2026-0002:pkg:maven/log4j/log4j@1.2.17",
+   "id": "TRAVERSEDEMO-2026-0002",
+   "source": {
+    "name": "OSV",
+    "url": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0002"
+   },
+   "ratings": [
+    {
+     "source": {
+      "name": "OSV"
+     },
+     "score": 8.1,
+     "severity": "high",
+     "method": "CVSSv31",
+     "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+   ],
+   "description": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. Unsafe network appender in an end-of-life logging library",
+   "published": "2026-02-01T00:00:00Z",
+   "affects": [
+    {
+     "ref": "pkg:maven/log4j/log4j@1.2.17",
+     "versions": [
+      {
+       "version": "1.2.17",
+       "status": "affected"
+      }
+     ]
+    }
+   ],
+   "properties": [
+    {
+     "name": "traverse:confidence",
+     "value": "high"
+    }
+   ]
+  }
+ ]
+}

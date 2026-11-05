@@ -1,0 +1,212 @@
+{
+ "version": "es-public-sector-1.0.0",
+ "rules": [
+  {
+   "id": "ES-AFIRMA",
+   "title": "@firma / AutoFirma e-signature client (Spain)",
+   "category": "Authentication",
+   "technology": "@firma/AutoFirma",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets",
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\bes\\.gob\\.afirma\\b|\\bAutoFirma\\b|\\b@firma\\b|\\bMiniApplet\\b|\\bafirma[._-]?signer\\b",
+   "message": "Spanish public-sector e-signature platform.",
+   "tags": [
+    "signature",
+    "es"
+   ],
+   "examples": {
+    "match": [
+     "import es.gob.afirma.core.signers.AOSigner;"
+    ],
+    "noMatch": [
+     "// afirma"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "ES-CLAVE",
+   "title": "Cl@ve identity (Spain)",
+   "category": "Authentication",
+   "technology": "Cl@ve",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets",
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\bes\\.gob\\.clave\\b|\\bcl@ve\\b|\\bminhafp.*clave\\b",
+   "message": "Spanish public-sector federated identity.",
+   "tags": [
+    "sso",
+    "es"
+   ],
+   "examples": {
+    "match": [
+     "import es.gob.clave.ClaveSP;"
+    ],
+    "noMatch": [
+     "String clave = getPassword();"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "ES-FIRE",
+   "title": "FIRe / Cl@ve Firma central signature (Spain)",
+   "category": "Authentication",
+   "technology": "FIRe",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bes\\.gob\\.fire\\b|\\bFIReClient\\b|\\bclavefirma\\b|\\bfire[._-]?client\\b",
+   "message": "Spanish public-sector central signature service.",
+   "tags": [
+    "signature",
+    "es"
+   ],
+   "examples": {
+    "match": [
+     "import es.gob.fire.client.FireClient;"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "ES-VALIDA",
+   "title": "@firma Valida certificate validation (Spain)",
+   "category": "Authentication",
+   "technology": "Valida",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bDSSAfirmaVerify\\b|\\beVisor\\b|\\bvalida\\b.{0,30}certificad|\\bafirma\\b.{0,20}valida",
+   "tags": [
+    "signature",
+    "es"
+   ],
+   "examples": {
+    "match": [
+     "DSSAfirmaVerify verify = new DSSAfirmaVerify();"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "ES-FNMT",
+   "title": "FNMT / CERES certificate authority (Spain)",
+   "category": "Authentication",
+   "technology": "FNMT",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bFNMT\\b|\\bCERES\\b|\\bAC\\s?FNMT\\b",
+   "tags": [
+    "pki",
+    "es"
+   ],
+   "examples": {
+    "match": [
+     "return CertProvider.FNMT;"
+    ],
+    "noMatch": [
+     "int fnmtp = 0;"
+    ]
+   },
+   "authKind": "signature"
+  }
+ ]
+}

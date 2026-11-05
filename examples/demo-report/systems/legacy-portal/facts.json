@@ -1,0 +1,370 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "repo": {
+  "name": "legacy-portal",
+  "vcs": "none",
+  "layout": "no copies detected: everything is analyzed",
+  "scannedAt": "2025-11-05T00:00:00Z",
+  "survey": {
+   "decision": "no copies detected: everything is analyzed",
+   "roots": [
+    {
+     "path": "Portal",
+     "coord": "msbuild:Portal",
+     "files": 2
+    },
+    {
+     "path": "batch",
+     "files": 1
+    }
+   ]
+  }
+ },
+ "languages": [
+  {
+   "language": "C#",
+   "category": "code",
+   "files": 1,
+   "code": 10,
+   "comment": 0,
+   "blank": 0
+  },
+  {
+   "language": "COBOL",
+   "category": "code",
+   "files": 1,
+   "code": 6,
+   "comment": 1,
+   "blank": 0
+  },
+  {
+   "language": "MSBuild",
+   "category": "build",
+   "files": 1,
+   "code": 2,
+   "comment": 0,
+   "blank": 0
+  }
+ ],
+ "files": [
+  {
+   "path": "Portal/Default.aspx.cs",
+   "language": "C#",
+   "category": "code",
+   "bytes": 392,
+   "code": 10,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "nuget:Portal.Web"
+  },
+  {
+   "path": "Portal/Portal.csproj",
+   "language": "MSBuild",
+   "category": "build",
+   "bytes": 378,
+   "code": 2,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main",
+   "module": "nuget:Portal.Web"
+  },
+  {
+   "path": "batch/NIGHTLY.cbl",
+   "language": "COBOL",
+   "category": "code",
+   "bytes": 282,
+   "code": 6,
+   "comment": 1,
+   "blank": 0,
+   "sourceSet": "main"
+  }
+ ],
+ "modules": [
+  {
+   "id": "nuget:Portal.Web",
+   "build": "msbuild",
+   "name": "Portal.Web",
+   "packaging": "library",
+   "path": "Portal",
+   "descriptor": "Portal/Portal.csproj",
+   "runtime": ".NET v4.5",
+   "deps": [
+    {
+     "id": "nuget:log4net",
+     "version": "1.2.10.0",
+     "kind": "assembly-ref",
+     "resolved": true,
+     "line": 2,
+     "file": "Portal/Portal.csproj"
+    }
+   ]
+  }
+ ],
+ "deployables": null,
+ "components": [
+  {
+   "fqn": "_Default",
+   "name": "_Default",
+   "kind": "class",
+   "language": "C#",
+   "package": "",
+   "sourceSet": "main",
+   "module": "nuget:Portal.Web",
+   "layer": "Presentation",
+   "layerReason": "extends:Page",
+   "extends": [
+    "Page"
+   ],
+   "file": "Portal/Default.aspx.cs",
+   "line": 4
+  },
+  {
+   "fqn": "mainframe.batch.NIGHTLY",
+   "name": "NIGHTLY",
+   "kind": "program",
+   "language": "COBOL",
+   "package": "mainframe.batch",
+   "sourceSet": "main",
+   "layer": "Business",
+   "layerReason": "cics:online program",
+   "file": "batch/NIGHTLY.cbl",
+   "line": 2
+  }
+ ],
+ "dependencies": null,
+ "contracts": [
+  {
+   "kind": "db-table",
+   "direction": "read",
+   "key": "CASES.TRAMITE",
+   "match": "TRAMITE",
+   "component": "mainframe.batch.NIGHTLY",
+   "detail": "EXEC SQL",
+   "confidence": "high",
+   "counterpart": "schema:cases",
+   "file": "batch/NIGHTLY.cbl",
+   "line": 5
+  },
+  {
+   "kind": "db-table",
+   "direction": "read",
+   "key": "EXPEDIENTE",
+   "match": "EXPEDIENTE",
+   "component": "_Default",
+   "detail": "SQL in string literal",
+   "confidence": "medium",
+   "file": "Portal/Default.aspx.cs",
+   "line": 6
+  },
+  {
+   "kind": "http",
+   "direction": "calls",
+   "key": "ANY /cases/api/expedientes/42",
+   "match": "/cases/api/expedientes/42",
+   "component": "_Default",
+   "detail": "URL literal",
+   "confidence": "medium",
+   "host": "host-1f4a0845ffd7",
+   "transport": "tls",
+   "counterpart": "cases",
+   "file": "Portal/Default.aspx.cs",
+   "line": 7
+  },
+  {
+   "kind": "program",
+   "direction": "exposes",
+   "key": "NIGHTLY",
+   "match": "NIGHTLY",
+   "component": "mainframe.batch.NIGHTLY",
+   "detail": "COBOL program",
+   "confidence": "medium",
+   "file": "batch/NIGHTLY.cbl",
+   "line": 2
+  }
+ ],
+ "findings": [
+  {
+   "id": "c7c779b5bdeb8425",
+   "ruleId": "NET-WEBFORMS",
+   "title": "ASP.NET Web Forms",
+   "category": "Web",
+   "technology": "Web Forms",
+   "severity": "high",
+   "confidence": "medium",
+   "message": "Not supported on .NET Core / .NET 5+.",
+   "file": "Portal/Default.aspx.cs",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "7dbc6291c3385586",
+   "ruleId": "NET-FRAMEWORK",
+   "title": ".NET Framework (Windows only)",
+   "category": "Platform",
+   "technology": ".NET Framework",
+   "severity": "medium",
+   "confidence": "high",
+   "file": "Portal/Portal.csproj",
+   "lines": [
+    1
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "d1115db9b4ede5a2",
+   "ruleId": "NET-WCF",
+   "title": "WCF services",
+   "category": "Integration",
+   "technology": "WCF",
+   "severity": "medium",
+   "confidence": "medium",
+   "message": "WCF server is not available on modern .NET (CoreWCF required).",
+   "file": "Portal/Default.aspx.cs",
+   "lines": [
+    3
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "274c03cc899c2758",
+   "ruleId": "RUNTIME-LEVEL",
+   "title": "Outdated runtime level: .NET v4.5",
+   "category": "Migration",
+   "technology": ".NET v4.5",
+   "severity": "medium",
+   "confidence": "high",
+   "message": ".NET Framework is Windows-only; modern .NET requires migration. (count = modules)",
+   "file": "Portal/Portal.csproj",
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "5baaaae6336fa102",
+   "ruleId": "COBOL-CICS",
+   "title": "CICS transactions",
+   "category": "Platform",
+   "technology": "CICS",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "batch/NIGHTLY.cbl",
+   "lines": [
+    6
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "c5b757277d693edf",
+   "ruleId": "COBOL-MQ",
+   "title": "IBM MQ calls from COBOL",
+   "category": "Integration",
+   "technology": "IBM MQ",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "batch/NIGHTLY.cbl",
+   "lines": [
+    7
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "e03465cc45d1baae",
+   "ruleId": "COBOL-SQL",
+   "title": "Embedded SQL (DB2)",
+   "category": "Persistence",
+   "technology": "Embedded SQL",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "batch/NIGHTLY.cbl",
+   "lines": [
+    5
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "cad087596f94ef36",
+   "ruleId": "DB-SQLSERVER",
+   "title": "SQL Server",
+   "category": "Database",
+   "technology": "SQL Server",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "Portal/Default.aspx.cs",
+   "lines": [
+    2
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  }
+ ],
+ "packageStats": [
+  {
+   "package": "",
+   "module": "nuget:Portal.Web",
+   "layer": "Presentation",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  },
+  {
+   "package": "mainframe.batch",
+   "layer": "Business",
+   "types": 1,
+   "ca": 0,
+   "ce": 0,
+   "instability": 0
+  }
+ ],
+ "cycles": null,
+ "layerIssues": null,
+ "deployment": {
+  "nodes": null,
+  "links": null
+ },
+ "diagnostics": null,
+ "vulnerabilities": [
+  {
+   "id": "TRAVERSEDEMO-2026-0003",
+   "package": "nuget:log4net",
+   "ecosystem": "NuGet",
+   "version": "1.2.10.0",
+   "severity": "medium",
+   "summary": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader",
+   "fixed": [
+    "2.0.10"
+   ],
+   "confidence": "low",
+   "kind": "assembly-ref",
+   "modules": [
+    "nuget:Portal.Web"
+   ],
+   "published": "2026-03-01T00:00:00Z",
+   "file": "Portal/Portal.csproj",
+   "line": 2
+  }
+ ],
+ "vulnScan": {
+  "database": "demo-vulndb",
+  "asOf": "2026-10-28T00:00:00Z",
+  "advisories": {
+   "Maven": 3,
+   "NuGet": 1
+  },
+  "checked": 1,
+  "unevaluated": []
+ }
+}

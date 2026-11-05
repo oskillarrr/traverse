@@ -1,0 +1,4032 @@
+{
+ "version": "2.0.0",
+ "rules": [
+  {
+   "id": "JAVA-JAXRS",
+   "title": "JAX-RS REST API",
+   "category": "Web",
+   "technology": "JAX-RS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.ws\\.rs\\b",
+   "examples": {
+    "match": [
+     "import javax.ws.rs.GET;"
+    ],
+    "noMatch": [
+     "// import javax.ws.rs.GET;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SPRING-MVC",
+   "title": "Spring MVC / REST controllers",
+   "category": "Web",
+   "technology": "Spring MVC",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "@(RestController|Controller|RequestMapping|GetMapping|PostMapping|PutMapping|DeleteMapping)\\b|\\borg\\.springframework\\.web\\b",
+   "examples": {
+    "match": [
+     "@RestController"
+    ],
+    "noMatch": [
+     "/* @RestController */"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SPRING-BOOT",
+   "title": "Spring Boot",
+   "category": "Framework",
+   "technology": "Spring Boot",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "Maven POM",
+    "Gradle"
+   ],
+   "pattern": "@SpringBootApplication\\b|\\borg\\.springframework\\.boot\\b|spring-boot-starter",
+   "examples": {
+    "match": [
+     "@SpringBootApplication"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SPRING-CORE",
+   "title": "Spring Framework (DI)",
+   "category": "Framework",
+   "technology": "Spring Framework",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.springframework\\.(beans|context|stereotype)\\b|@Autowired\\b",
+   "examples": {
+    "match": [
+     "@Autowired private Foo foo;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SERVLET",
+   "title": "Servlet API",
+   "category": "Web",
+   "technology": "Servlet",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.servlet\\b|\\bextends\\s+HttpServlet\\b",
+   "examples": {
+    "match": [
+     "public class X extends HttpServlet {"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JSF",
+   "title": "JavaServer Faces",
+   "category": "Web",
+   "technology": "JSF",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.faces\\b|\\borg\\.primefaces\\b|xmlns:h=\\\"http://(java\\.sun\\.com|xmlns\\.jcp\\.org)/jsf",
+   "examples": {
+    "match": [
+     "import javax.faces.bean.ManagedBean;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-RICHFACES",
+   "title": "RichFaces / ICEfaces / a4j (end of life)",
+   "category": "Web",
+   "technology": "RichFaces/ICEfaces",
+   "severity": "high",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "JSF/Facelets",
+    "XML"
+   ],
+   "pattern": "\\borg\\.(richfaces|ajax4jsf|icefaces)\\b|xmlns:(rich|a4j|ice)=",
+   "message": "Component library discontinued; blocks JSF/Jakarta upgrades.",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "import org.richfaces.component.UIDataTable;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-STRUTS1",
+   "title": "Struts 1 (end of life since 2013)",
+   "category": "Web",
+   "technology": "Struts 1",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.apache\\.struts\\.(action|actions|upload|validator|util|config)\\b",
+   "message": "Unsupported framework with known unpatched vulnerabilities.",
+   "tags": [
+    "eol",
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.struts.action.Action;"
+    ],
+    "noMatch": [
+     "import org.apache.struts2.ServletActionContext;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-STRUTS2",
+   "title": "Struts 2",
+   "category": "Web",
+   "technology": "Struts 2",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bcom\\.opensymphony\\.xwork2\\b|\\borg\\.apache\\.struts2\\b",
+   "message": "Framework with a history of critical RCE CVEs: verify version.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.struts2.ServletActionContext;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-GWT",
+   "title": "Google Web Toolkit",
+   "category": "Web",
+   "technology": "GWT",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\bcom\\.google\\.gwt\\b",
+   "tags": [
+    "legacy"
+   ],
+   "examples": {
+    "match": [
+     "import com.google.gwt.core.client.EntryPoint;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-DWR",
+   "title": "DWR (Direct Web Remoting, end of life)",
+   "category": "Web",
+   "technology": "DWR",
+   "severity": "high",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "JavaScript"
+   ],
+   "pattern": "\\borg\\.directwebremoting\\b|\\buk\\.ltd\\.getahead\\.dwr\\b",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "org.directwebremoting.servlet.DwrServlet"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-EJB",
+   "title": "Enterprise JavaBeans",
+   "category": "Business",
+   "technology": "EJB",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.ejb\\b|@(Stateless|Stateful|Singleton|MessageDriven)\\b",
+   "examples": {
+    "match": [
+     "@Stateless"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-EJB2",
+   "title": "EJB 2.x component model",
+   "category": "Business",
+   "technology": "EJB 2.x",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bextends\\s+(EJBHome|EJBObject|EJBLocalHome|EJBLocalObject)\\b|\\bimplements\\s+(SessionBean|EntityBean|MessageDrivenBean)\\b",
+   "message": "EJB 2.x / CMP entity beans are removed from Jakarta EE.",
+   "tags": [
+    "migration"
+   ],
+   "examples": {
+    "match": [
+     "public class XBean implements SessionBean {"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-CDI",
+   "title": "CDI / JSR-330 injection",
+   "category": "Framework",
+   "technology": "CDI",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.inject\\b|\\b(javax|jakarta)\\.enterprise\\.(context|inject)\\b",
+   "examples": {
+    "match": [
+     "import javax.inject.Inject;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JMS",
+   "title": "JMS messaging",
+   "category": "Integration",
+   "technology": "JMS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.jms\\b|@JmsListener\\b|\\bJmsTemplate\\b",
+   "examples": {
+    "match": [
+     "import javax.jms.Queue;"
+    ],
+    "noMatch": [
+     "// import javax.jms.Queue;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JNDI",
+   "title": "JNDI lookups",
+   "category": "Integration",
+   "technology": "JNDI",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bnew\\s+InitialContext\\s*\\(|\\bjavax\\.naming\\.(InitialContext|Context)\\b|java:(comp|global|jboss|app|module)/",
+   "examples": {
+    "match": [
+     "Context ctx = new InitialContext();"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JPA",
+   "title": "JPA persistence",
+   "category": "Persistence",
+   "technology": "JPA",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.persistence\\b",
+   "examples": {
+    "match": [
+     "import javax.persistence.Entity;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-HIBERNATE",
+   "title": "Hibernate native API",
+   "category": "Persistence",
+   "technology": "Hibernate",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.hibernate\\.(Session|SessionFactory|Criteria|Query|cfg|Transaction)\\b",
+   "examples": {
+    "match": [
+     "import org.hibernate.Session;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-HBM-MAPPING",
+   "title": "Hibernate XML mappings (hbm.xml)",
+   "category": "Persistence",
+   "technology": "Hibernate",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "\\.hbm\\.xml$",
+   "tags": [
+    "legacy"
+   ]
+  },
+  {
+   "id": "JAVA-JDBC",
+   "title": "Plain JDBC",
+   "category": "Persistence",
+   "technology": "JDBC",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bjava\\.sql\\.(Connection|DriverManager|PreparedStatement|Statement|CallableStatement)\\b|\\bDriverManager\\.getConnection\\b",
+   "examples": {
+    "match": [
+     "import java.sql.PreparedStatement;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-MYBATIS",
+   "title": "MyBatis / iBATIS",
+   "category": "Persistence",
+   "technology": "MyBatis/iBATIS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.apache\\.ibatis\\b|\\bcom\\.ibatis\\b|\\borg\\.mybatis\\b|<!DOCTYPE\\s+(sqlMap|mapper)",
+   "examples": {
+    "match": [
+     "import org.apache.ibatis.annotations.Select;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SPRING-JDBC",
+   "title": "Spring JDBC",
+   "category": "Persistence",
+   "technology": "Spring JDBC",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(Named)?JdbcTemplate\\b",
+   "examples": {
+    "match": [
+     "private JdbcTemplate jdbc;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JAXWS",
+   "title": "SOAP web services (JAX-WS)",
+   "category": "Integration",
+   "technology": "JAX-WS/SOAP",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.xml\\.ws\\b|@WebService\\b|@WebMethod\\b|\\bjavax\\.xml\\.soap\\b",
+   "examples": {
+    "match": [
+     "@WebService(serviceName=\"X\")"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-AXIS1",
+   "title": "Apache Axis 1 (end of life)",
+   "category": "Integration",
+   "technology": "Axis 1",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.apache\\.axis\\.[a-z]",
+   "message": "Unmaintained since 2006 with known vulnerabilities.",
+   "tags": [
+    "eol",
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.axis.client.Call;"
+    ],
+    "noMatch": [
+     "import org.apache.axis2.client.ServiceClient;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-AXIS2",
+   "title": "Apache Axis2",
+   "category": "Integration",
+   "technology": "Axis2",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.apache\\.axis2\\b",
+   "examples": {
+    "match": [
+     "import org.apache.axis2.client.ServiceClient;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-CXF",
+   "title": "Apache CXF",
+   "category": "Integration",
+   "technology": "CXF",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.apache\\.cxf\\b|xmlns:jaxws=",
+   "examples": {
+    "match": [
+     "import org.apache.cxf.frontend.ClientProxy;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JAXB",
+   "title": "JAXB (javax.xml.bind, removed from JDK 11)",
+   "category": "Integration",
+   "technology": "JAXB",
+   "severity": "medium",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bjavax\\.xml\\.bind\\b",
+   "message": "Needs explicit dependency on Java 11+ and jakarta.xml.bind on Jakarta EE 9+.",
+   "tags": [
+    "migration"
+   ],
+   "examples": {
+    "match": [
+     "import javax.xml.bind.JAXBContext;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-HTTP-CLIENT",
+   "title": "Outbound HTTP client",
+   "category": "Integration",
+   "technology": "HTTP client",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(RestTemplate|WebClient|HttpURLConnection|CloseableHttpClient|OkHttpClient|HttpClient)\\b|@FeignClient\\b|@RegisterRestClient\\b|\\b(javax|jakarta)\\.ws\\.rs\\.client\\b",
+   "examples": {
+    "match": [
+     "RestTemplate rt = new RestTemplate();"
+    ],
+    "noMatch": [
+     "/* new URL( */"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-COMMONS-HTTPCLIENT3",
+   "title": "Commons HttpClient 3.x (end of life)",
+   "category": "Integration",
+   "technology": "HttpClient 3",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.apache\\.commons\\.httpclient\\b",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.commons.httpclient.HttpClient;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-KAFKA",
+   "title": "Apache Kafka",
+   "category": "Integration",
+   "technology": "Kafka",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\borg\\.apache\\.kafka\\b|@KafkaListener\\b|bootstrap\\.servers",
+   "examples": {
+    "match": [
+     "@KafkaListener(topics=\"t\")"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-RABBITMQ",
+   "title": "RabbitMQ / AMQP",
+   "category": "Integration",
+   "technology": "RabbitMQ",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bcom\\.rabbitmq\\b|\\borg\\.springframework\\.amqp\\b|@RabbitListener\\b",
+   "examples": {
+    "match": [
+     "import com.rabbitmq.client.Channel;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-ACTIVEMQ",
+   "title": "ActiveMQ / Artemis / HornetQ",
+   "category": "Integration",
+   "technology": "ActiveMQ",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\borg\\.apache\\.activemq\\b|\\borg\\.hornetq\\b",
+   "examples": {
+    "match": [
+     "import org.apache.activemq.ActiveMQConnectionFactory;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-IBMMQ",
+   "title": "IBM MQ",
+   "category": "Integration",
+   "technology": "IBM MQ",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bcom\\.ibm\\.mq\\b|\\bcom\\.ibm\\.msg\\.client\\b",
+   "examples": {
+    "match": [
+     "import com.ibm.mq.MQQueueManager;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-TIBCO",
+   "title": "TIBCO",
+   "category": "Integration",
+   "technology": "TIBCO",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bcom\\.tibco\\b",
+   "examples": {
+    "match": [
+     "import com.tibco.tibjms.TibjmsConnectionFactory;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-QUARTZ",
+   "title": "Quartz scheduler",
+   "category": "Scheduling",
+   "technology": "Quartz",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties"
+   ],
+   "pattern": "\\borg\\.quartz\\b",
+   "examples": {
+    "match": [
+     "import org.quartz.Job;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-TIMERS",
+   "title": "EJB / Spring timers",
+   "category": "Scheduling",
+   "technology": "Timers",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "@Schedule\\b|@Scheduled\\b|\\bTimerService\\b|@Timeout\\b",
+   "examples": {
+    "match": [
+     "@Schedule(hour=\"*\")"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-MAIL",
+   "title": "E-mail (JavaMail)",
+   "category": "Integration",
+   "technology": "SMTP",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\b(javax|jakarta)\\.mail\\b|\\bJavaMailSender\\b|mail\\.smtp\\.",
+   "examples": {
+    "match": [
+     "import javax.mail.Transport;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-LDAP",
+   "title": "LDAP / directory",
+   "category": "Integration",
+   "technology": "LDAP",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bjavax\\.naming\\.(ldap|directory)\\b|\\bLdapContext\\b|\\bLdapTemplate\\b|ldaps?://",
+   "examples": {
+    "match": [
+     "import javax.naming.ldap.LdapContext;"
+    ]
+   }
+  },
+  {
+   "id": "ANY-FTP",
+   "title": "FTP / SFTP transfer",
+   "category": "Integration",
+   "technology": "FTP/SFTP",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "\\borg\\.apache\\.commons\\.net\\.ftp\\b|\\bcom\\.jcraft\\.jsch\\b|\\bChannelSftp\\b|\\bs?ftp://|\\bFtpWebRequest\\b|\\bftplib\\b",
+   "examples": {
+    "match": [
+     "import com.jcraft.jsch.ChannelSftp;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-FILESYSTEM",
+   "title": "Local filesystem access",
+   "category": "Integration",
+   "technology": "Filesystem",
+   "severity": "low",
+   "confidence": "low",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bnew\\s+File(InputStream|OutputStream|Reader|Writer)?\\s*\\(|\\bFiles\\.(newBufferedReader|newBufferedWriter|readAllBytes|readAllLines|write|copy|move)\\s*\\(",
+   "message": "Stateful local storage: affects horizontal scaling and containerization.",
+   "tags": [
+    "cloud"
+   ],
+   "examples": {
+    "match": [
+     "new FileInputStream(f)"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SPRING-SECURITY",
+   "title": "Spring Security",
+   "category": "Security",
+   "technology": "Spring Security",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.springframework\\.security\\b|<http\\s+auto-config",
+   "examples": {
+    "match": [
+     "import org.springframework.security.core.Authentication;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "JAVA-JAAS",
+   "title": "JAAS / container security",
+   "category": "Security",
+   "technology": "JAAS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bjavax\\.security\\.auth\\b|@RolesAllowed\\b|@DeclareRoles\\b|\\bisUserInRole\\s*\\(",
+   "examples": {
+    "match": [
+     "@RolesAllowed(\"admin\")"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "JAVA-JBOSS-API",
+   "title": "JBoss / WildFly proprietary API",
+   "category": "Platform",
+   "technology": "JBoss/WildFly",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\borg\\.jboss\\.(?:[a-z])|\\borg\\.wildfly\\.",
+   "message": "Couples the application to the JBoss/WildFly runtime.",
+   "tags": [
+    "vendor-lockin"
+   ],
+   "examples": {
+    "match": [
+     "import org.jboss.logging.Logger;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-WEBLOGIC",
+   "title": "WebLogic proprietary API",
+   "category": "Platform",
+   "technology": "WebLogic",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\bweblogic\\.[a-z]",
+   "tags": [
+    "vendor-lockin"
+   ],
+   "examples": {
+    "match": [
+     "import weblogic.jndi.WLInitialContextFactory;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-WEBSPHERE",
+   "title": "WebSphere proprietary API",
+   "category": "Platform",
+   "technology": "WebSphere",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\bcom\\.ibm\\.(websphere|ws)\\.",
+   "tags": [
+    "vendor-lockin"
+   ],
+   "examples": {
+    "match": [
+     "import com.ibm.websphere.cache.DistributedMap;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JAVAX-EE",
+   "title": "javax.* Java EE namespace (pre Jakarta EE 9)",
+   "category": "Migration",
+   "technology": "Java EE (javax)",
+   "severity": "medium",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\bjavax\\.(servlet|ejb|persistence|ws\\.rs|jms|faces|inject|enterprise|validation|transaction|annotation\\.security|mail|xml\\.ws|websocket|json|batch|resource)\\b",
+   "message": "Requires the javax→jakarta namespace migration for Jakarta EE 9+ runtimes.",
+   "tags": [
+    "migration:jakarta"
+   ],
+   "examples": {
+    "match": [
+     "import javax.servlet.http.HttpServletRequest;"
+    ],
+    "noMatch": [
+     "import javax.swing.JFrame;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JDK-INTERNAL",
+   "title": "Internal JDK APIs (sun.*)",
+   "category": "Migration",
+   "technology": "JDK internals",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(com\\.sun|sun)\\.(misc|reflect|security|nio\\.ch|awt|net\\.www|org\\.apache)\\.",
+   "message": "Strongly encapsulated since Java 16; some removed.",
+   "tags": [
+    "migration:jdk"
+   ],
+   "examples": {
+    "match": [
+     "import sun.misc.BASE64Encoder;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-CORBA",
+   "title": "CORBA (removed from JDK 11)",
+   "category": "Migration",
+   "technology": "CORBA",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.omg\\.|\\bjavax\\.rmi\\.CORBA\\b|\\bjavax\\.activity\\b",
+   "tags": [
+    "migration:jdk"
+   ],
+   "examples": {
+    "match": [
+     "import org.omg.CORBA.ORB;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-RMI",
+   "title": "Java RMI",
+   "category": "Integration",
+   "technology": "RMI",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bjava\\.rmi\\b|\\bextends\\s+UnicastRemoteObject\\b",
+   "examples": {
+    "match": [
+     "import java.rmi.Remote;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-APPLET",
+   "title": "Applets / Java Web Start (removed)",
+   "category": "Migration",
+   "technology": "Applet/JNLP",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "HTML"
+   ],
+   "pattern": "\\bjava\\.applet\\b|\\bextends\\s+J?Applet\\b|<applet\\b|\\bjavax\\.jnlp\\b",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "public class A extends Applet {"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JNLP-FILE",
+   "title": "Java Web Start descriptor",
+   "category": "Migration",
+   "technology": "Applet/JNLP",
+   "severity": "high",
+   "confidence": "medium",
+   "pathPattern": "\\.jnlp$",
+   "tags": [
+    "eol"
+   ]
+  },
+  {
+   "id": "JAVA-NASHORN",
+   "title": "Nashorn JavaScript engine (removed in JDK 15)",
+   "category": "Migration",
+   "technology": "Nashorn",
+   "severity": "medium",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "getEngineByName\\s*\\(\\s*\\\"(nashorn|javascript|js|JavaScript|ECMAScript)\\\"",
+   "tags": [
+    "migration:jdk"
+   ],
+   "examples": {
+    "match": [
+     "m.getEngineByName(\"nashorn\")"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SECURITY-MANAGER",
+   "title": "SecurityManager (deprecated for removal)",
+   "category": "Migration",
+   "technology": "SecurityManager",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bSystem\\.setSecurityManager\\b|\\bnew\\s+SecurityManager\\b|\\bAccessController\\.doPrivileged\\b",
+   "tags": [
+    "migration:jdk"
+   ],
+   "examples": {
+    "match": [
+     "System.setSecurityManager(sm);"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-FINALIZE",
+   "title": "finalize() (deprecated for removal)",
+   "category": "Migration",
+   "technology": "Finalization",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bprotected\\s+void\\s+finalize\\s*\\(\\s*\\)",
+   "tags": [
+    "migration:jdk"
+   ],
+   "examples": {
+    "match": [
+     "protected void finalize() {"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-UNMANAGED-THREADS",
+   "title": "Unmanaged threads",
+   "category": "Runtime",
+   "technology": "Threads",
+   "severity": "low",
+   "confidence": "low",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bnew\\s+Thread\\s*\\(|\\bExecutors\\.new\\w+\\s*\\(",
+   "message": "Unmanaged threads inside a container bypass its lifecycle and context.",
+   "examples": {
+    "match": [
+     "new Thread(r).start();"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SYSTEM-EXIT",
+   "title": "System.exit in application code",
+   "category": "Runtime",
+   "technology": "System.exit",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bSystem\\.exit\\s*\\(",
+   "examples": {
+    "match": [
+     "System.exit(1);"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-LOG4J1",
+   "title": "Log4j 1.x (end of life, CVEs)",
+   "category": "Logging",
+   "technology": "Log4j 1.x",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.apache\\.log4j\\.(Logger|Category|PropertyConfigurator|LogManager|Level|xml|net|Appender)\\b",
+   "message": "End of life since 2015 with unpatched vulnerabilities (e.g. CVE-2019-17571).",
+   "tags": [
+    "eol",
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.log4j.Logger;"
+    ],
+    "noMatch": [
+     "import org.apache.logging.log4j.Logger;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-LOG4J1-CONFIG",
+   "title": "Log4j 1.x configuration file",
+   "category": "Logging",
+   "technology": "Log4j 1.x",
+   "severity": "medium",
+   "confidence": "medium",
+   "pathPattern": "(^|/)log4j\\.(properties|xml)$",
+   "tags": [
+    "eol"
+   ]
+  },
+  {
+   "id": "JAVA-LOG4J2",
+   "title": "Log4j 2",
+   "category": "Logging",
+   "technology": "Log4j 2",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.apache\\.logging\\.log4j\\b",
+   "message": "Verify version >= 2.17.1 (Log4Shell family).",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.logging.log4j.LogManager;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-SLF4J",
+   "title": "SLF4J / Logback",
+   "category": "Logging",
+   "technology": "SLF4J",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.slf4j\\b|\\bch\\.qos\\.logback\\b",
+   "examples": {
+    "match": [
+     "import org.slf4j.Logger;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-JSP-SCRIPTLET",
+   "title": "JSP scriptlets",
+   "category": "Web",
+   "technology": "JSP",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "JSP"
+   ],
+   "pattern": "<%[^@=!\\-]",
+   "message": "Business logic embedded in views.",
+   "examples": {
+    "match": [
+     "<% int x = 1; %>"
+    ],
+    "noMatch": [
+     "<%@ page import=\"x\" %>"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-REPORTING",
+   "title": "Reporting / documents (Jasper, iText, POI)",
+   "category": "Library",
+   "technology": "Reporting",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bnet\\.sf\\.jasperreports\\b|\\bcom\\.lowagie\\.text\\b|\\bcom\\.itextpdf\\b|\\borg\\.apache\\.poi\\b",
+   "examples": {
+    "match": [
+     "import org.apache.poi.hssf.usermodel.HSSFWorkbook;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-COMMONS-COLLECTIONS3",
+   "title": "Commons Collections 3 (deserialization gadget)",
+   "category": "Security",
+   "technology": "Commons Collections 3",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\borg\\.apache\\.commons\\.collections\\.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.commons.collections.CollectionUtils;"
+    ],
+    "noMatch": [
+     "import org.apache.commons.collections4.CollectionUtils;"
+    ]
+   }
+  },
+  {
+   "id": "JAVA-DESERIALIZATION",
+   "title": "Java native deserialization",
+   "category": "Security",
+   "technology": "Serialization",
+   "severity": "medium",
+   "confidence": "low",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bnew\\s+ObjectInputStream\\s*\\(|\\bcom\\.thoughtworks\\.xstream\\b|\\bXMLDecoder\\b",
+   "message": "Review for untrusted input (deserialization attacks).",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "new ObjectInputStream(in)"
+    ]
+   }
+  },
+  {
+   "id": "CFG-EXTERNAL",
+   "title": "Externalized configuration",
+   "category": "Configuration",
+   "technology": "Configuration",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "\\bSystem\\.(getenv|getProperty)\\s*\\(|@Value\\s*\\(\\s*\\\"\\$\\{|@ConfigProperty\\b|\\bprocess\\.env\\.|\\bos\\.environ\\b|\\bEnvironment\\.GetEnvironmentVariable\\b|\\bConfigurationManager\\.AppSettings\\b",
+   "examples": {
+    "match": [
+     "String u = System.getenv(\"URL\");"
+    ]
+   }
+  },
+  {
+   "id": "SEC-SECRET-CONFIG",
+   "title": "Possible hard-coded credential in configuration",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "languages": [
+    "Properties",
+    "YAML",
+    "TOML/INI"
+   ],
+   "pattern": "\\b[\\w.\\-]*(?i:password|passwd|pwd|secret|api[_.\\-]?key|access[_.\\-]?token|client[_.\\-]?secret)(?:[._\\-][\\w.\\-]*|[A-Z0-9][\\w.\\-]*)?\\s*[:=]\\s*[\\\"']?[^\\s\\\"'${}<>#]{4,}",
+   "exclude": "[:=]\\s*[\\\"']?(?:[a-zA-Z][a-zA-Z0-9+.\\-]*://|/)",
+   "message": "Value is never copied to the report; check location and rotate if real.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "db.password=s3cr3t!",
+     "app.firmaPwd=s3cr3t!",
+     "CLIENT_SECRET: abcd1234",
+     "keystore.pwd.alias=s3cr3t!"
+    ],
+    "noMatch": [
+     "db.password=${DB_PASSWORD}",
+     "# password=example",
+     "role.secretary.label=Secretary",
+     "job.secretario.label=Secretario",
+     "url.pwd.error=https://example.org/error",
+     "password.reset.page=/account/reset"
+    ]
+   }
+  },
+  {
+   "id": "SEC-SECRET-XML",
+   "title": "Possible hard-coded credential in XML",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "languages": [
+    "XML"
+   ],
+   "pattern": "(?i)<(password|user-password|secret|api-key)>\\s*[^<$\\s]{4,}\\s*</|(?i)\\b(password|secret)\\s*=\\s*\\\"[^\\\"$]{4,}\\\"",
+   "message": "Value is never copied to the report.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "<password>s3cr3t!</password>"
+    ],
+    "noMatch": [
+     "<password>${db.pass}</password>"
+    ]
+   }
+  },
+  {
+   "id": "SEC-SECRET-CODE",
+   "title": "Possible hard-coded credential in code",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "\\b\\w*(?i:password|passwd|pwd|secret|apikey|api_key|token|(?:jks|keystore|truststore)[_.]?(?:key|pass))(?:_\\w*|[A-Z0-9]\\w*)?\\s*=\\s*\\\"[^\\\"$\\s]{4,}\\\"",
+   "exclude": "=\\s*\\\"(?:[a-zA-Z][a-zA-Z0-9+.\\-]*://|/)",
+   "message": "Value is never copied to the report.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "String dbPassword = \"s3cr3t!\";",
+     "private static final String API_KEY = \"abcd1234\";",
+     "String secretKey = \"s3cr3t!\";"
+    ],
+    "noMatch": [
+     "String dbPassword = getPwd();",
+     "String secretario = \"Juan\";",
+     "String tokenizerName = \"standard\";",
+     "String tokenUrl = \"https://example.org/oauth/token\";"
+    ]
+   }
+  },
+  {
+   "id": "SEC-SECRET-URL",
+   "title": "Credentials embedded in a connection string or URL",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "medium",
+   "languages": [
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets",
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML"
+   ],
+   "pattern": "\\b[a-zA-Z][a-zA-Z0-9+.\\-]*://[^/\\s:@\\\"'<>{}$]+:[^/\\s@\\\"'<>{}$]{3,}@|\\bjdbc:oracle:(?:thin|oci):[^/\\s:@\\\"'<>{}$]+/[^@\\s\\\"'<>{}$]{3,}@",
+   "message": "User and password inside the connection string; the value is never copied to the report. Move it to a secret store and rotate it.",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "db.url=jdbc:oracle:thin:APP_USER/s3cr3t@//db.example.org:1521/SVC",
+     "amqp.uri=amqp://app:s3cr3t@mq.example.org:5672",
+     "spring.datasource.url=postgresql://app:s3cr3t@db.example.org/app"
+    ],
+    "noMatch": [
+     "db.url=jdbc:oracle:thin:@//db.example.org:1521/SVC",
+     "url=https://example.org/a@b",
+     "uri=amqp://${MQ_USER}:${MQ_PASS}@mq.example.org"
+    ]
+   }
+  },
+  {
+   "id": "SEC-PRIVATE-KEY",
+   "title": "Private key committed",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "high",
+   "pattern": "-----BEGIN (RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----",
+   "tags": [
+    "security"
+   ],
+   "examples": {
+    "match": [
+     "-----BEGIN RSA PRIVATE KEY-----"
+    ]
+   }
+  },
+  {
+   "id": "SEC-KEYSTORE-FILE",
+   "title": "Keystore / private key file committed",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "medium",
+   "pathPattern": "(?i)\\.(jks|jceks|bks|p12|pfx|keystore|pem|key|keys)([._-]?(old|bak|backup|orig|copia|copy|\\d+))?$",
+   "message": "A key container in the repository may hold private keys: check its content (truststores with only public certificates are reported as info).",
+   "tags": [
+    "security"
+   ]
+  },
+  {
+   "id": "SEC-CERT-FILE",
+   "title": "Public certificate file committed",
+   "category": "Security",
+   "technology": "Certificates",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(?i)\\.(cer|crt|der)([._-]?(old|bak|backup|orig|copia|copy|\\d+))?$",
+   "tags": [
+    "pki"
+   ]
+  },
+  {
+   "id": "CFG-IP-LITERAL",
+   "title": "Hard-coded IP address",
+   "category": "Configuration",
+   "technology": "Infrastructure",
+   "severity": "low",
+   "confidence": "low",
+   "languages": [
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "XML"
+   ],
+   "pattern": "\\b(?:(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\b",
+   "message": "Environment-specific address in the repository.",
+   "tags": [
+    "cloud"
+   ],
+   "examples": {
+    "match": [
+     "server.host=10.1.2.3"
+    ]
+   }
+  },
+  {
+   "id": "DB-ORACLE",
+   "title": "Oracle Database",
+   "category": "Database",
+   "technology": "Oracle Database",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:oracle:|oracle\\.jdbc\\.|\\bOracle\\d*[ig]?Dialect\\b|\\bojdbc\\d*\\b",
+   "examples": {
+    "match": [
+     "jdbc:oracle:thin:@db:1521:X"
+    ]
+   }
+  },
+  {
+   "id": "DB-DB2",
+   "title": "IBM DB2",
+   "category": "Database",
+   "technology": "IBM DB2",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:db2:|jdbc:as400:|com\\.ibm\\.db2\\.|\\bDB2\\d*Dialect\\b",
+   "examples": {
+    "match": [
+     "jdbc:db2://db:50000/X"
+    ]
+   }
+  },
+  {
+   "id": "DB-SQLSERVER",
+   "title": "SQL Server",
+   "category": "Database",
+   "technology": "SQL Server",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:sqlserver:|jdbc:jtds:|\\bSQLServer\\d*Dialect\\b|\\bSystem\\.Data\\.SqlClient\\b|Initial Catalog=",
+   "examples": {
+    "match": [
+     "jdbc:sqlserver://db;databaseName=X"
+    ]
+   }
+  },
+  {
+   "id": "DB-POSTGRES",
+   "title": "PostgreSQL",
+   "category": "Database",
+   "technology": "PostgreSQL",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:postgresql:|\\bPostgreSQL\\d*Dialect\\b|\\bpsycopg2?\\b|\\bNpgsql\\b",
+   "examples": {
+    "match": [
+     "jdbc:postgresql://db/x"
+    ]
+   }
+  },
+  {
+   "id": "DB-MYSQL",
+   "title": "MySQL / MariaDB",
+   "category": "Database",
+   "technology": "MySQL / MariaDB",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:(mysql|mariadb):|\\bMySQL\\d*\\w*Dialect\\b|\\bpymysql\\b|\\bmysqli?_",
+   "examples": {
+    "match": [
+     "jdbc:mysql://db/x"
+    ]
+   }
+  },
+  {
+   "id": "DB-INFORMIX",
+   "title": "Informix",
+   "category": "Database",
+   "technology": "Informix",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:informix|\\bInformixDialect\\b",
+   "examples": {
+    "match": [
+     "jdbc:informix-sqli://db:1526/x"
+    ]
+   }
+  },
+  {
+   "id": "DB-SYBASE",
+   "title": "Sybase",
+   "category": "Database",
+   "technology": "Sybase",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:sybase:|\\bSybase\\w*Dialect\\b",
+   "examples": {
+    "match": [
+     "jdbc:sybase:Tds:db:5000"
+    ]
+   }
+  },
+  {
+   "id": "DB-MONGODB",
+   "title": "MongoDB",
+   "category": "Database",
+   "technology": "MongoDB",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "mongodb(\\+srv)?://|\\bcom\\.mongodb\\b|\\bpymongo\\b|\\bmongoose\\b",
+   "examples": {
+    "match": [
+     "mongodb://db/x"
+    ]
+   }
+  },
+  {
+   "id": "DB-REDIS",
+   "title": "Redis",
+   "category": "Database",
+   "technology": "Redis",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "redis://|\\bredis\\.clients\\.jedis\\b|\\bio\\.lettuce\\b|\\bStackExchange\\.Redis\\b",
+   "examples": {
+    "match": [
+     "redis://cache:6379"
+    ]
+   }
+  },
+  {
+   "id": "DB-EMBEDDED",
+   "title": "Embedded database",
+   "category": "Database",
+   "technology": "Embedded database",
+   "severity": "info",
+   "confidence": "medium",
+   "pattern": "jdbc:(h2|hsqldb|derby):|\\bsqlite3?\\b",
+   "examples": {
+    "match": [
+     "jdbc:h2:mem:test"
+    ]
+   }
+  },
+  {
+   "id": "SQL-ORACLE-DIALECT",
+   "title": "Oracle-specific SQL",
+   "category": "Database",
+   "technology": "Oracle SQL",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "SQL",
+    "PL/SQL",
+    "Transact-SQL",
+    "Java",
+    "JSP",
+    "C#",
+    "PowerBuilder",
+    "PHP",
+    "Python"
+   ],
+   "pattern": "(?i)\\bCONNECT\\s+BY\\b|\\bROWNUM\\b|\\bNVL2?\\s*\\(|\\bDECODE\\s*\\(|\\bSYSDATE\\b|\\(\\+\\)|\\bFROM\\s+DUAL\\b",
+   "message": "Proprietary SQL hinders database portability.",
+   "tags": [
+    "vendor-lockin"
+   ],
+   "examples": {
+    "match": [
+     "select nvl(a,0) from dual"
+    ]
+   }
+  },
+  {
+   "id": "SQL-STORED-PROCEDURES",
+   "title": "Stored procedures / packages",
+   "category": "Database",
+   "technology": "PL/SQL",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "SQL",
+    "PL/SQL",
+    "Transact-SQL",
+    "Java",
+    "JSP"
+   ],
+   "pattern": "(?i)\\bCREATE\\s+(OR\\s+REPLACE\\s+)?(PROCEDURE|FUNCTION|PACKAGE|TRIGGER)\\b|\\{\\s*call\\s+\\w",
+   "message": "Business logic in the database.",
+   "examples": {
+    "match": [
+     "CREATE OR REPLACE PROCEDURE p AS BEGIN NULL; END;"
+    ]
+   }
+  },
+  {
+   "id": "SQL-DBLINK",
+   "title": "Database links",
+   "category": "Integration",
+   "technology": "DB link",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "SQL",
+    "PL/SQL",
+    "Transact-SQL"
+   ],
+   "pattern": "(?i)\\b(from|join|into|update)\\s+[\\w.$#]+@[A-Za-z_]\\w*|\\bCREATE\\s+(PUBLIC\\s+)?DATABASE\\s+LINK\\b",
+   "message": "Hidden database-to-database integration.",
+   "examples": {
+    "match": [
+     "select * from t@remote_db"
+    ]
+   }
+  },
+  {
+   "id": "SQL-UTL-NETWORK",
+   "title": "Database-initiated network/file access",
+   "category": "Integration",
+   "technology": "DB network",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "SQL",
+    "PL/SQL",
+    "Transact-SQL"
+   ],
+   "pattern": "(?i)\\b(UTL_HTTP|UTL_SMTP|UTL_TCP|UTL_FILE|UTL_MAIL|DBMS_AQ|xp_cmdshell|sp_send_dbmail)\\b",
+   "message": "The database itself integrates with external systems.",
+   "examples": {
+    "match": [
+     "v := UTL_HTTP.REQUEST(url);"
+    ]
+   }
+  },
+  {
+   "id": "SQL-DB-JOBS",
+   "title": "Database jobs",
+   "category": "Scheduling",
+   "technology": "DB jobs",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "SQL",
+    "PL/SQL",
+    "Transact-SQL"
+   ],
+   "pattern": "(?i)\\b(DBMS_JOB|DBMS_SCHEDULER|sp_add_job)\\b",
+   "message": "Batch processes scheduled inside the database.",
+   "examples": {
+    "match": [
+     "DBMS_SCHEDULER.CREATE_JOB("
+    ]
+   }
+  },
+  {
+   "id": "COBOL-CICS",
+   "title": "CICS transactions",
+   "category": "Platform",
+   "technology": "CICS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "COBOL",
+    "PL/I"
+   ],
+   "pattern": "(?i)\\bEXEC\\s+CICS\\b",
+   "examples": {
+    "match": [
+     "           EXEC CICS RETURN END-EXEC."
+    ]
+   }
+  },
+  {
+   "id": "COBOL-SQL",
+   "title": "Embedded SQL (DB2)",
+   "category": "Persistence",
+   "technology": "Embedded SQL",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "COBOL",
+    "PL/I",
+    "C",
+    "RPG"
+   ],
+   "pattern": "(?i)\\bEXEC\\s+SQL\\b",
+   "examples": {
+    "match": [
+     "           EXEC SQL SELECT A INTO :B FROM T END-EXEC."
+    ]
+   }
+  },
+  {
+   "id": "COBOL-MQ",
+   "title": "IBM MQ calls from COBOL",
+   "category": "Integration",
+   "technology": "IBM MQ",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "COBOL"
+   ],
+   "pattern": "(?i)\\bCALL\\s+'MQ(PUT1?|GET|OPEN|CONN|CLOSE)'",
+   "examples": {
+    "match": [
+     "           CALL 'MQPUT' USING HCONN."
+    ]
+   }
+  },
+  {
+   "id": "VB6-PROJECT",
+   "title": "Visual Basic 6 project",
+   "category": "Platform",
+   "technology": "VB6",
+   "severity": "high",
+   "confidence": "medium",
+   "pathPattern": "\\.(vbp|frm|frx)$",
+   "tags": [
+    "eol"
+   ]
+  },
+  {
+   "id": "DELPHI-PROJECT",
+   "title": "Delphi project",
+   "category": "Platform",
+   "technology": "Delphi",
+   "severity": "medium",
+   "confidence": "medium",
+   "pathPattern": "\\.(dpr|dproj|dfm)$",
+   "tags": [
+    "legacy"
+   ]
+  },
+  {
+   "id": "NET-WCF",
+   "title": "WCF services",
+   "category": "Integration",
+   "technology": "WCF",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.ServiceModel\\b|\\[(ServiceContract|OperationContract)\\b|<system\\.serviceModel>",
+   "message": "WCF server is not available on modern .NET (CoreWCF required).",
+   "tags": [
+    "migration:dotnet"
+   ],
+   "examples": {
+    "match": [
+     "[ServiceContract]"
+    ]
+   }
+  },
+  {
+   "id": "NET-ASMX",
+   "title": "ASMX web services",
+   "category": "Integration",
+   "technology": "ASMX",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\[WebMethod\\b|\\bSystem\\.Web\\.Services\\b",
+   "tags": [
+    "migration:dotnet"
+   ],
+   "examples": {
+    "match": [
+     "[WebMethod]"
+    ]
+   }
+  },
+  {
+   "id": "NET-WEBFORMS",
+   "title": "ASP.NET Web Forms",
+   "category": "Web",
+   "technology": "Web Forms",
+   "severity": "high",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.Web\\.UI\\b|<%@\\s*Page\\b|\\brunat=\\\"server\\\"",
+   "message": "Not supported on .NET Core / .NET 5+.",
+   "tags": [
+    "migration:dotnet"
+   ],
+   "examples": {
+    "match": [
+     "using System.Web.UI;"
+    ]
+   }
+  },
+  {
+   "id": "NET-MVC",
+   "title": "ASP.NET MVC / Core",
+   "category": "Web",
+   "technology": "ASP.NET MVC",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.Web\\.Mvc\\b|\\bMicrosoft\\.AspNetCore\\b|\\[ApiController\\]",
+   "examples": {
+    "match": [
+     "using Microsoft.AspNetCore.Mvc;"
+    ]
+   }
+  },
+  {
+   "id": "NET-REMOTING",
+   "title": ".NET Remoting",
+   "category": "Integration",
+   "technology": ".NET Remoting",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.Runtime\\.Remoting\\b",
+   "tags": [
+    "migration:dotnet"
+   ],
+   "examples": {
+    "match": [
+     "using System.Runtime.Remoting;"
+    ]
+   }
+  },
+  {
+   "id": "NET-EF",
+   "title": "Entity Framework",
+   "category": "Persistence",
+   "technology": "Entity Framework",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.Data\\.Entity\\b|\\bMicrosoft\\.EntityFrameworkCore\\b|\\bDbContext\\b",
+   "examples": {
+    "match": [
+     "public class Ctx : DbContext {"
+    ]
+   }
+  },
+  {
+   "id": "NET-ADO",
+   "title": "ADO.NET",
+   "category": "Persistence",
+   "technology": "ADO.NET",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\b(SqlConnection|OleDbConnection|OdbcConnection|OracleConnection|SqlCommand)\\b",
+   "examples": {
+    "match": [
+     "var c = new SqlConnection(cs);"
+    ]
+   }
+  },
+  {
+   "id": "NET-DESKTOP",
+   "title": "WinForms / WPF desktop",
+   "category": "Platform",
+   "technology": "Desktop .NET",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\bSystem\\.Windows\\.Forms\\b|\\bSystem\\.Windows\\.(Controls|Markup)\\b",
+   "examples": {
+    "match": [
+     "using System.Windows.Forms;"
+    ]
+   }
+  },
+  {
+   "id": "NET-FRAMEWORK",
+   "title": ".NET Framework (Windows only)",
+   "category": "Platform",
+   "technology": ".NET Framework",
+   "severity": "medium",
+   "confidence": "high",
+   "languages": [
+    "MSBuild",
+    "XML"
+   ],
+   "pattern": "<TargetFrameworkVersion>\\s*v[1-4]\\.|<TargetFramework>\\s*net[1-4]\\d",
+   "tags": [
+    "migration:dotnet"
+   ],
+   "examples": {
+    "match": [
+     "<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>"
+    ]
+   }
+  },
+  {
+   "id": "JS-JQUERY",
+   "title": "jQuery",
+   "category": "Frontend",
+   "technology": "jQuery",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\bjQuery\\b|\\$\\(\\s*(document|function|window)\\b|jquery[\\w.\\-]*\\.js",
+   "examples": {
+    "match": [
+     "$(document).ready(function(){});"
+    ]
+   }
+  },
+  {
+   "id": "JS-ANGULARJS",
+   "title": "AngularJS 1.x (end of life)",
+   "category": "Frontend",
+   "technology": "AngularJS",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\bangular\\.module\\s*\\(|\\bng-app\\b",
+   "message": "End of life since January 2022.",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "angular.module('app', [])"
+    ]
+   }
+  },
+  {
+   "id": "JS-ANGULAR",
+   "title": "Angular",
+   "category": "Frontend",
+   "technology": "Angular",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker",
+    "npm"
+   ],
+   "pattern": "@angular/core",
+   "examples": {
+    "match": [
+     "import { Component } from '@angular/core';"
+    ]
+   }
+  },
+  {
+   "id": "JS-REACT",
+   "title": "React",
+   "category": "Frontend",
+   "technology": "React",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker",
+    "npm"
+   ],
+   "pattern": "from\\s+['\\\"]react['\\\"]|require\\(\\s*['\\\"]react['\\\"]\\s*\\)|\\\"react\\\"\\s*:",
+   "examples": {
+    "match": [
+     "import React from 'react';"
+    ]
+   }
+  },
+  {
+   "id": "JS-VUE",
+   "title": "Vue.js",
+   "category": "Frontend",
+   "technology": "Vue",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker",
+    "npm"
+   ],
+   "pattern": "from\\s+['\\\"]vue['\\\"]|\\bnew\\s+Vue\\s*\\(|\\\"vue\\\"\\s*:",
+   "examples": {
+    "match": [
+     "new Vue({el:'#app'})"
+    ]
+   }
+  },
+  {
+   "id": "JS-LEGACY-LIBS",
+   "title": "Legacy JS libraries (Dojo, ExtJS, Prototype, YUI, Backbone)",
+   "category": "Frontend",
+   "technology": "Legacy JS",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\bdojo\\.(require|declare)\\b|\\bExt\\.(define|create|onReady)\\b|\\bnew\\s+Ajax\\.(Request|Updater)\\b|\\bYAHOO\\.|\\bYUI\\(|\\bBackbone\\.(Model|View)\\b",
+   "tags": [
+    "legacy"
+   ],
+   "examples": {
+    "match": [
+     "dojo.require('dijit.form.Button');"
+    ]
+   }
+  },
+  {
+   "id": "JS-FLASH",
+   "title": "Flash / Flex (end of life)",
+   "category": "Frontend",
+   "technology": "Flash/Flex",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker",
+    "ActionScript/Flex"
+   ],
+   "pattern": "\\.swf\\b|application/x-shockwave-flash|\\bmx:Application\\b",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "<embed src=\"app.swf\">"
+    ]
+   }
+  },
+  {
+   "id": "JS-FLASH-FILE",
+   "title": "Flash binary committed",
+   "category": "Frontend",
+   "technology": "Flash/Flex",
+   "severity": "high",
+   "confidence": "medium",
+   "pathPattern": "\\.swf$",
+   "tags": [
+    "eol"
+   ]
+  },
+  {
+   "id": "JS-NODE-SERVER",
+   "title": "Node.js server",
+   "category": "Web",
+   "technology": "Node.js",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "JavaScript",
+    "TypeScript"
+   ],
+   "pattern": "require\\(\\s*['\\\"](express|koa|hapi|fastify)['\\\"]\\s*\\)|from\\s+['\\\"](express|@nestjs/core|fastify)['\\\"]",
+   "examples": {
+    "match": [
+     "const express = require('express');"
+    ]
+   }
+  },
+  {
+   "id": "PY-WEB",
+   "title": "Python web framework",
+   "category": "Web",
+   "technology": "Python web",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Python"
+   ],
+   "pattern": "(?m)^\\s*(from|import)\\s+(django|flask|fastapi|tornado|pyramid|bottle)\\b",
+   "examples": {
+    "match": [
+     "from flask import Flask"
+    ]
+   }
+  },
+  {
+   "id": "PY-ORM",
+   "title": "Python ORM",
+   "category": "Persistence",
+   "technology": "Python ORM",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Python"
+   ],
+   "pattern": "(?m)^\\s*(from|import)\\s+(sqlalchemy|peewee|pony|django\\.db)\\b",
+   "examples": {
+    "match": [
+     "from sqlalchemy import create_engine"
+    ]
+   }
+  },
+  {
+   "id": "PY-CELERY",
+   "title": "Celery tasks",
+   "category": "Scheduling",
+   "technology": "Celery",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Python"
+   ],
+   "pattern": "(?m)^\\s*(from|import)\\s+celery\\b",
+   "examples": {
+    "match": [
+     "from celery import Celery"
+    ]
+   }
+  },
+  {
+   "id": "PY2-SYNTAX",
+   "title": "Python 2 syntax (end of life)",
+   "category": "Migration",
+   "technology": "Python 2",
+   "severity": "high",
+   "confidence": "medium",
+   "languages": [
+    "Python"
+   ],
+   "pattern": "(?m)^\\s*print\\s+[\\\"'\\w]|\\bxrange\\s*\\(|\\braw_input\\s*\\(|\\bexcept\\s+\\w+\\s*,\\s*\\w+\\s*:|\\.has_key\\s*\\(",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "print 'hola'"
+    ],
+    "noMatch": [
+     "print('hola')"
+    ]
+   }
+  },
+  {
+   "id": "PHP-FRAMEWORK",
+   "title": "PHP framework",
+   "category": "Web",
+   "technology": "PHP framework",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "PHP"
+   ],
+   "pattern": "\\bIlluminate\\\\|\\bSymfony\\\\Component\\b|\\bZend\\\\|\\bCodeIgniter\\b|\\bYii::",
+   "examples": {
+    "match": [
+     "use Illuminate\\Support\\Facades\\DB;"
+    ]
+   }
+  },
+  {
+   "id": "PHP-MYSQL-LEGACY",
+   "title": "Legacy mysql_* API (removed in PHP 7)",
+   "category": "Migration",
+   "technology": "PHP mysql_*",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "PHP"
+   ],
+   "pattern": "\\bmysql_(connect|pconnect|query|fetch_\\w+|select_db|real_escape_string)\\s*\\(",
+   "tags": [
+    "eol"
+   ],
+   "examples": {
+    "match": [
+     "$r = mysql_query($q);"
+    ],
+    "noMatch": [
+     "$r = mysqli_query($c,$q);"
+    ]
+   }
+  },
+  {
+   "id": "AUTH-SPRING-METHOD",
+   "title": "Method-level authorization",
+   "category": "Authentication",
+   "technology": "Spring Security",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "@(PreAuthorize|PostAuthorize|Secured|RolesAllowed)\\b",
+   "tags": [
+    "auth"
+   ],
+   "examples": {
+    "match": [
+     "@PreAuthorize(\"hasRole('ADMIN')\")"
+    ],
+    "noMatch": [
+     "// @Secured"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-X509",
+   "title": "X.509 / client-certificate authentication (mTLS)",
+   "category": "Authentication",
+   "technology": "X.509 client auth",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bX509AuthenticationFilter\\b|\\.x509\\s*\\(|\\bCLIENT[_-]CERT\\b|\\bclientAuth\\b|\\bExtractPrincipalFromCertificate\\b",
+   "message": "Client-certificate authentication implies mutual TLS (mTLS).",
+   "tags": [
+    "auth",
+    "mtls"
+   ],
+   "examples": {
+    "match": [
+     "http.x509();",
+     "auth-method CLIENT-CERT"
+    ],
+    "noMatch": [
+     "// x509 notes"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "AUTH-JWT",
+   "title": "JSON Web Token authentication",
+   "category": "Authentication",
+   "technology": "JWT",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "Maven POM",
+    "Gradle"
+   ],
+   "pattern": "\\bio\\.jsonwebtoken\\b|\\bcom\\.nimbusds\\.jwt\\b|\\bcom\\.auth0\\.jwt\\b|\\bJwtDecoder\\b|\\bBearerTokenAuthentication\\b|\\bOncePerRequestFilter\\b.{0,80}[Jj][Ww][Tt]",
+   "tags": [
+    "auth",
+    "token"
+   ],
+   "examples": {
+    "match": [
+     "import io.jsonwebtoken.Jwts;"
+    ],
+    "noMatch": [
+     "// jwt todo"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-OAUTH2",
+   "title": "OAuth2 / OpenID Connect",
+   "category": "Authentication",
+   "technology": "OAuth2/OIDC",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "Maven POM",
+    "Gradle"
+   ],
+   "pattern": "\\borg\\.springframework\\.security\\.oauth2\\b|@Enable(Authorization|Resource)Server\\b|\\bspring-security-oauth\\b|\\bClientRegistration\\b|\\bOAuth2(Login|Client|ResourceServer|AuthorizedClient)\\b",
+   "tags": [
+    "auth",
+    "token"
+   ],
+   "examples": {
+    "match": [
+     "import org.springframework.security.oauth2.jwt.JwtDecoder;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-SAML",
+   "title": "SAML 2.0 federation",
+   "category": "Authentication",
+   "technology": "SAML",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bopensaml\\b|\\borg\\.springframework\\.security\\.saml\\b|\\bsaml2Login\\b|urn:oasis:names:tc:SAML",
+   "tags": [
+    "auth",
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "import org.opensaml.saml.saml2.core.Assertion;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-CAS",
+   "title": "CAS single sign-on",
+   "category": "Authentication",
+   "technology": "CAS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\borg\\.(jasig|apereo)\\.cas\\b|\\bcas-client\\b|\\bCasAuthenticationFilter\\b",
+   "tags": [
+    "auth",
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-KEYCLOAK",
+   "title": "Keycloak adapter",
+   "category": "Authentication",
+   "technology": "Keycloak",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets",
+    "OpenAPI/JSON"
+   ],
+   "pattern": "\\borg\\.keycloak\\b|\\bkeycloak\\.json\\b|\\bKeycloakSecurityContext\\b",
+   "tags": [
+    "auth",
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "import org.keycloak.adapters.KeycloakDeployment;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-KERBEROS",
+   "title": "Kerberos / SPNEGO",
+   "category": "Authentication",
+   "technology": "Kerberos/SPNEGO",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\borg\\.ietf\\.jgss\\b|\\bGSSManager\\b|\\bSPNEGO\\b|\\bKrb5LoginModule\\b|\\bspring-security-kerberos\\b",
+   "tags": [
+    "auth",
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "import org.ietf.jgss.GSSManager;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-LDAP",
+   "title": "LDAP / Active Directory authentication",
+   "category": "Authentication",
+   "technology": "LDAP/AD",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bLdapContext\\b|\\bInitialLdapContext\\b|\\bspring-security-ldap\\b|\\bActiveDirectoryLdapAuthenticationProvider\\b|\\bjavax\\.naming\\.directory\\b",
+   "tags": [
+    "auth"
+   ],
+   "examples": {
+    "match": [
+     "import javax.naming.directory.InitialDirContext;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-WS-SECURITY",
+   "title": "WS-Security (SOAP message security)",
+   "category": "Authentication",
+   "technology": "WS-Security",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bWSS4J(In|Out)?Interceptor\\b|\\borg\\.apache\\.wss4j\\b|\\bws-security\\b|oasis-200401-wss-wssecurity|\\bUsernameToken\\b",
+   "message": "Message-level security on SOAP services; check tokens, signature and encryption.",
+   "tags": [
+    "auth",
+    "soap"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor;"
+    ]
+   },
+   "authKind": "service"
+  },
+  {
+   "id": "AUTH-APIKEY",
+   "title": "API key authentication",
+   "category": "Authentication",
+   "technology": "API key",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bX-API-KEY\\b|\\bOcp-Apim-Subscription-Key\\b|\\bapi[_-]?key\\b",
+   "tags": [
+    "auth"
+   ],
+   "examples": {
+    "match": [
+     "request.getHeader(\"X-API-KEY\");"
+    ],
+    "noMatch": [
+     "// no api-key here"
+    ]
+   },
+   "authKind": "service"
+  },
+  {
+   "id": "AUTH-BASIC-OUTBOUND",
+   "title": "HTTP Basic credentials in an outbound client",
+   "category": "Authentication",
+   "technology": "HTTP Basic",
+   "severity": "low",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "\\\"Authorization\\\"\\s*,\\s*\\\"Basic\\s|\\bUsernamePasswordCredentials\\b|\\bsetBasicAuth\\b|\\bPreemptiveBasicAuth\\b",
+   "tags": [
+    "auth",
+    "outbound"
+   ],
+   "examples": {
+    "match": [
+     "conn.setRequestProperty(\"Authorization\", \"Basic \"+tok);"
+    ],
+    "noMatch": [
+     "// basic auth"
+    ]
+   },
+   "authKind": "service"
+  },
+  {
+   "id": "AUTH-BEARER-OUTBOUND",
+   "title": "Bearer token in an outbound client",
+   "category": "Authentication",
+   "technology": "Bearer token",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "\\\"Authorization\\\"\\s*,\\s*\\\"Bearer\\s|\\.setBearerAuth\\b",
+   "tags": [
+    "auth",
+    "outbound"
+   ],
+   "examples": {
+    "match": [
+     "h.set(\"Authorization\", \"Bearer \"+t);"
+    ]
+   },
+   "authKind": "service"
+  },
+  {
+   "id": "TLS-UPSTREAM-CERT-HEADER",
+   "title": "Client certificate received in an HTTP header (mTLS terminated by an intermediary)",
+   "category": "Transport Security",
+   "technology": "mTLS at intermediary (inferred)",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "\\b(?:getHeaders?|getHeaderString|getRequestHeader)\\s*\\(\\s*[\"'][^\"']*(?i:cert|x509)[^\"']*[\"']|\\b(?:[Hh]eaders|META|req|request|Request)\\.(?:get|Get|header|TryGetValue|GetValues)\\s*\\(\\s*[\"'][^\"']*(?i:cert|x509)[^\"']*[\"']|@(?:RequestHeader|HeaderParam)\\s*\\(\\s*(?:(?:value|name)\\s*=\\s*)?\"[^\"]*(?i:cert|x509)[^\"]*\"|\\[FromHeader\\s*\\(\\s*Name\\s*=\\s*\"[^\"]*(?i:cert|x509)[^\"]*\"|[Hh]eaders\\s*\\[\\s*[\"'][^\"']*(?i:cert|x509)[^\"']*[\"']\\s*\\]|[\"'](?i:ssl[_-]client[_-]cert|x-ssl-client-cert|x-client-cert(?:ificate)?|x-forwarded-client-cert|x-arr-clientcert|x-ssl-cert|x-amzn-mtls-clientcert)[\"']|[\"']HTTP_[A-Z0-9_]*(?:CERT|X509)[A-Z0-9_]*[\"']",
+   "message": "The application reads the client certificate from a header: an intermediary (proxy, API gateway, load balancer) terminates mutual TLS in front of it. Who requires it and which consumers use it is not in the code.",
+   "tags": [
+    "mtls",
+    "inferred"
+   ],
+   "examples": {
+    "match": [
+     "String pem = request.getHeader(\"X-Client-Cert\");",
+     "public Response sign(@HeaderParam(\"SSL_CLIENT_CERT\") String cert) {",
+     "@RequestHeader(value = \"x-certificado\") String certificado",
+     "var c = Request.Headers[\"X-ARR-ClientCert\"];",
+     "cert = request.META.get(\"HTTP_X_SSL_CLIENT_CERT\")",
+     "const pem = req.header('x-client-cert');",
+     "private static final String CERT_HEADER = \"X-Forwarded-Client-Cert\";"
+    ],
+    "noMatch": [
+     "String ct = request.getHeader(\"Content-Type\");",
+     "// String pem = request.getHeader(\"X-Client-Cert\");",
+     "String certPath = \"/etc/app/cert.pem\";",
+     "String p = props.get(\"cert.path\");",
+     "var c = config.get(\"ssl.cert\");"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-UPSTREAM-CERT-DATA-HEADER",
+   "title": "Client certificate data received in an HTTP header (mTLS terminated by an intermediary)",
+   "category": "Transport Security",
+   "technology": "mTLS at intermediary (inferred)",
+   "severity": "info",
+   "confidence": "low",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "PHP",
+    "Go",
+    "Ruby",
+    "C",
+    "C++",
+    "Delphi/Pascal",
+    "PowerBuilder"
+   ],
+   "pattern": "[\"'](?i:ssl[_-]client[_-](?:s[_-]dn|i[_-]dn|serial|verify|fingerprint)|x-ssl-client-(?:s-)?dn|x-ssl-client-(?:verify|serial|fingerprint)|x-client-(?:dn|subject|serial|verify|fingerprint))[\"']|[\"']HTTP_SSL_CLIENT_(?:S_DN|I_DN|VERIFY|SERIAL)[\"']",
+   "message": "Subject, serial number or verification result of a client certificate arrive in a header: likely mutual TLS terminated by an intermediary.",
+   "tags": [
+    "mtls",
+    "inferred"
+   ],
+   "examples": {
+    "match": [
+     "String dn = request.getHeader(\"SSL_CLIENT_S_DN\");",
+     "if (\"SUCCESS\".equals(req.getHeader(\"X-SSL-Client-Verify\")))"
+    ],
+    "noMatch": [
+     "String dn = request.getHeader(\"X-Request-Id\");"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-UPSTREAM-CERT-HEADER-CONFIG",
+   "title": "Configured header carrying the client certificate",
+   "category": "Transport Security",
+   "technology": "mTLS at intermediary (inferred)",
+   "severity": "info",
+   "confidence": "low",
+   "languages": [
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "(?m)^\\s*[\\w.\\-]*(?i:cert|x509)[\\w.\\-]*(?i:header)[\\w.\\-]*\\s*[:=]\\s*\\S+|^\\s*[\\w.\\-]*(?i:header)[\\w.\\-]*\\s*[:=]\\s*[\"']?[\\w\\-]*(?i:cert|x509)[\\w\\-]*",
+   "message": "A header that carries the client certificate is configured: mutual TLS is likely terminated by an intermediary.",
+   "tags": [
+    "mtls",
+    "inferred"
+   ],
+   "examples": {
+    "match": [
+     "security.cert-header=X-Client-Cert",
+     "auth.header.name: SSL_CLIENT_CERT"
+    ],
+    "noMatch": [
+     "server.ssl.key-store=keystore.p12",
+     "http.header.timeout=30"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-CLIENT-IDENTITY",
+   "title": "Client TLS identity (keystore) — mutual TLS",
+   "category": "Transport Security",
+   "technology": "mTLS client",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bKeyManagerFactory\\b|\\bloadKeyMaterial\\b|\\.setKeyManagers\\b|javax\\.net\\.ssl\\.keyStore\\b|\\bTLSClientParameters\\b",
+   "message": "A client keystore configures mutual TLS (client-certificate) on outbound calls.",
+   "tags": [
+    "mtls",
+    "outbound"
+   ],
+   "examples": {
+    "match": [
+     "KeyManagerFactory kmf = KeyManagerFactory.getInstance(\"SunX509\");"
+    ],
+    "noMatch": [
+     "// keystore"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-CUSTOM-CONTEXT",
+   "title": "Custom TLS/SSL context",
+   "category": "Transport Security",
+   "technology": "Custom TLS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bSSLContext\\b|\\bSSLSocketFactory\\b|\\bSslContextBuilder\\b",
+   "tags": [
+    "tls"
+   ],
+   "examples": {
+    "match": [
+     "SSLContext ctx = SSLContext.getInstance(\"TLS\");"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-VERIFICATION-DISABLED",
+   "title": "TLS verification disabled",
+   "category": "Transport Security",
+   "technology": "Insecure TLS",
+   "severity": "high",
+   "confidence": "high",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bALLOW_ALL_HOSTNAME_VERIFIER\\b|\\bNoopHostnameVerifier\\b|\\btrustAllCerts\\b|\\bTrustAllStrategy\\b|\\bsetHostnameVerifier\\s*\\([^)]*ALLOW_ALL|checkServerTrusted\\s*\\([^)]*\\)\\s*\\{\\s*\\}",
+   "message": "Certificate or hostname verification is bypassed: traffic is not authenticated.",
+   "tags": [
+    "security",
+    "tls"
+   ],
+   "examples": {
+    "match": [
+     "SSLContexts.custom().loadTrustMaterial(null, new TrustAllStrategy());"
+    ],
+    "noMatch": [
+     "// verify certs properly"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-WEAK-PROTOCOL",
+   "title": "Weak TLS/SSL protocol",
+   "category": "Transport Security",
+   "technology": "Weak TLS",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\b(SSLv2|SSLv3|TLSv1\\.0|TLSv1\\.1)\\b|\\\"TLSv1\\\"|\\\"SSLv3\\\"",
+   "tags": [
+    "security",
+    "tls"
+   ],
+   "examples": {
+    "match": [
+     "ctx = SSLContext.getInstance(\"TLSv1\");"
+    ],
+    "noMatch": [
+     "ctx = SSLContext.getInstance(\"TLSv1.2\");"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-SPRING-BOOT-MTLS",
+   "title": "Spring Boot client-certificate (mutual TLS)",
+   "category": "Authentication",
+   "technology": "X.509 client auth",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "server\\.ssl\\.client-auth\\s*[=:]\\s*(need|want)|\\bclient-auth:\\s*(need|want)\\b",
+   "tags": [
+    "mtls"
+   ],
+   "examples": {
+    "match": [
+     "server.ssl.client-auth=need"
+    ],
+    "noMatch": [
+     "server.ssl.enabled=true"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "TLS-SPRING-BOOT",
+   "title": "Spring Boot TLS keystore",
+   "category": "Transport Security",
+   "technology": "TLS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "server\\.ssl\\.key-store\\b|server\\.ssl\\.enabled\\s*[=:]\\s*true",
+   "tags": [
+    "tls"
+   ],
+   "examples": {
+    "match": [
+     "server.ssl.key-store=classpath:ks.p12"
+    ],
+    "noMatch": [
+     "server.port=8080"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "AUTH-CUSTOM-PROVIDER",
+   "title": "Custom login: own authentication provider or filter",
+   "category": "Authentication",
+   "technology": "Custom authentication",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bimplements\\s+[\\w\\s,.<>]*\\b(AuthenticationProvider|UserDetailsService|AuthenticationManager)\\b|\\bextends\\s+(AbstractAuthenticationProcessingFilter|AbstractUserDetailsAuthenticationProvider|UsernamePasswordAuthenticationFilter|AbstractAuthenticationToken)\\b",
+   "message": "User login implemented by the application itself (the class named in the evidence).",
+   "tags": [
+    "auth",
+    "user"
+   ],
+   "examples": {
+    "match": [
+     "public class AcmeAuthenticationProvider implements AuthenticationProvider {"
+    ],
+    "noMatch": [
+     "private AuthenticationProvider provider;"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-PREAUTH-SSO",
+   "title": "Pre-authenticated SSO (login done by a gateway or the container)",
+   "category": "Authentication",
+   "technology": "Pre-authenticated SSO",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\b(RequestHeaderAuthenticationFilter|AbstractPreAuthenticatedProcessingFilter|J2eePreAuthenticatedProcessingFilter|PreAuthenticatedAuthenticationProvider|WebSphereRequestHeaderAuthenticationFilter)\\b|getHeader\\s*\\(\\s*\\\"(OIDC_CLAIM_\\w*|X-Forwarded-User|X-Remote-User|REMOTE_USER|iv-user|SM_USER|X-Auth-User|X-Auth-Request-User)\\\"",
+   "message": "The application trusts an identity established upstream (reverse proxy, SSO gateway or container).",
+   "tags": [
+    "auth",
+    "user",
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "new RequestHeaderAuthenticationFilter()"
+    ],
+    "noMatch": [
+     "// RequestHeaderAuthenticationFilter"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-CONTAINER",
+   "title": "Container-managed authentication",
+   "category": "Authentication",
+   "technology": "Container (JAAS)",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bgetUserPrincipal\\s*\\(\\s*\\)|\\bgetRemoteUser\\s*\\(\\s*\\)|<security-domain>|<auth-method>\\s*(FORM|BASIC|DIGEST)\\s*</auth-method>|<application-policy\\b",
+   "message": "Login is configured in the application server (security domain / realm), outside the application code.",
+   "tags": [
+    "auth",
+    "user"
+   ],
+   "examples": {
+    "match": [
+     "String u = request.getRemoteUser();",
+     "<security-domain>orders</security-domain>"
+    ],
+    "noMatch": [
+     "String u = getUser();"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-KEYCLOAK-CONFIG",
+   "title": "Keycloak adapter configuration",
+   "category": "Authentication",
+   "technology": "Keycloak",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(?i)(^|/)(keycloak\\.json|keycloak-saml\\.xml|keycloak-oidc\\.json)$",
+   "tags": [
+    "auth",
+    "sso",
+    "user"
+   ],
+   "authKind": "user"
+  },
+  {
+   "id": "AUTH-KEYCLOAK-METHOD",
+   "title": "Keycloak authentication method",
+   "category": "Authentication",
+   "technology": "Keycloak",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "<auth-method>\\s*KEYCLOAK(-SAML)?\\s*</auth-method>|\\bKeycloakWebSecurityConfigurerAdapter\\b|\\bKeycloakAuthenticationProvider\\b",
+   "tags": [
+    "auth",
+    "sso",
+    "user"
+   ],
+   "examples": {
+    "match": [
+     "<auth-method>KEYCLOAK-SAML</auth-method>"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "TLS-LIBERTY-MTLS",
+   "title": "Liberty TLS with client certificates (mTLS)",
+   "category": "Authentication",
+   "technology": "X.509 client auth",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "XML"
+   ],
+   "pattern": "<ssl\\b[^>]*\\bclientAuthentication(Supported)?\\s*=\\s*\\\"true\\\"",
+   "message": "Open Liberty / WebSphere Liberty requires (or accepts) client certificates.",
+   "tags": [
+    "mtls"
+   ],
+   "examples": {
+    "match": [
+     "<ssl id=\"def\" keyStoreRef=\"ks\" clientAuthentication=\"true\"/>"
+    ],
+    "noMatch": [
+     "<ssl id=\"def\" keyStoreRef=\"ks\"/>"
+    ]
+   },
+   "authKind": "transport"
+  },
+  {
+   "id": "PLAT-LIBERTY-SECURITY",
+   "title": "Liberty security features",
+   "category": "Authentication",
+   "technology": "Liberty security",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "XML"
+   ],
+   "pattern": "<feature>\\s*(appSecurity|transportSecurity|openidConnectClient|openidConnectServer|samlWeb|socialLogin|jwt|mpJwt|ldapRegistry|spnego)-[\\d.]+\\s*</feature>",
+   "tags": [
+    "auth",
+    "liberty"
+   ],
+   "examples": {
+    "match": [
+     "<feature>samlWeb-2.0</feature>"
+    ],
+    "noMatch": [
+     "<feature>servlet-4.0</feature>"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "SIGN-XMLDSIG",
+   "title": "XML Signature (XML-DSig)",
+   "category": "Authentication",
+   "technology": "XML-DSig",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild",
+    "Python"
+   ],
+   "pattern": "\\bjavax\\.xml\\.crypto\\.dsig\\b|\\borg\\.apache\\.xml\\.security\\.signature\\b|\\bXMLSignatureFactory\\b|\\bSystem\\.Security\\.Cryptography\\.Xml\\b|\\bSignedXml\\b|\\bsignxml\\b",
+   "tags": [
+    "signature"
+   ],
+   "examples": {
+    "match": [
+     "import javax.xml.crypto.dsig.XMLSignatureFactory;",
+     "var signed = new SignedXml(doc);"
+    ],
+    "noMatch": [
+     "// XMLSignatureFactory"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "SIGN-CMS",
+   "title": "CMS / PKCS#7 signature",
+   "category": "Authentication",
+   "technology": "CMS/PKCS#7",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\borg\\.bouncycastle\\.cms\\b|\\bCMSSignedData(Generator)?\\b|\\bSignedCms\\b|\\bSystem\\.Security\\.Cryptography\\.Pkcs\\b",
+   "tags": [
+    "signature"
+   ],
+   "examples": {
+    "match": [
+     "import org.bouncycastle.cms.CMSSignedDataGenerator;",
+     "var cms = new SignedCms(content);"
+    ],
+    "noMatch": [
+     "String cms = \"page\";"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "SIGN-PDF",
+   "title": "PDF digital signature",
+   "category": "Authentication",
+   "technology": "PDF signature",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "C#",
+    "VB.NET/VB6",
+    "ASP.NET",
+    "XML",
+    "MSBuild"
+   ],
+   "pattern": "\\borg\\.apache\\.pdfbox\\.pdmodel\\.interactive\\.digitalsignature\\b|\\bPDSignature\\b|\\bPdfSigner\\b|\\bPdfSignatureAppearance\\b|\\bPdfPKCS7\\b",
+   "tags": [
+    "signature"
+   ],
+   "examples": {
+    "match": [
+     "import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;",
+     "PdfSigner signer = new PdfSigner(reader, out, props);"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "SIGN-ADES",
+   "title": "Advanced electronic signature (XAdES / CAdES / PAdES / JAdES)",
+   "category": "Authentication",
+   "technology": "AdES",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\beu\\.europa\\.esig\\.dss\\b|\\b[XCPJ]AdES(Service|Signature|SignatureParameters|_BASELINE_[BTLA]+)?\\b|\\bxades4j\\b",
+   "tags": [
+    "signature"
+   ],
+   "examples": {
+    "match": [
+     "import eu.europa.esig.dss.xades.signature.XAdESService;",
+     "SignatureLevel.PAdES_BASELINE_B"
+    ],
+    "noMatch": [
+     "String cades = \"x\";"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "SIGN-TIMESTAMP",
+   "title": "Trusted timestamping (RFC 3161 / TSA)",
+   "category": "Authentication",
+   "technology": "Timestamping",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP"
+   ],
+   "pattern": "\\bRFC\\s?3161\\b|\\bTimeStampToken\\b|\\bTimeStampRequest\\b|\\borg\\.bouncycastle\\.tsp\\b|\\bTSAClient\\b",
+   "tags": [
+    "signature",
+    "pki"
+   ],
+   "examples": {
+    "match": [
+     "import org.bouncycastle.tsp.TimeStampToken;"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "SIGN-PKCS11",
+   "title": "Hardware token / smart card (PKCS#11)",
+   "category": "Authentication",
+   "technology": "PKCS#11",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets"
+   ],
+   "pattern": "\\bSunPKCS11\\b|\\bPKCS11(Provider|Config)?\\b|\\bpkcs11\\.cfg\\b|\\bIAIK\\b.{0,20}\\bpkcs11\\b",
+   "tags": [
+    "signature",
+    "pki"
+   ],
+   "examples": {
+    "match": [
+     "Provider p = Security.getProvider(\"SunPKCS11\");"
+    ],
+    "noMatch": [
+     "int pkcs = 11;"
+    ]
+   },
+   "authKind": "signature"
+  },
+  {
+   "id": "AUTH-EIDAS",
+   "title": "eIDAS cross-border identity (SAML profile)",
+   "category": "Authentication",
+   "technology": "eIDAS",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "Java",
+    "Kotlin",
+    "Groovy",
+    "Scala",
+    "JSP",
+    "XML",
+    "Properties",
+    "YAML",
+    "TOML/INI",
+    "Maven POM",
+    "Gradle",
+    "Ant",
+    "Ivy",
+    "JSF/Facelets",
+    "JavaScript",
+    "TypeScript",
+    "Vue",
+    "HTML",
+    "JSP",
+    "JSF/Facelets",
+    "ASP.NET",
+    "Classic ASP",
+    "PHP",
+    "Velocity/Freemarker"
+   ],
+   "pattern": "\\beIDAS\\b|\\bSTORK\\b|\\beu\\.eidas\\b",
+   "tags": [
+    "sso"
+   ],
+   "examples": {
+    "match": [
+     "import eu.eidas.auth.commons.EidasStringUtil;"
+    ],
+    "noMatch": [
+     "String eidasish = \"x\";"
+    ]
+   },
+   "authKind": "user"
+  },
+  {
+   "id": "API-OPENAPI",
+   "title": "OpenAPI / Swagger contract",
+   "category": "Contract",
+   "technology": "OpenAPI",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "YAML",
+    "OpenAPI/JSON",
+    "Java",
+    "Kotlin"
+   ],
+   "pattern": "(?m)^\\s*\\\"?(openapi|swagger)\\\"?\\s*:\\s*[\\\"']?[23]\\.|@OpenAPIDefinition\\b|\\bio\\.swagger\\b",
+   "examples": {
+    "match": [
+     "openapi: 3.0.1"
+    ]
+   }
+  },
+  {
+   "id": "API-WSDL",
+   "title": "WSDL contract file",
+   "category": "Contract",
+   "technology": "WSDL",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "\\.wsdl$"
+  },
+  {
+   "id": "API-PROTO",
+   "title": "gRPC / Protobuf contract",
+   "category": "Contract",
+   "technology": "gRPC",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "\\.proto$"
+  },
+  {
+   "id": "OPS-DOCKER",
+   "title": "Container image definition",
+   "category": "Delivery",
+   "technology": "Docker",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(^|/)(Dockerfile|Containerfile)[^/]*$"
+  },
+  {
+   "id": "OPS-K8S",
+   "title": "Kubernetes manifests",
+   "category": "Delivery",
+   "technology": "Kubernetes",
+   "severity": "info",
+   "confidence": "medium",
+   "languages": [
+    "YAML"
+   ],
+   "pattern": "(?m)^kind:\\s*(Deployment|StatefulSet|DaemonSet|Service|Ingress|ConfigMap|CronJob|Route)\\b",
+   "examples": {
+    "match": [
+     "kind: Deployment"
+    ]
+   }
+  },
+  {
+   "id": "OPS-HELM",
+   "title": "Helm chart",
+   "category": "Delivery",
+   "technology": "Helm",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(^|/)Chart\\.yaml$"
+  },
+  {
+   "id": "OPS-GITLAB-CI",
+   "title": "GitLab CI pipeline",
+   "category": "Delivery",
+   "technology": "GitLab CI",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(^|/)\\.gitlab-ci\\.yml$"
+  },
+  {
+   "id": "OPS-JENKINS",
+   "title": "Jenkins pipeline",
+   "category": "Delivery",
+   "technology": "Jenkins",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "(^|/)Jenkinsfile$"
+  },
+  {
+   "id": "OPS-ANT-BUILD",
+   "title": "Ant build (no dependency management)",
+   "category": "Delivery",
+   "technology": "Ant",
+   "severity": "low",
+   "confidence": "medium",
+   "pathPattern": "(^|/)build\\.xml$",
+   "tags": [
+    "legacy"
+   ]
+  },
+  {
+   "id": "OPS-VENDORED-LIBS",
+   "title": "Libraries committed to the repository",
+   "category": "Delivery",
+   "technology": "Vendored libraries",
+   "severity": "low",
+   "confidence": "medium",
+   "pathPattern": "(^|/)(WEB-INF/lib|lib|libs)/[^/]+\\.jar$",
+   "message": "Dependencies without a manager: versions and CVEs are hard to track.",
+   "tags": [
+    "supply-chain"
+   ]
+  },
+  {
+   "id": "OPS-INSECURE-REPO",
+   "title": "Artifact repository over plain HTTP",
+   "category": "Security",
+   "technology": "Build",
+   "severity": "medium",
+   "confidence": "medium",
+   "languages": [
+    "Maven POM",
+    "Gradle",
+    "XML"
+   ],
+   "pattern": "(?s)<(repository|pluginRepository|snapshotRepository|mirror)>.{0,400}?<url>\\s*http://|\\bmaven\\s*\\{\\s*url\\s*[=(]?\\s*['\\\"]http://",
+   "message": "Dependencies downloaded without TLS can be tampered with.",
+   "tags": [
+    "security",
+    "supply-chain"
+   ],
+   "examples": {
+    "match": [
+     "<repository><id>x</id><url>http://repo.example.org/maven</url></repository>",
+     "maven { url 'http://repo.example.org' }"
+    ],
+    "noMatch": [
+     "<license><url>http://www.apache.org/licenses/LICENSE-2.0</url></license>"
+    ]
+   }
+  },
+  {
+   "id": "OPS-SHELL-SCRIPTS",
+   "title": "Operational shell / batch scripts",
+   "category": "Delivery",
+   "technology": "Scripts",
+   "severity": "info",
+   "confidence": "medium",
+   "pathPattern": "\\.(sh|ksh|bat|cmd)$"
+  }
+ ]
+}

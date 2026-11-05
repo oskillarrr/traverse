@@ -1,0 +1,14 @@
+# Tasks
+- [x] 1. Motor de reconocimiento de estructura: niveles, raíces de código, copias, línea principal
+- [x] 2. Comando `traverse survey` (consola, survey.md, survey.json) y uso por defecto en `scan` (`--layout all`, alias `--svn-all`)
+- [x] 3. URL de configuración (.properties, YAML, XML, standalone.xml/server.xml) como contratos con esquema y transporte
+- [x] 4. Introspección de WAR/EAR/JAR: web.xml, seguridad, librerías para SBOM, versión real
+- [x] 5. Autenticación por tipo (user/service/signature/transport), proveedores propios, SSO, Keycloak/SAML, security-domain, reglas de acceso
+- [x] 6. Clasificación de endpoints entrantes API/interfaz
+- [x] 7. Contrapartes con nombre según el código; esquemas ajenos; módulos de plataforma
+- [x] 8. Ruido: alias JPQL, severidad de keystores, prioridad de evidencia
+- [x] 9. Informe: "Estructura del repositorio", autenticación separada, API/interfaz (HTML, report.md, arc42)
+- [x] 10. Fixtures que reproduzcan los casos reales (copias SVN tipo entregas/, raíz con bbdd/doc/ea/fuente, módulo solo WAR)
+- [x] 11. Tests, demo, validadores, manual y CHANGELOG
+- [ ] 12. Revalidación en un entorno real
+- [x] 13. Validar el reconocimiento con los niveles de directorios reales de cinco repositorios (ramas, trunk2/3, tags anidados, carpetas por entorno, JDK incluido)

@@ -1,0 +1,3 @@
+﻿from,to,kind,confidence,file,line
+org.example.notify.api.MessageController,org.example.notify.service.MessageService,import,high,src/main/java/org/example/notify/api/MessageController.java,3
+org.example.notify.service.MessageService,org.example.notify.repository.CaseReadRepository,import,high,src/main/java/org/example/notify/service/MessageService.java,4

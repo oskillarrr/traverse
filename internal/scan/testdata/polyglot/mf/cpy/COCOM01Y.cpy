@@ -1,0 +1,2 @@
+       01 CARDDEMO-COMMAREA.
+          05 CDEMO-USER PIC X(8).

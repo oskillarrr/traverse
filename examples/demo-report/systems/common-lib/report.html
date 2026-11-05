@@ -1,0 +1,159 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; script-src &#39;unsafe-inline&#39;; img-src data:"><title>common-lib · Traverse</title><style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2733;--muted:#5b6675;--line:#e1e5eb;--accent:#1f4e8c;--accent-fg:#fff;
+--hi:#c9372c;--md:#c77c02;--lo:#3d7a4f;--info:#5b6675;--chip:#eef1f5;--banner:#fff4d6;--bannerfg:#6b4e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1a2029;--fg:#e4e8ee;--muted:#9aa5b4;
+--line:#2c3440;--accent:#5b8fd6;--accent-fg:#0d1117;--hi:#ff6b5e;--md:#f0a43a;--lo:#6fc28a;--info:#9aa5b4;--chip:#232b36;--banner:#3a3018;--bannerfg:#f3d68a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--accent);color:var(--accent-fg);padding:22px 24px}header h1{margin:0 0 4px;font-size:22px}
+header p{margin:0;opacity:.85;font-size:13px}header p.note{margin-top:6px;color:var(--accent-fg)}header a{color:var(--accent-fg);text-decoration:underline}.banner{background:var(--banner);color:var(--bannerfg);padding:6px 24px;font-weight:600;font-size:12px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:8px 24px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:600}main{max-width:1500px;margin:0 auto;padding:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+h2{font-size:17px;margin:0 0 12px}h3{font-size:14px;margin:16px 0 8px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--muted);font-size:12px}.note{color:var(--muted);font-size:12px}
+.summary ul{margin:6px 0;padding-left:20px}.summary li{margin:4px 0;line-height:1.5}
+.scope{border-left:4px solid var(--md);padding:8px 12px;background:var(--chip);border-radius:4px;font-size:13px}
+.tw{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:720px}td:first-child{min-width:150px}th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--chip);cursor:pointer;user-select:none;white-space:nowrap}td{overflow-wrap:break-word}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.f{margin:0 0 8px;padding:6px 9px;width:min(360px,100%);border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.sev{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;color:#fff}
+.sev-high{background:var(--hi)}.sev-medium{background:var(--md)}.sev-low{background:var(--lo)}.sev-info{background:var(--info)}.sev-critical{background:#7a1020}.sev-unknown{background:#6b7280}
+.chip{display:inline-block;background:var(--chip);border-radius:4px;padding:0 6px;margin:1px;font-size:11.5px}
+.diagram{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px}.diagram svg{max-width:none;height:auto}
+.diagram text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--fg)}
+.col{fill:var(--chip)}.colt{font-size:12px;font-weight:600;fill:var(--muted)!important}.nt{font-size:11px}.ns{font-size:10px;fill:var(--muted)!important}
+.node{stroke-width:1}.e{fill:none;stroke:var(--muted);stroke-opacity:.5}.e.bad{stroke:var(--hi);stroke-opacity:.9}
+.L-Presentation{fill:#e3edfb;stroke:#4a78c2}.L-Business{fill:#e5f4ea;stroke:#3b8a55}.L-Integration{fill:#fff1dc;stroke:#c98a1e}
+.L-Persistence{fill:#f6e6f3;stroke:#a24d92}.L-Model{fill:#eef0f3;stroke:#7d8794}.L-Configuration{fill:#efeafb;stroke:#6f56b8}
+.L-Cross-cutting{fill:#f1f1ec;stroke:#8b8a6a}.L-Unknown{fill:#fff;stroke:#a7b0bc}
+.diagram .node+text,.diagram g text.nt,.diagram g text.ns{fill:#1d2733!important}
+.sys{fill:var(--accent);stroke:var(--accent)}.diagram .syst{fill:var(--accent-fg);font-size:13px;font-weight:600}
+.box{fill:var(--card);stroke:var(--line)}.bt{font-size:11px;font-weight:600}.bi{font-size:10px;fill:var(--muted)!important}
+.lk{fill:none;stroke-width:1.6;stroke-opacity:.85}.lk.lo{stroke-opacity:.35;stroke-width:1;stroke-dasharray:2 4}.k-library{stroke:var(--muted);stroke-dasharray:5 4}.k-http{stroke:#2f6fd0}
+.k-soap{stroke:#7d63c9}.k-jms,.k-kafka{stroke:#d98a17}.k-ejb{stroke:#3b8a55}.k-shared-db{stroke:var(--hi);stroke-dasharray:2 3}
+.k-shared-datasource{stroke:var(--hi);stroke-dasharray:1 4}.k-deploys{stroke:#2a9d8f;stroke-dasharray:6 3}.lg{font-size:11px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px}a{color:var(--accent)}
+details summary{cursor:pointer;font-weight:600;color:var(--accent);margin:6px 0}
+@media (max-width:700px){main{padding:8px}section{padding:12px}header{padding:16px}}
+</style></head><body>
+
+<header><h1>common-lib</h1><p>VCS: none · no copies detected: everything is analyzed · Traverse dev · rules 2.0.0</p></header>
+<nav><a href="../../index.html">← Architecture portfolio</a><a href="#parties">Relationships with other applications</a><a href="#structure">Repository structure</a><a href="#context">System context</a><a href="#arch">Layered architecture</a><a href="#contracts">Interfaces &amp; integrations</a><a href="#security">Authentication &amp; transport</a><a href="#data">Data access</a><a href="#modules">Modules &amp; build</a><a href="#deploy">Deployment view</a><a href="#tech">Technologies</a><a href="#risks">Risks &amp; attention points</a><a href="#vulns">Known vulnerabilities</a><a href="#components">Components</a><a href="#metrics">Package coupling</a><a href="#languages">Languages</a></nav>
+<main>
+<div class="kpis">
+<div class="kpi"><b>5</b><span>Lines of code</span></div>
+<div class="kpi"><b>1</b><span>Modules &amp; build</span></div>
+<div class="kpi"><b>2</b><span>Components</span></div>
+<div class="kpi"><b>0</b><span>Exposed</span></div>
+<div class="kpi"><b>0</b><span>Tables</span></div>
+<div class="kpi"><b>0</b><span>High risks</span></div>
+<div class="kpi"><b>0</b><span>Known vulnerabilities</span></div>
+<div class="kpi"><b>0</b><span>Dependency cycles</span></div>
+<div class="kpi"><b>0</b><span>Layer violations</span></div>
+</div>
+<p class="scope">Static, heuristic analysis of source code. Relationships are evidence-based candidates, not runtime facts: validate before using them in official architecture documents.</p>
+
+<section id="summary" class="summary"><h2>Executive summary</h2><ul><li><strong>Size and stack.</strong> 7 lines of code across 4 files; main language Java (71%). Build modules: 1 · components: 2.</li><li><strong>Integrations.</strong> Exposes 0 interfaces (—) and consumes 0 external ones (—); 0 data tables; 0 JNDI resources.</li><li><strong>Risks.</strong> Findings: 0 high · 0 medium · 0 low.</li><li><strong>Coupling.</strong> 0 package cycles (largest, 0 packages) and 0 layer violations.</li></ul>
+<p class="note">Markdown export: <a href="report.md">report.md</a> · <a href="arc42.md">arc42.md</a></p></section>
+<section id="parties"><h2>Relationships with other applications</h2>
+<h3>What it calls (0)</h3>
+<p class="note">No outbound call found in the code or the repository configuration.</p>
+<h3>Who calls it (0)</h3>
+<p class="note">No analyzed system calls it.</p>
+
+
+
+
+
+</section>
+<section id="structure"><h2>Repository structure</h2><ul><li>Analyzed: <code>.</code> (maven:org.example:common-dto 2.3.0)</li></ul>
+</section>
+
+<section id="context"><h2>System context</h2><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 278" width="1010" role="img" aria-label="System context"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="sys" x="380" y="180" width="250" height="80" rx="10"/><text class="syst" x="505" y="225" text-anchor="middle">common-lib</text><g><rect class="box" x="20" y="20" width="250" height="92" rx="8"/><text class="bt" x="30" y="38">Runtime (1)</text><text class="bi" x="30" y="54">java 1.8</text></g></svg></div>
+<p class="note">Exports: <a href="context.svg">context.svg</a> · <a href="workspace.dsl">workspace.dsl</a> (Structurizr / C4) · <a href="facts.json">facts.json</a></p>
+
+</section>
+
+<section id="arch"><h2>Layered architecture</h2>
+<div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 112" width="496" role="img" aria-label="Layered architecture"><defs><marker id="lar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a96a6"/></marker></defs><rect class="col" x="12" y="10" width="216" height="92" rx="8"/><text class="colt" x="20" y="30">Model</text><rect class="col" x="268" y="10" width="216" height="92" rx="8"/><text class="colt" x="276" y="30">Cross-cutting</text><g><title>org.example.common.dto&#10;1 types · Ca 0 · Ce 0 · I 0.00</title><rect class="node L-Model" x="20" y="46" width="200" height="36" rx="6"/><text class="nt" x="28" y="61">dto</text><text class="ns" x="28" y="75">1 · Ca 0 · Ce 0</text></g><g><title>org.example.common.util&#10;1 types · Ca 0 · Ce 0 · I 0.00</title><rect class="node L-Cross-cutting" x="276" y="46" width="200" height="36" rx="6"/><text class="nt" x="284" y="61">util</text><text class="ns" x="284" y="75">1 · Ca 0 · Ce 0</text></g></svg></div><p class="note">Packages with the most types (max 60). Solid lines: code dependencies; red: forbidden by layering rules. Common prefix: org.example.common · <a href="architecture.svg">architecture.svg</a> · <a href="architecture.mmd">architecture.mmd</a></p>
+<h3>Layers</h3><div class="tw"><table><thead><tr><th>Layer</th><th class="n">Package</th><th class="n">Types</th></tr></thead><tbody>
+<tr><td>Model</td><td class="n">1</td><td class="n">1</td></tr><tr><td>Cross-cutting</td><td class="n">1</td><td class="n">1</td></tr></tbody></table></div>
+<h3>Layer violations (0)</h3>
+<p class="note">Nothing detected.</p>
+<h3>Dependency cycles (0)</h3>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="contracts"><h2>Interfaces &amp; integrations (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+
+<section id="security"><h2>Authentication &amp; transport</h2>
+
+<p class="note">No authentication or transport-security mechanism detected (verify at the infrastructure layer).</p>
+
+</section>
+
+<section id="data"><h2>Data access (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="modules"><h2>Modules &amp; build (1)</h2>
+<div class="tw"><table><thead><tr><th>Module</th><th>Build</th><th>Version</th><th>Packaging</th><th>Runtime</th><th>Path</th><th class="n">Dependencies</th></tr></thead><tbody>
+<tr><td><b>common-dto</b><br><span class="note">maven:org.example:common-dto</span></td><td>maven</td><td>2.3.0</td><td>jar</td><td>java 1.8</td><td>pom.xml</td><td class="n">0</td></tr></tbody></table></div>
+<details><summary>Dependencies (0)</summary><input class="f" data-t="tbd" placeholder="Filter…"><div class="tw"><table id="tbd"><thead><tr><th>Module</th><th>Dependencies</th><th>Version</th><th>Scope</th><th>Kind</th><th>Resolved</th></tr></thead><tbody>
+</tbody></table></div></details>
+
+</section>
+
+<section id="deploy"><h2>Deployment view (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="tech"><h2>Technologies (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="risks"><h2>Risks &amp; attention points (0)</h2>
+<p class="note">Nothing detected.</p>
+</section>
+
+<section id="vulns"><h2>Known vulnerabilities (0)</h2>
+<p class="note">Source: OSV.dev (demo-vulndb) · data as of 2026-10-28T00:00:00Z · library versions checked: 0</p>
+<p class="note">No known vulnerability in the evaluated versions (this does not mean the libraries are safe: see the unevaluated list and the data date).</p>
+
+<p class="note">Offline match of declared and committed library versions against the OSV database given with --vulndb. Confidence: high = exact coordinates; medium/low = identified by JAR file name or assembly version. Transitive dependencies are evaluated only when the repository has a lockfile (no build is executed). · <a href="vulnerabilities.csv">vulnerabilities.csv</a> · <a href="sbom.cdx.json">sbom.cdx.json</a> (CycloneDX 1.6)</p>
+</section>
+
+<section id="components"><h2>Components (2)</h2>
+<input class="f" data-t="tco" placeholder="Filter…"><div class="tw"><table id="tco"><thead><tr><th>Component</th><th>Kind</th><th>Layer</th><th>Why</th><th>Module</th><th>Location</th></tr></thead><tbody>
+<tr><td><b>CaseDTO</b><br><span class="note">org.example.common.dto</span></td><td>class</td><td>Model</td><td>package:dto</td><td>maven:org.example:common-dto</td><td>src/main/java/org/example/common/dto/CaseDTO.java:3</td></tr><tr><td><b>DateUtils</b><br><span class="note">org.example.common.util</span></td><td>class</td><td>Cross-cutting</td><td>package:util</td><td>maven:org.example:common-dto</td><td>src/main/java/org/example/common/util/DateUtils.java:2</td></tr></tbody></table></div>
+
+<details><summary>Dependencies (0)</summary><input class="f" data-t="tcd" placeholder="Filter…"><div class="tw"><table id="tcd"><thead><tr><th>From</th><th>To</th><th>Kind</th><th>Confidence</th><th>Location</th></tr></thead><tbody>
+</tbody></table></div></details>
+
+</section>
+
+<section id="metrics"><h2>Package coupling (2)</h2>
+<input class="f" data-t="tm" placeholder="Filter…"><div class="tw"><table id="tm"><thead><tr><th>Package</th><th>Layer</th><th class="n">Types</th><th class="n">Ca</th><th class="n">Ce</th><th class="n">I</th></tr></thead><tbody>
+<tr><td>org.example.common.dto</td><td>Model</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0.00</td></tr><tr><td>org.example.common.util</td><td>Cross-cutting</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0.00</td></tr></tbody></table></div>
+<p class="note">Ca = afferent coupling, Ce = efferent coupling, I = Ce/(Ca+Ce) (R. C. Martin).</p>
+</section>
+
+<section id="languages"><h2>Languages</h2><div class="tw"><table><thead><tr><th>Languages</th><th>Kind</th><th class="n">Files</th><th class="n">Lines of code</th><th class="n">Comment lines</th><th class="n">Blank</th></tr></thead><tbody>
+<tr><td>Java</td><td>code</td><td class="n">2</td><td class="n">5</td><td class="n">0</td><td class="n">0</td></tr><tr><td>Maven POM</td><td>build</td><td class="n">1</td><td class="n">2</td><td class="n">0</td><td class="n">0</td></tr><tr><td>Other</td><td>other</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr></tbody></table></div>
+
+</section>
+</main><footer>Traverse – Offline Architecture Analyzer · Generated 2025-11-05T00:00:00Z</footer><script>
+document.querySelectorAll('input.f').forEach(function(i){i.addEventListener('input',function(){var t=document.getElementById(i.dataset.t);var v=i.value.toLowerCase();
+t.querySelectorAll('tbody tr').forEach(function(r){r.style.display=r.textContent.toLowerCase().indexOf(v)>=0?'':'none'})})});
+document.querySelectorAll('th').forEach(function(th){th.addEventListener('click',function(){var tb=th.closest('table').tBodies[0];var i=Array.prototype.indexOf.call(th.parentNode.children,th);
+var asc=th.dataset.a!=='1';th.dataset.a=asc?'1':'0';var rows=Array.prototype.slice.call(tb.rows);rows.sort(function(a,b){var x=a.cells[i].textContent.trim(),y=b.cells[i].textContent.trim();
+var nx=parseFloat(x),ny=parseFloat(y);var c=(!isNaN(nx)&&!isNaN(ny))?nx-ny:x.localeCompare(y);return asc?c:-c});rows.forEach(function(r){tb.appendChild(r)})})});
+</script></body></html>

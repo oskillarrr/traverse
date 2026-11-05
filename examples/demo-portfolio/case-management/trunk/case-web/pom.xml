@@ -1,0 +1,2 @@
+<project><parent><groupId>org.example.cases</groupId><artifactId>case-parent</artifactId><version>1.4.2</version></parent><artifactId>case-web</artifactId><packaging>war</packaging>
+<dependencies><dependency><groupId>org.example.cases</groupId><artifactId>case-ejb</artifactId><version>${project.version}</version><type>ejb</type></dependency></dependencies></project>

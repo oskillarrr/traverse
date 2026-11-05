@@ -1,0 +1,7 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. NIGHTLY.
+      * Nightly reconciliation of cases
+       PROCEDURE DIVISION.
+           EXEC SQL SELECT COUNT(*) INTO :WS-COUNT FROM CASES.TRAMITE END-EXEC.
+           EXEC CICS RETURN END-EXEC.
+           CALL 'MQPUT' USING HCONN.

@@ -1,0 +1,40 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:929cc1f4-6a8a-5e5e-a732-7b8c0d76850c",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2025-11-05T00:00:00Z",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "name": "Traverse",
+     "version": "dev"
+    }
+   ]
+  },
+  "component": {
+   "type": "application",
+   "bom-ref": "system:platform-gitops",
+   "name": "platform-gitops"
+  },
+  "properties": [
+   {
+    "name": "traverse:vulnDatabase",
+    "value": "OSV.dev (demo-vulndb)"
+   },
+   {
+    "name": "traverse:vulnDataAsOf",
+    "value": "2026-10-28T00:00:00Z"
+   }
+  ],
+  "lifecycles": [
+   {
+    "phase": "pre-build"
+   }
+  ]
+ },
+ "components": [],
+ "dependencies": []
+}

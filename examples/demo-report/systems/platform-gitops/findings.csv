@@ -1,0 +1,8 @@
+﻿id,severity,ruleId,title,category,technology,confidence,file,lines,count,sourceSet,message,validation
+b57439f976f98d8d,high,OPS-K8S-PRIVILEGED,Privileged container,Security,Kubernetes,high,apps/case-management/deployment.yaml,16,1,main,Privileged containers have full access to the node.,
+2074c3e75ab60d3b,high,OPS-K8S-SECRET-IN-REPO,Kubernetes Secret with data in the repository,Security,Kubernetes,high,apps/case-management/deployment.yaml,56,1,main,Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report.,
+f97c52ae12af63ba,high,SEC-SECRET-CONFIG,Possible hard-coded credential in configuration,Security,Secrets,low,apps/case-management/deployment.yaml,62,1,main,Value is never copied to the report; check location and rotate if real.,
+60d82c7db5cae7cc,low,OPS-K8S-NO-RESOURCES,Container without resource requests/limits,Delivery,Kubernetes,high,apps/case-management/deployment.yaml,16,1,main,Without limits a container can starve the node.,
+8debaa936f84a4fe,low,OPS-K8S-NO-RESOURCES,Container without resource requests/limits,Delivery,Kubernetes,high,apps/notifications/deploy.yaml,28,1,main,Without limits a container can starve the node.,
+4a949f5e5f906547,info,OPS-K8S,Kubernetes manifests,Delivery,Kubernetes,medium,apps/case-management/deployment.yaml,2 28 40,3,main,,
+2f7ff9c51480bb27,info,OPS-K8S,Kubernetes manifests,Delivery,Kubernetes,medium,apps/notifications/deploy.yaml,18 32,2,main,,

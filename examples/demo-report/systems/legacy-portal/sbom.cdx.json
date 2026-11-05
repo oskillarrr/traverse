@@ -1,0 +1,135 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.6",
+ "serialNumber": "urn:uuid:ee9c9327-1793-5f32-a81d-d72f783fbd51",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2025-11-05T00:00:00Z",
+  "tools": {
+   "components": [
+    {
+     "type": "application",
+     "name": "Traverse",
+     "version": "dev"
+    }
+   ]
+  },
+  "component": {
+   "type": "application",
+   "bom-ref": "system:legacy-portal",
+   "name": "legacy-portal"
+  },
+  "properties": [
+   {
+    "name": "traverse:vulnDatabase",
+    "value": "OSV.dev (demo-vulndb)"
+   },
+   {
+    "name": "traverse:vulnDataAsOf",
+    "value": "2026-10-28T00:00:00Z"
+   }
+  ],
+  "lifecycles": [
+   {
+    "phase": "pre-build"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "bom-ref": "module:nuget:Portal.Web",
+   "name": "Portal.Web",
+   "purl": "pkg:nuget/Portal.Web",
+   "properties": [
+    {
+     "name": "traverse:build",
+     "value": "msbuild"
+    },
+    {
+     "name": "traverse:descriptor",
+     "value": "Portal/Portal.csproj"
+    },
+    {
+     "name": "traverse:runtime",
+     "value": ".NET v4.5"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "bom-ref": "pkg:nuget/log4net@1.2.10.0",
+   "name": "log4net",
+   "version": "1.2.10.0",
+   "scope": "required",
+   "purl": "pkg:nuget/log4net@1.2.10.0",
+   "properties": [
+    {
+     "name": "traverse:kind",
+     "value": "assembly-ref"
+    }
+   ],
+   "evidence": {
+    "occurrences": [
+     {
+      "location": "Portal/Portal.csproj",
+      "line": 2
+     }
+    ]
+   }
+  }
+ ],
+ "dependencies": [
+  {
+   "ref": "module:nuget:Portal.Web",
+   "dependsOn": [
+    "pkg:nuget/log4net@1.2.10.0"
+   ]
+  },
+  {
+   "ref": "system:legacy-portal",
+   "dependsOn": [
+    "module:nuget:Portal.Web"
+   ]
+  }
+ ],
+ "vulnerabilities": [
+  {
+   "bom-ref": "vuln:TRAVERSEDEMO-2026-0003:pkg:nuget/log4net@1.2.10.0",
+   "id": "TRAVERSEDEMO-2026-0003",
+   "source": {
+    "name": "OSV",
+    "url": "https://osv.dev/vulnerability/TRAVERSEDEMO-2026-0003"
+   },
+   "ratings": [
+    {
+     "source": {
+      "name": "OSV"
+     },
+     "severity": "medium",
+     "method": "other"
+    }
+   ],
+   "description": "SYNTHETIC DEMO ADVISORY - not real vulnerability data. XML external entity processing in configuration loader",
+   "recommendation": "Upgrade to 2.0.10",
+   "published": "2026-03-01T00:00:00Z",
+   "affects": [
+    {
+     "ref": "pkg:nuget/log4net@1.2.10.0",
+     "versions": [
+      {
+       "version": "1.2.10.0",
+       "status": "affected"
+      }
+     ]
+    }
+   ],
+   "properties": [
+    {
+     "name": "traverse:confidence",
+     "value": "low"
+    }
+   ]
+  }
+ ]
+}

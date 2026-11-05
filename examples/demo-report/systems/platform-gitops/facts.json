@@ -1,0 +1,322 @@
+{
+ "schemaVersion": "1.5.0",
+ "tool": {
+  "name": "traverse",
+  "version": "dev",
+  "rulesVersion": "2.0.0"
+ },
+ "repo": {
+  "name": "platform-gitops",
+  "vcs": "none",
+  "layout": "no copies detected: everything is analyzed",
+  "scannedAt": "2025-11-05T00:00:00Z",
+  "survey": {
+   "decision": "no copies detected: everything is analyzed",
+   "roots": [
+    {
+     "path": "apps",
+     "files": 2
+    }
+   ]
+  }
+ },
+ "languages": [
+  {
+   "language": "YAML",
+   "category": "config",
+   "files": 2,
+   "code": 101,
+   "comment": 0,
+   "blank": 0
+  }
+ ],
+ "files": [
+  {
+   "path": "apps/case-management/deployment.yaml",
+   "language": "YAML",
+   "category": "config",
+   "bytes": 1242,
+   "code": 62,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main"
+  },
+  {
+   "path": "apps/notifications/deploy.yaml",
+   "language": "YAML",
+   "category": "config",
+   "bytes": 808,
+   "code": 39,
+   "comment": 0,
+   "blank": 0,
+   "sourceSet": "main"
+  }
+ ],
+ "modules": null,
+ "deployables": null,
+ "components": null,
+ "dependencies": null,
+ "contracts": null,
+ "findings": [
+  {
+   "id": "b57439f976f98d8d",
+   "ruleId": "OPS-K8S-PRIVILEGED",
+   "title": "Privileged container",
+   "category": "Security",
+   "technology": "Kubernetes",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Privileged containers have full access to the node.",
+   "file": "apps/case-management/deployment.yaml",
+   "lines": [
+    16
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "2074c3e75ab60d3b",
+   "ruleId": "OPS-K8S-SECRET-IN-REPO",
+   "title": "Kubernetes Secret with data in the repository",
+   "category": "Security",
+   "technology": "Kubernetes",
+   "severity": "high",
+   "confidence": "high",
+   "message": "Secret values are only base64-encoded; use a secret manager or sealed secrets. Values are never copied to the report.",
+   "file": "apps/case-management/deployment.yaml",
+   "lines": [
+    56
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "f97c52ae12af63ba",
+   "ruleId": "SEC-SECRET-CONFIG",
+   "title": "Possible hard-coded credential in configuration",
+   "category": "Security",
+   "technology": "Secrets",
+   "severity": "high",
+   "confidence": "low",
+   "message": "Value is never copied to the report; check location and rotate if real.",
+   "file": "apps/case-management/deployment.yaml",
+   "lines": [
+    62
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "60d82c7db5cae7cc",
+   "ruleId": "OPS-K8S-NO-RESOURCES",
+   "title": "Container without resource requests/limits",
+   "category": "Delivery",
+   "technology": "Kubernetes",
+   "severity": "low",
+   "confidence": "high",
+   "message": "Without limits a container can starve the node.",
+   "file": "apps/case-management/deployment.yaml",
+   "lines": [
+    16
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "8debaa936f84a4fe",
+   "ruleId": "OPS-K8S-NO-RESOURCES",
+   "title": "Container without resource requests/limits",
+   "category": "Delivery",
+   "technology": "Kubernetes",
+   "severity": "low",
+   "confidence": "high",
+   "message": "Without limits a container can starve the node.",
+   "file": "apps/notifications/deploy.yaml",
+   "lines": [
+    28
+   ],
+   "count": 1,
+   "sourceSet": "main"
+  },
+  {
+   "id": "4a949f5e5f906547",
+   "ruleId": "OPS-K8S",
+   "title": "Kubernetes manifests",
+   "category": "Delivery",
+   "technology": "Kubernetes",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "apps/case-management/deployment.yaml",
+   "lines": [
+    2,
+    28,
+    40
+   ],
+   "count": 3,
+   "sourceSet": "main"
+  },
+  {
+   "id": "2f7ff9c51480bb27",
+   "ruleId": "OPS-K8S",
+   "title": "Kubernetes manifests",
+   "category": "Delivery",
+   "technology": "Kubernetes",
+   "severity": "info",
+   "confidence": "medium",
+   "file": "apps/notifications/deploy.yaml",
+   "lines": [
+    18,
+    32
+   ],
+   "count": 2,
+   "sourceSet": "main"
+  }
+ ],
+ "packageStats": null,
+ "cycles": null,
+ "layerIssues": null,
+ "deployment": {
+  "nodes": [
+   {
+    "id": "kubernetes:/CronJob/nightly-reconciliation@apps/notifications/deploy.yaml",
+    "platform": "kubernetes",
+    "kind": "CronJob",
+    "name": "nightly-reconciliation",
+    "images": [
+     "tramitacion/case-ejb:1.4.2"
+    ],
+    "schedule": "0 2 * * *",
+    "file": "apps/notifications/deploy.yaml",
+    "line": 17
+   },
+   {
+    "id": "kubernetes:/Secret/case-db@apps/case-management/deployment.yaml",
+    "platform": "kubernetes",
+    "kind": "Secret",
+    "name": "case-db",
+    "envKeys": [
+     "password"
+    ],
+    "file": "apps/case-management/deployment.yaml",
+    "line": 56
+   },
+   {
+    "id": "kubernetes:tramitacion/Deployment/case-management@apps/case-management/deployment.yaml",
+    "platform": "kubernetes",
+    "kind": "Deployment",
+    "name": "case-management",
+    "namespace": "tramitacion",
+    "images": [
+     "tramitacion/case-web:1.4.2"
+    ],
+    "ports": [
+     "8080"
+    ],
+    "replicas": "2",
+    "envKeys": [
+     "DB_PASSWORD"
+    ],
+    "hosts": [
+     "host-77a3c5ab57d2"
+    ],
+    "labels": [
+     "app=case-management"
+    ],
+    "file": "apps/case-management/deployment.yaml",
+    "line": 1
+   },
+   {
+    "id": "kubernetes:tramitacion/Ingress/case-management@apps/case-management/deployment.yaml",
+    "platform": "kubernetes",
+    "kind": "Ingress",
+    "name": "case-management",
+    "namespace": "tramitacion",
+    "paths": [
+     "/cases"
+    ],
+    "hosts": [
+     "host-a42af5868ef5"
+    ],
+    "file": "apps/case-management/deployment.yaml",
+    "line": 39
+   },
+   {
+    "id": "kubernetes:tramitacion/Service/case-management@apps/case-management/deployment.yaml",
+    "platform": "kubernetes",
+    "kind": "Service",
+    "name": "case-management",
+    "namespace": "tramitacion",
+    "ports": [
+     "80→8080"
+    ],
+    "file": "apps/case-management/deployment.yaml",
+    "line": 27
+   },
+   {
+    "id": "openshift:/DeploymentConfig/notifications@apps/notifications/deploy.yaml",
+    "platform": "openshift",
+    "kind": "DeploymentConfig",
+    "name": "notifications",
+    "images": [
+     "tramitacion/notifications:3.0.1"
+    ],
+    "replicas": "1",
+    "hosts": [
+     "host-ef0ef0261b78"
+    ],
+    "labels": [
+     "app=notifications"
+    ],
+    "file": "apps/notifications/deploy.yaml",
+    "line": 1
+   },
+   {
+    "id": "openshift:/Route/notifications@apps/notifications/deploy.yaml",
+    "platform": "openshift",
+    "kind": "Route",
+    "name": "notifications",
+    "paths": [
+     "/"
+    ],
+    "hosts": [
+     "host-66ad369591b9"
+    ],
+    "file": "apps/notifications/deploy.yaml",
+    "line": 31
+   }
+  ],
+  "links": [
+   {
+    "from": "kubernetes:tramitacion/Deployment/case-management@apps/case-management/deployment.yaml",
+    "to": "kubernetes:/Secret/case-db@apps/case-management/deployment.yaml",
+    "kind": "config"
+   },
+   {
+    "from": "kubernetes:tramitacion/Ingress/case-management@apps/case-management/deployment.yaml",
+    "to": "kubernetes:tramitacion/Service/case-management@apps/case-management/deployment.yaml",
+    "kind": "routes"
+   },
+   {
+    "from": "kubernetes:tramitacion/Service/case-management@apps/case-management/deployment.yaml",
+    "to": "kubernetes:tramitacion/Deployment/case-management@apps/case-management/deployment.yaml",
+    "kind": "selects"
+   },
+   {
+    "from": "openshift:/Route/notifications@apps/notifications/deploy.yaml",
+    "to": "openshift:/DeploymentConfig/notifications@apps/notifications/deploy.yaml",
+    "kind": "routes"
+   }
+  ]
+ },
+ "diagnostics": null,
+ "vulnScan": {
+  "database": "demo-vulndb",
+  "asOf": "2026-10-28T00:00:00Z",
+  "advisories": {
+   "Maven": 3,
+   "NuGet": 1
+  },
+  "checked": 0,
+  "unevaluated": []
+ }
+}

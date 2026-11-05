@@ -1,0 +1,2 @@
+﻿id,build,name,version,packaging,runtime,parent,path,descriptor,dependencies
+maven:org.example:notifications,maven,notifications,3.0.1,jar,java 11,maven:org.springframework.boot:spring-boot-starter-parent,,pom.xml,2
